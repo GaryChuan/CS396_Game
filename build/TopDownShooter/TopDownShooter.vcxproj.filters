@@ -1,0 +1,267 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source">
+      <UniqueIdentifier>{aeeaf83b-cbd0-4167-8432-8c46ca9eb682}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Settings">
+      <UniqueIdentifier>{46d70336-7e5f-4ea5-981e-37c3886f7490}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dependencies">
+      <UniqueIdentifier>{6873c531-b4cf-4310-a3a7-d46df7873940}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dependencies\xCore">
+      <UniqueIdentifier>{fa608f55-1963-4157-a275-e0831ebc7e95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dependencies\xCore\Details">
+      <UniqueIdentifier>{b4302ace-958c-474b-b2a3-b2688b7c44a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dependencies\xECS">
+      <UniqueIdentifier>{5aa2f8b0-6a54-4edd-8322-8e3e46f17f94}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\settings\PropertyConfig.h">
+      <Filter>Source\Settings</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\settings\xcore_user_settings.h">
+      <Filter>Source\Settings</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore.h">
+      <Filter>Dependencies\xCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore_arglist.h">
+      <Filter>Dependencies\xCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore_array.h">
+      <Filter>Dependencies\xCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore_assert.h">
+      <Filter>Dependencies\xCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore_bitmap.h">
+      <Filter>Dependencies\xCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore_bits.h">
+      <Filter>Dependencies\xCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore_cmdline.h">
+      <Filter>Dependencies\xCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore_color.h">
+      <Filter>Dependencies\xCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore_compression.h">
+      <Filter>Dependencies\xCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore_context.h">
+      <Filter>Dependencies\xCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore_crc.h">
+      <Filter>Dependencies\xCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore_endian.h">
+      <Filter>Dependencies\xCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore_error.h">
+      <Filter>Dependencies\xCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore_event.h">
+      <Filter>Dependencies\xCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore_file.h">
+      <Filter>Dependencies\xCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore_function.h">
+      <Filter>Dependencies\xCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore_global.h">
+      <Filter>Dependencies\xCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore_guid.h">
+      <Filter>Dependencies\xCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore_lock.h">
+      <Filter>Dependencies\xCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore_lockless_pool.h">
+      <Filter>Dependencies\xCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore_lockless_queues.h">
+      <Filter>Dependencies\xCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore_log.h">
+      <Filter>Dependencies\xCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore_math.h">
+      <Filter>Dependencies\xCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore_math_matrix4.h">
+      <Filter>Dependencies\xCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore_math_quaternion.h">
+      <Filter>Dependencies\xCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore_math_radian3.h">
+      <Filter>Dependencies\xCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore_math_shapes.h">
+      <Filter>Dependencies\xCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore_math_transform.h">
+      <Filter>Dependencies\xCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore_math_vector2.h">
+      <Filter>Dependencies\xCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore_math_vector3.h">
+      <Filter>Dependencies\xCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore_math_vector4.h">
+      <Filter>Dependencies\xCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore_memory.h">
+      <Filter>Dependencies\xCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore_profiler.h">
+      <Filter>Dependencies\xCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore_ptr.h">
+      <Filter>Dependencies\xCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore_random.h">
+      <Filter>Dependencies\xCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore_rtti.h">
+      <Filter>Dependencies\xCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore_scheduler_channel.h">
+      <Filter>Dependencies\xCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore_scheduler_job.h">
+      <Filter>Dependencies\xCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore_scheduler_system.h">
+      <Filter>Dependencies\xCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore_scheduler_trigger.h">
+      <Filter>Dependencies\xCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore_serializer.h">
+      <Filter>Dependencies\xCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore_span.h">
+      <Filter>Dependencies\xCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore_string.h">
+      <Filter>Dependencies\xCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore_system_reg.h">
+      <Filter>Dependencies\xCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore_target.h">
+      <Filter>Dependencies\xCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore_textfile.h">
+      <Filter>Dependencies\xCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore_types.h">
+      <Filter>Dependencies\xCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore_unique_span.h">
+      <Filter>Dependencies\xCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore_units.h">
+      <Filter>Dependencies\xCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore_vector.h">
+      <Filter>Dependencies\xCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\src\xecs.h">
+      <Filter>Dependencies\xECS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\src\xecs_archetype.h">
+      <Filter>Dependencies\xECS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\src\xecs_archetype_mgr.h">
+      <Filter>Dependencies\xECS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\src\xecs_component_entity.h">
+      <Filter>Dependencies\xECS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\src\xecs_component_mgr.h">
+      <Filter>Dependencies\xECS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\src\xecs_component_others.h">
+      <Filter>Dependencies\xECS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\src\xecs_component_type.h">
+      <Filter>Dependencies\xECS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\src\xecs_editor.h">
+      <Filter>Dependencies\xECS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\src\xecs_event.h">
+      <Filter>Dependencies\xECS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\src\xecs_event_mgr.h">
+      <Filter>Dependencies\xECS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\src\xecs_game_mgr.h">
+      <Filter>Dependencies\xECS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\src\xecs_pool.h">
+      <Filter>Dependencies\xECS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\src\xecs_predefinitions.h">
+      <Filter>Dependencies\xECS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\src\xecs_prefab.h">
+      <Filter>Dependencies\xECS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\src\xecs_prefab_mgr.h">
+      <Filter>Dependencies\xECS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\src\xecs_query.h">
+      <Filter>Dependencies\xECS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\src\xecs_query_iterator.h">
+      <Filter>Dependencies\xECS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\src\xecs_scene.h">
+      <Filter>Dependencies\xECS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\src\xecs_serializer.h">
+      <Filter>Dependencies\xECS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\src\xecs_settings.h">
+      <Filter>Dependencies\xECS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\src\xecs_system.h">
+      <Filter>Dependencies\xECS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\src\xecs_system_mgr.h">
+      <Filter>Dependencies\xECS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\src\xecs_tools.h">
+      <Filter>Dependencies\xECS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\xecs\src\xecs_tools_bits.h">
+      <Filter>Dependencies\xECS</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\main.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore.cpp">
+      <Filter>Dependencies\xCore\Details</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore_profiler_2.cpp">
+      <Filter>Dependencies\xCore\Details</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore_profiler_1.cpp">
+      <Filter>Dependencies\xCore\Details</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

@@ -180,6 +180,7 @@
     <ClInclude Include="..\..\dependencies\xecs\src\xecs_system_mgr.h" />
     <ClInclude Include="..\..\dependencies\xecs\src\xecs_tools.h" />
     <ClInclude Include="..\..\dependencies\xecs\src\xecs_tools_bits.h" />
+    <ClInclude Include="..\..\src\components\bullet.h" />
     <ClInclude Include="..\..\src\components\components.h" />
     <ClInclude Include="..\..\src\components\input.h" />
     <ClInclude Include="..\..\src\components\position.h" />
@@ -188,6 +189,7 @@
     <ClInclude Include="..\..\src\settings\PropertyConfig.h" />
     <ClInclude Include="..\..\src\settings\xcore_user_settings.h" />
     <ClInclude Include="..\..\src\systems\renderer.h" />
+    <ClInclude Include="..\..\src\systems\render_bullets.h" />
     <ClInclude Include="..\..\src\systems\render_characters.h" />
     <ClInclude Include="..\..\src\systems\systems.h" />
     <ClInclude Include="..\..\src\systems\update_movement.h" />

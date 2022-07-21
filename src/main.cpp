@@ -96,7 +96,7 @@ private:
 	{
 		mManager->RegisterComponents
 			<
-				Position, Velocity, Input
+				Position, Velocity, Bullet, Input
 			>();
 	}
 
@@ -106,7 +106,8 @@ private:
 			<
 				UpdateMovement,
 				Renderer,
-					RenderCharacters
+					RenderCharacters,
+					RenderBullets
 			>();
 	}
 

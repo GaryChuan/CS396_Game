@@ -337,6 +337,12 @@
     <ClInclude Include="..\..\src\systems\render_characters.h">
       <Filter>Systems</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\systems\render_bullets.h">
+      <Filter>Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\components\bullet.h">
+      <Filter>Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore.cpp">

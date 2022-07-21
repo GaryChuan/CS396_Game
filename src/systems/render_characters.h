@@ -2,15 +2,17 @@
 
 struct RenderCharacters : xecs::system::instance
 {
-	constexpr static auto typedef_v = xecs::system::type::child_update<Renderer, Renderer::Update>
-	{
-		.m_pName = "RenderCharacters"
-	};
+	constexpr static auto typedef_v 
+		= xecs::system::type::child_update<Renderer, Renderer::Update>
+		{
+			.m_pName = "RenderCharacters"
+		};
 	
-	/*using query = std::tuple
+	using query = std::tuple
 		<
+			xecs::query::none_of<Bullet>,
 			xecs::query::one_of<entity>
-		>;*/
+		>;
 
 	void OnPreUpdate() noexcept
 	{

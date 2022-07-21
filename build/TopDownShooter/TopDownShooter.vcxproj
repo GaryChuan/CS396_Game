@@ -75,7 +75,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
       <AdditionalOptions>/Zi %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
@@ -137,6 +137,25 @@
     <ClInclude Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore_unique_span.h" />
     <ClInclude Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore_units.h" />
     <ClInclude Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore_vector.h" />
+    <ClInclude Include="..\..\dependencies\xecs\src\details\xecs_archetype_inline.h" />
+    <ClInclude Include="..\..\dependencies\xecs\src\details\xecs_archetype_mgr_inline.h" />
+    <ClInclude Include="..\..\dependencies\xecs\src\details\xecs_component_entity_inline.h" />
+    <ClInclude Include="..\..\dependencies\xecs\src\details\xecs_component_mgr_inline.h" />
+    <ClInclude Include="..\..\dependencies\xecs\src\details\xecs_component_others_inline.h" />
+    <ClInclude Include="..\..\dependencies\xecs\src\details\xecs_component_type_inline.h" />
+    <ClInclude Include="..\..\dependencies\xecs\src\details\xecs_event_inline.h" />
+    <ClInclude Include="..\..\dependencies\xecs\src\details\xecs_event_mgr_inline.h" />
+    <ClInclude Include="..\..\dependencies\xecs\src\details\xecs_game_mgr_inline.h" />
+    <ClInclude Include="..\..\dependencies\xecs\src\details\xecs_pool_inline.h" />
+    <ClInclude Include="..\..\dependencies\xecs\src\details\xecs_prefab_inline.h" />
+    <ClInclude Include="..\..\dependencies\xecs\src\details\xecs_prefab_mgr_inline.h" />
+    <ClInclude Include="..\..\dependencies\xecs\src\details\xecs_query_inline.h" />
+    <ClInclude Include="..\..\dependencies\xecs\src\details\xecs_query_iterator_inline.h" />
+    <ClInclude Include="..\..\dependencies\xecs\src\details\xecs_serializer_inline.h" />
+    <ClInclude Include="..\..\dependencies\xecs\src\details\xecs_system_inline.h" />
+    <ClInclude Include="..\..\dependencies\xecs\src\details\xecs_system_mgr_inline.h" />
+    <ClInclude Include="..\..\dependencies\xecs\src\details\xecs_tools_bits_inline.h" />
+    <ClInclude Include="..\..\dependencies\xecs\src\details\xecs_tools_inline.h" />
     <ClInclude Include="..\..\dependencies\xecs\src\xecs.h" />
     <ClInclude Include="..\..\dependencies\xecs\src\xecs_archetype.h" />
     <ClInclude Include="..\..\dependencies\xecs\src\xecs_archetype_mgr.h" />
@@ -161,13 +180,21 @@
     <ClInclude Include="..\..\dependencies\xecs\src\xecs_system_mgr.h" />
     <ClInclude Include="..\..\dependencies\xecs\src\xecs_tools.h" />
     <ClInclude Include="..\..\dependencies\xecs\src\xecs_tools_bits.h" />
+    <ClInclude Include="..\..\src\components\components.h" />
+    <ClInclude Include="..\..\src\components\input.h" />
+    <ClInclude Include="..\..\src\components\position.h" />
+    <ClInclude Include="..\..\src\pch.h" />
     <ClInclude Include="..\..\src\settings\PropertyConfig.h" />
     <ClInclude Include="..\..\src\settings\xcore_user_settings.h" />
+    <ClInclude Include="..\..\src\systems\renderer.h" />
+    <ClInclude Include="..\..\src\systems\systems.h" />
+    <ClInclude Include="..\..\src\systems\update_movement.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore.cpp" />
     <ClCompile Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore_profiler_1.cpp" />
     <ClCompile Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore_profiler_2.cpp" />
+    <ClCompile Include="..\..\dependencies\xecs\src\xecs.cpp" />
     <ClCompile Include="..\..\src\main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

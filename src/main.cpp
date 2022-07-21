@@ -4,7 +4,6 @@
 #include "components/components.h"
 #include "systems/systems.h"
 
-
 class Game
 {
 public:
@@ -19,6 +18,49 @@ public:
 	~Game()
 	{
 		xcore::Kill();
+	}
+
+	void CreateDefaultScene() noexcept
+	{
+		assert(mManager);
+
+		std::srand(101);
+
+		auto PrefabGuid = mManager->CreatePrefab<Position, Velocity>([&](Position& pos, Velocity& vel) noexcept
+			{
+				pos.mValue = xcore::vector2
+				{ 
+					static_cast<float>(std::rand() % mResolution.first),
+					static_cast<float>(std::rand() % mResolution.second)
+				};
+
+				vel.x = std::rand() / static_cast<float>(RAND_MAX) - 0.5f;
+				vel.y = std::rand() / static_cast<float>(RAND_MAX) - 0.5f;
+				vel.mValue.Normalize();
+
+				//Timer.m_Value = 0;
+			});
+
+		//auto PrefabVariantGuid = mManager->CreatePrefabVariant(PrefabGuid, [&](Position& pos, Velocity& vel) noexcept
+		//	{
+		//		// Timer.m_Value = std::rand() / static_cast<float>(RAND_MAX) * 8;
+		//	});
+
+
+		mManager->CreatePrefabInstance(2000, PrefabGuid, [&](Position& pos, Velocity& vel) noexcept
+			{
+				pos.mValue = xcore::vector2
+				{ 
+					static_cast<float>(std::rand() % mResolution.first), 
+					static_cast<float>(std::rand() % mResolution.second)
+				};
+
+				vel.x = std::rand() / static_cast<float>(RAND_MAX) - 0.5f;
+				vel.y = std::rand() / static_cast<float>(RAND_MAX) - 0.5f;
+				vel.mValue.Normalize();
+
+				// Timer.m_Value = std::rand() / static_cast<float>(RAND_MAX) * 8;
+			});
 	}
 
 	void Run() noexcept
@@ -54,7 +96,7 @@ private:
 	{
 		mManager->RegisterComponents
 			<
-				Position, Input
+				Position, Velocity, Input
 			>();
 	}
 
@@ -62,7 +104,9 @@ private:
 	{
 		mManager->RegisterSystems
 			<
-				Renderer
+				UpdateMovement,
+				Renderer,
+					RenderCharacters
 			>();
 	}
 
@@ -85,11 +129,14 @@ void timer(int value) noexcept
 	glutTimerFunc(15, timer, 0);
 }
 
+
 int main(int argc, char** argv)
 {
 	static Game game{};
 
 	const auto& [width, height] = game.GetResolution();
+
+	game.CreateDefaultScene();
 
     //
     // Create the graphics and main loop
@@ -97,7 +144,7 @@ int main(int argc, char** argv)
     glutInitWindowSize(width, height);
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DOUBLE);
-    glutCreateWindow("xECS Live Coding Example");
+    glutCreateWindow("CS396 Game");
 
     glutDisplayFunc([](void) noexcept
         {

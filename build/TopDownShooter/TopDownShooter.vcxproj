@@ -50,7 +50,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>..\..\src\settings;$(WindowsSDK_IncludePath);$(VC_IncludePath);..\..\src;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\src;..\..\src\settings;..\..\dependencies\xecs\src;..\..\dependencies\xecs\dependencies\glut\include;$(VC_IncludePath);$(WindowsSDK_IncludePath);$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -183,10 +183,12 @@
     <ClInclude Include="..\..\src\components\components.h" />
     <ClInclude Include="..\..\src\components\input.h" />
     <ClInclude Include="..\..\src\components\position.h" />
+    <ClInclude Include="..\..\src\components\velocity.h" />
     <ClInclude Include="..\..\src\pch.h" />
     <ClInclude Include="..\..\src\settings\PropertyConfig.h" />
     <ClInclude Include="..\..\src\settings\xcore_user_settings.h" />
     <ClInclude Include="..\..\src\systems\renderer.h" />
+    <ClInclude Include="..\..\src\systems\render_characters.h" />
     <ClInclude Include="..\..\src\systems\systems.h" />
     <ClInclude Include="..\..\src\systems\update_movement.h" />
   </ItemGroup>

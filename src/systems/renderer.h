@@ -7,9 +7,9 @@ struct Renderer : xecs::system::instance
 		.m_pName = "Renderer"
 	};
 
-	using update = xecs::event::instance<>;
+	using Update = xecs::event::instance<>;
 
-	using events = std::tuple<update>;
+	using events = std::tuple<Update>;
 
 	__inline void OnUpdate() noexcept
 	{
@@ -29,7 +29,7 @@ struct Renderer : xecs::system::instance
         //
         // Let all the system that depends on me
         //
-        SendEventFrom<update>(this);
+        SendEventFrom<Update>(this);
 
         //
         // Page Flip

@@ -1,4 +1,5 @@
 #pragma once
 
-#include "renderer.h"
 #include "update_movement.h"
+#include "renderer.h"
+#include "render_characters.h"

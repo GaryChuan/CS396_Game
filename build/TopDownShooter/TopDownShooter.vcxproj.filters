@@ -331,6 +331,12 @@
     <ClInclude Include="..\..\dependencies\xecs\src\details\xecs_tools_inline.h">
       <Filter>Dependencies\xECS\Details</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\components\velocity.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\systems\render_characters.h">
+      <Filter>Systems</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore.cpp">

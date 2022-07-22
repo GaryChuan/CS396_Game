@@ -5,6 +5,7 @@
 // Input Events
 #include "player_input_on_key_down.h"
 #include "player_input_on_key_up.h"
+#include "player_input_on_mouse_left_click.h"
 // Renderer
 #include "renderer.h"
 #include "render_characters.h"

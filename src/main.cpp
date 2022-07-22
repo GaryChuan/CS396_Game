@@ -96,6 +96,25 @@ public:
 		mManager->SendGlobalEvent<OnKeyUp>(mKeys);
 	}
 
+	void OnMouseClick(int button, int state, int mouseX, int mouseY) noexcept
+	{
+		bool clicked = state == GLUT_DOWN;
+
+		if (!clicked)
+		{
+			return;
+		}
+
+		if (button == GLUT_LEFT_BUTTON)
+		{
+			mManager->SendGlobalEvent<OnMouseLeftClick>(mouseX, mouseY);
+		}
+		else if (button == GLUT_RIGHT_BUTTON)
+		{
+			mManager->SendGlobalEvent<OnMouseRightClick>(mouseX, mouseY);
+		}
+	}
+
 private:
 	void Initialize() noexcept
 	{
@@ -115,7 +134,8 @@ private:
 		mManager->RegisterGlobalEvents
 			<
 				OnKeyDown,
-				OnKeyUp
+				OnKeyUp,
+				OnMouseLeftClick
 			>();
 	}
 
@@ -145,13 +165,14 @@ private:
 		mManager->RegisterSystems
 			<
 				PlayerInputOnKeyDown,
-				PlayerInputOnKeyUp
+				PlayerInputOnKeyUp,
+				PlayerInputOnMouseLeftClick
 			>();
 	}
 
 private:
-	std::unique_ptr<Manager> mManager;
-	std::pair<int, int> mResolution;
+	std::unique_ptr<Manager> mManager{};
+	std::pair<int, int> mResolution{};
 	Keys mKeys{};
 };
 
@@ -200,6 +221,10 @@ int main(int argc, char** argv)
 	glutKeyboardUpFunc([](unsigned char key, int mouseX, int mouseY) noexcept
 		{
 			game.OnKeyboardUp(key, mouseX, mouseY);
+		});
+	glutMouseFunc([](int button, int state, int mouseX, int mouseY) noexcept
+		{
+			game.OnMouseClick(button, state, mouseX, mouseY);
 		});
     glutTimerFunc(0, timer, 0);
 

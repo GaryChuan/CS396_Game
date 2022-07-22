@@ -145,7 +145,12 @@ private:
 
 		mManager->RegisterComponents
 			<
-				Position, Velocity, Bullet, Health, PlayerTag
+				Position, 
+				Velocity, 
+				Bullet, 
+				Health, 
+				Timer,
+				PlayerTag
 			>();
 	}
 
@@ -157,6 +162,7 @@ private:
 			<
 				UpdateMovement,
 				PlayerLogic,
+				BulletLogic,
 				Renderer,
 					RenderCharacters,
 					RenderBullets

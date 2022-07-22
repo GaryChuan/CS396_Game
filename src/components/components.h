@@ -5,6 +5,7 @@
 #include "velocity.h"
 #include "bullet.h"
 #include "health.h"
+#include "timer.h"
 
 // Tags
 #include "player_tag.h"

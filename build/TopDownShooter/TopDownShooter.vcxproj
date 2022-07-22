@@ -186,6 +186,7 @@
     <ClInclude Include="..\..\src\components\health.h" />
     <ClInclude Include="..\..\src\components\player_tag.h" />
     <ClInclude Include="..\..\src\components\position.h" />
+    <ClInclude Include="..\..\src\components\timer.h" />
     <ClInclude Include="..\..\src\components\velocity.h" />
     <ClInclude Include="..\..\src\events\events.h" />
     <ClInclude Include="..\..\src\events\on_key_down.h" />
@@ -195,6 +196,7 @@
     <ClInclude Include="..\..\src\pch.h" />
     <ClInclude Include="..\..\src\settings\PropertyConfig.h" />
     <ClInclude Include="..\..\src\settings\xcore_user_settings.h" />
+    <ClInclude Include="..\..\src\systems\bullet_logic.h" />
     <ClInclude Include="..\..\src\systems\player_input_on_key_down.h" />
     <ClInclude Include="..\..\src\systems\player_input_on_key_up.h" />
     <ClInclude Include="..\..\src\systems\player_input_on_mouse_left_click.h" />

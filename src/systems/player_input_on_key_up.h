@@ -15,7 +15,7 @@ struct PlayerInputOnKeyUp : xecs::system::instance
 
 	__inline void OnGameStart() noexcept
 	{
-		mQueryPlayerOnly.m_Must.AddFromComponents<Position, Velocity>();
+		mQueryPlayerOnly.m_Must.AddFromComponents<Position, Velocity, PlayerTag>();
 		mQueryPlayerOnly.m_NoneOf.AddFromComponents<Bullet>();
 	}
 

@@ -17,15 +17,16 @@ public:
 
 	using query = std::tuple
 		<
+			xecs::query::must<PlayerTag>,
 			xecs::query::none_of<Bullet>
 		>;
 
 	void OnGameStart() noexcept
 	{
-		mBulletArchetypePtr = &getOrCreateArchetype<bullet_archetype>();
+		mBulletArchetypePtr = &getOrCreateArchetype<BulletArchetype>();
 
 		// Create player
-		auto& playerArchetype = getOrCreateArchetype<player_archetype>();
+		auto& playerArchetype = getOrCreateArchetype<PlayerArchetype>();
 
 		playerArchetype.CreateEntity([&](Position& pos, Velocity& vel, Health& health)
 			{

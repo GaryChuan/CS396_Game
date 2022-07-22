@@ -184,6 +184,7 @@
     <ClInclude Include="..\..\src\components\components.h" />
     <ClInclude Include="..\..\src\components\component_archetypes.h" />
     <ClInclude Include="..\..\src\components\health.h" />
+    <ClInclude Include="..\..\src\components\player_tag.h" />
     <ClInclude Include="..\..\src\components\position.h" />
     <ClInclude Include="..\..\src\components\velocity.h" />
     <ClInclude Include="..\..\src\events\events.h" />

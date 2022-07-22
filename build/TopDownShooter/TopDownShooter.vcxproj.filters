@@ -28,6 +28,9 @@
     <Filter Include="Events">
       <UniqueIdentifier>{6dcae6cd-fd58-49dd-a7fa-42aa97404ea6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Components\Tags">
+      <UniqueIdentifier>{06f5a860-ad58-4bf8-ab8f-5d788f68799e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\settings\PropertyConfig.h">
@@ -375,6 +378,9 @@
     </ClInclude>
     <ClInclude Include="..\..\src\systems\player_input_on_mouse_left_click.h">
       <Filter>Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\components\player_tag.h">
+      <Filter>Components\Tags</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

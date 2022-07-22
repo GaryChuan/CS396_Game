@@ -17,7 +17,7 @@ struct PlayerInputOnKeyDown : xecs::system::instance
 	{
 		// Is there a way to store player archetype? 
 		// Or do I have to query everytime an event happens
-		mQueryPlayerOnly.m_Must.AddFromComponents<Position, Velocity>();
+		mQueryPlayerOnly.m_Must.AddFromComponents<Position, Velocity, PlayerTag>();
 		mQueryPlayerOnly.m_NoneOf.AddFromComponents<Bullet>();
 	}
 

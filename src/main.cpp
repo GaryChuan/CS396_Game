@@ -145,7 +145,7 @@ private:
 
 		mManager->RegisterComponents
 			<
-				Position, Velocity, Bullet, Health
+				Position, Velocity, Bullet, Health, PlayerTag
 			>();
 	}
 

@@ -182,12 +182,15 @@
     <ClInclude Include="..\..\dependencies\xecs\src\xecs_tools_bits.h" />
     <ClInclude Include="..\..\src\components\bullet.h" />
     <ClInclude Include="..\..\src\components\components.h" />
-    <ClInclude Include="..\..\src\components\input.h" />
+    <ClInclude Include="..\..\src\components\component_archetypes.h" />
+    <ClInclude Include="..\..\src\components\health.h" />
     <ClInclude Include="..\..\src\components\position.h" />
     <ClInclude Include="..\..\src\components\velocity.h" />
     <ClInclude Include="..\..\src\pch.h" />
     <ClInclude Include="..\..\src\settings\PropertyConfig.h" />
     <ClInclude Include="..\..\src\settings\xcore_user_settings.h" />
+    <ClInclude Include="..\..\src\systems\input.h" />
+    <ClInclude Include="..\..\src\systems\player_logic.h" />
     <ClInclude Include="..\..\src\systems\renderer.h" />
     <ClInclude Include="..\..\src\systems\render_bullets.h" />
     <ClInclude Include="..\..\src\systems\render_characters.h" />

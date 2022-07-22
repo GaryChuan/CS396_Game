@@ -26,7 +26,8 @@ public:
 
 		std::srand(101);
 
-		auto PrefabGuid = mManager->CreatePrefab<Position, Velocity>([&](Position& pos, Velocity& vel) noexcept
+		// Enemy prefabs
+		auto PrefabGuid = mManager->CreatePrefab<Position, Velocity, Health>([&](Position& pos, Velocity& vel, Health& health) noexcept
 			{
 				pos.mValue = xcore::vector2
 				{ 
@@ -38,6 +39,7 @@ public:
 				vel.y = std::rand() / static_cast<float>(RAND_MAX) - 0.5f;
 				vel.mValue.Normalize();
 
+				health.mValue = 100;
 				//Timer.m_Value = 0;
 			});
 
@@ -47,7 +49,7 @@ public:
 		//	});
 
 
-		mManager->CreatePrefabInstance(2000, PrefabGuid, [&](Position& pos, Velocity& vel) noexcept
+		mManager->CreatePrefabInstance(2000, PrefabGuid, [&](Position& pos, Velocity& vel, Health& health) noexcept
 			{
 				pos.mValue = xcore::vector2
 				{ 
@@ -96,7 +98,7 @@ private:
 	{
 		mManager->RegisterComponents
 			<
-				Position, Velocity, Bullet, Input
+				Position, Velocity, Bullet, Health
 			>();
 	}
 
@@ -105,6 +107,8 @@ private:
 		mManager->RegisterSystems
 			<
 				UpdateMovement,
+				PlayerLogic,
+				Input,
 				Renderer,
 					RenderCharacters,
 					RenderBullets
@@ -151,7 +155,6 @@ int main(int argc, char** argv)
         {
             game.Run();
         });
-
     glutReshapeFunc([](int w, int h) noexcept
         {
 			game.SetResolution(w, h);

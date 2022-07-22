@@ -2,5 +2,7 @@
 
 #include "position.h"
 #include "velocity.h"
-#include "input.h"
 #include "bullet.h"
+#include "health.h"
+
+#include "component_archetypes.h"

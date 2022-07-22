@@ -7,3 +7,6 @@
 #pragma warning (disable:4244)  // Disable bogus VC++ 4.2 conversion warnings. 
 #include <GL/gl.h>
 #pragma comment (lib, "opengl32.lib") // link with Microsoft OpenGL lib
+
+#define GLUT_STATIC_LIB
+#include "GL/glut.h"

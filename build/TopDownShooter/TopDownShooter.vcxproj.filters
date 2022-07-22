@@ -25,6 +25,9 @@
     <Filter Include="_Dependencies\xECS\Details">
       <UniqueIdentifier>{6be5650c-e8f6-44d0-b4d4-857b6d5dc873}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Events">
+      <UniqueIdentifier>{6dcae6cd-fd58-49dd-a7fa-42aa97404ea6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\settings\PropertyConfig.h">
@@ -349,7 +352,19 @@
     <ClInclude Include="..\..\src\components\component_archetypes.h">
       <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\systems\input.h">
+    <ClInclude Include="..\..\src\systems\player_input_on_key_down.h">
+      <Filter>Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\events\on_key_down.h">
+      <Filter>Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\events\events.h">
+      <Filter>Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\events\on_key_up.h">
+      <Filter>Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\systems\player_input_on_key_up.h">
       <Filter>Systems</Filter>
     </ClInclude>
   </ItemGroup>

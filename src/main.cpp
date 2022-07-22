@@ -2,6 +2,7 @@
 #include "pch.h"
 
 #include "components/components.h"
+#include "events/events.h"
 #include "systems/systems.h"
 
 class Game
@@ -27,42 +28,42 @@ public:
 		std::srand(101);
 
 		// Enemy prefabs
-		auto PrefabGuid = mManager->CreatePrefab<Position, Velocity, Health>([&](Position& pos, Velocity& vel, Health& health) noexcept
-			{
-				pos.mValue = xcore::vector2
-				{ 
-					static_cast<float>(std::rand() % mResolution.first),
-					static_cast<float>(std::rand() % mResolution.second)
-				};
-
-				vel.x = std::rand() / static_cast<float>(RAND_MAX) - 0.5f;
-				vel.y = std::rand() / static_cast<float>(RAND_MAX) - 0.5f;
-				vel.mValue.Normalize();
-
-				health.mValue = 100;
-				//Timer.m_Value = 0;
-			});
-
-		//auto PrefabVariantGuid = mManager->CreatePrefabVariant(PrefabGuid, [&](Position& pos, Velocity& vel) noexcept
+		//auto PrefabGuid = mManager->CreatePrefab<Position, Velocity, Health>([&](Position& pos, Velocity& vel, Health& health) noexcept
 		//	{
-		//		// Timer.m_Value = std::rand() / static_cast<float>(RAND_MAX) * 8;
+		//		pos.mValue = xcore::vector2
+		//		{ 
+		//			static_cast<float>(std::rand() % mResolution.first),
+		//			static_cast<float>(std::rand() % mResolution.second)
+		//		};
+
+		//		vel.x = std::rand() / static_cast<float>(RAND_MAX) - 0.5f;
+		//		vel.y = std::rand() / static_cast<float>(RAND_MAX) - 0.5f;
+		//		vel.mValue.Normalize();
+
+		//		health.mValue = 100;
+		//		//Timer.m_Value = 0;
 		//	});
 
+		////auto PrefabVariantGuid = mManager->CreatePrefabVariant(PrefabGuid, [&](Position& pos, Velocity& vel) noexcept
+		////	{
+		////		// Timer.m_Value = std::rand() / static_cast<float>(RAND_MAX) * 8;
+		////	});
 
-		mManager->CreatePrefabInstance(2000, PrefabGuid, [&](Position& pos, Velocity& vel, Health& health) noexcept
-			{
-				pos.mValue = xcore::vector2
-				{ 
-					static_cast<float>(std::rand() % mResolution.first), 
-					static_cast<float>(std::rand() % mResolution.second)
-				};
 
-				vel.x = std::rand() / static_cast<float>(RAND_MAX) - 0.5f;
-				vel.y = std::rand() / static_cast<float>(RAND_MAX) - 0.5f;
-				vel.mValue.Normalize();
+		//mManager->CreatePrefabInstance(2000, PrefabGuid, [&](Position& pos, Velocity& vel, Health& health) noexcept
+		//	{
+		//		pos.mValue = xcore::vector2
+		//		{ 
+		//			static_cast<float>(std::rand() % mResolution.first), 
+		//			static_cast<float>(std::rand() % mResolution.second)
+		//		};
 
-				// Timer.m_Value = std::rand() / static_cast<float>(RAND_MAX) * 8;
-			});
+		//		vel.x = std::rand() / static_cast<float>(RAND_MAX) - 0.5f;
+		//		vel.y = std::rand() / static_cast<float>(RAND_MAX) - 0.5f;
+		//		vel.mValue.Normalize();
+
+		//		// Timer.m_Value = std::rand() / static_cast<float>(RAND_MAX) * 8;
+		//	});
 	}
 
 	void Run() noexcept
@@ -83,6 +84,18 @@ public:
 		return mResolution;
 	}
 
+	void OnKeyboardDown(unsigned char key, int mouseX, int mouseY) noexcept
+	{
+		mKeys[static_cast<std::uint8_t>(key)] = true;
+		mManager->SendGlobalEvent<OnKeyDown>(mKeys);
+	}
+
+	void OnKeyboardUp(unsigned char key, int mouseX, int mouseY) noexcept
+	{
+		mKeys[static_cast<std::uint8_t>(key)] = false;
+		mManager->SendGlobalEvent<OnKeyUp>(mKeys);
+	}
+
 private:
 	void Initialize() noexcept
 	{
@@ -91,11 +104,25 @@ private:
 		mManager = std::make_unique<Manager>();
 
 		RegisterComponents();
+		RegisterEvents();
 		RegisterSystems();
+	}
+
+	void RegisterEvents()
+	{
+		assert(mManager);
+
+		mManager->RegisterGlobalEvents
+			<
+				OnKeyDown,
+				OnKeyUp
+			>();
 	}
 
 	void RegisterComponents()
 	{
+		assert(mManager);
+
 		mManager->RegisterComponents
 			<
 				Position, Velocity, Bullet, Health
@@ -104,21 +131,28 @@ private:
 
 	void RegisterSystems()
 	{
+		assert(mManager);
+
 		mManager->RegisterSystems
 			<
 				UpdateMovement,
 				PlayerLogic,
-				Input,
 				Renderer,
 					RenderCharacters,
 					RenderBullets
+			>();
+
+		mManager->RegisterSystems
+			<
+				PlayerInputOnKeyDown,
+				PlayerInputOnKeyUp
 			>();
 	}
 
 private:
 	std::unique_ptr<Manager> mManager;
 	std::pair<int, int> mResolution;
-
+	Keys mKeys{};
 };
 
 //---------------------------------------------------------------------------------------
@@ -143,22 +177,30 @@ int main(int argc, char** argv)
 
 	game.CreateDefaultScene();
 
-    //
-    // Create the graphics and main loop
-    //
-    glutInitWindowSize(width, height);
-    glutInit(&argc, argv);
-    glutInitDisplayMode(GLUT_DOUBLE);
-    glutCreateWindow("CS396 Game");
+	//
+	// Create the graphics and main loop
+	//
+	glutInitWindowSize(width, height);
+	glutInit(&argc, argv);
+	glutInitDisplayMode(GLUT_DOUBLE);
+	glutCreateWindow("CS396 Game");
 
-    glutDisplayFunc([](void) noexcept
-        {
-            game.Run();
-        });
-    glutReshapeFunc([](int w, int h) noexcept
-        {
+	glutDisplayFunc([](void) noexcept
+		{
+			game.Run();
+		});
+	glutReshapeFunc([](int w, int h) noexcept
+		{
 			game.SetResolution(w, h);
-        });
+		});
+	glutKeyboardFunc([](unsigned char key, int mouseX, int mouseY) noexcept
+		{
+			game.OnKeyboardDown(key, mouseX, mouseY);
+		});
+	glutKeyboardUpFunc([](unsigned char key, int mouseX, int mouseY) noexcept
+		{
+			game.OnKeyboardUp(key, mouseX, mouseY);
+		});
     glutTimerFunc(0, timer, 0);
 
     glutMainLoop();

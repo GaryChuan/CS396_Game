@@ -1,6 +1,7 @@
 #pragma once
 
 #include "update_movement.h"
+#include "clamp_movement.h"
 #include "player_logic.h"
 #include "bullet_logic.h"
 #include "zombie_logic.h"

@@ -84,7 +84,7 @@ public:
 				// vel.y = std::rand() / static_cast<float>(RAND_MAX) - 0.5f;
 				// vel.mValue.Normalize();
 				renderDetails.mColour = Colour{ 0, 1, 0 };
-				renderDetails.mSize = Size{ 5 , 5 };
+				renderDetails.mSize = Size{ 3 , 3 };
 				// Timer.m_Value = std::rand() / static_cast<float>(RAND_MAX) * 8;
 			});
 	}
@@ -187,6 +187,7 @@ private:
 		mManager->RegisterSystems
 			<
 				UpdateMovement,
+				ClampMovement,
 				PlayerLogic,
 				BulletLogic,
 				ZombieLogic,

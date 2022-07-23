@@ -200,6 +200,7 @@
     <ClInclude Include="..\..\src\settings\PropertyConfig.h" />
     <ClInclude Include="..\..\src\settings\xcore_user_settings.h" />
     <ClInclude Include="..\..\src\systems\bullet_logic.h" />
+    <ClInclude Include="..\..\src\systems\clamp_movement.h" />
     <ClInclude Include="..\..\src\systems\player_input_on_key_down.h" />
     <ClInclude Include="..\..\src\systems\player_input_on_key_up.h" />
     <ClInclude Include="..\..\src\systems\player_input_on_mouse_left_click.h" />

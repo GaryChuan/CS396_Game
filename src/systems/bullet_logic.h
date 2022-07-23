@@ -22,8 +22,6 @@ public:
 
 	void OnGameStart() noexcept
 	{
-		mBulletArchetypePtr = &getOrCreateArchetype<BulletArchetype>();
-		
 		mQueryZombie.m_Must.AddFromComponents<Position, Zombie>();
 		mQueryZombie.m_NoneOf.AddFromComponents<PlayerTag>();
 	}
@@ -37,7 +35,7 @@ public:
 		if (bulletPos.x < 0 || bulletPos.x >= Grid::MAX_RESOLUTION_WIDTH 
 		 || bulletPos.y < 0 || bulletPos.y >= Grid::MAX_RESOLUTION_HEIGHT)
 		{
-			mBulletArchetypePtr->DestroyEntity(entity);
+			DeleteEntity(entity);
 			return;
 		}
 		
@@ -97,6 +95,5 @@ public:
 	}
 
 private:
-	xecs::archetype::instance* mBulletArchetypePtr{};
 	xecs::query::instance mQueryZombie{};
 };

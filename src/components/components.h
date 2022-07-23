@@ -9,6 +9,7 @@
 #include "timer.h"
 
 // Share
+#include "character_render_details.h"
 #include "grid_cell.h"
 
 // Tags

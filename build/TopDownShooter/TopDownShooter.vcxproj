@@ -181,6 +181,7 @@
     <ClInclude Include="..\..\dependencies\xecs\src\xecs_tools.h" />
     <ClInclude Include="..\..\dependencies\xecs\src\xecs_tools_bits.h" />
     <ClInclude Include="..\..\src\components\bullet.h" />
+    <ClInclude Include="..\..\src\components\character_render_details.h" />
     <ClInclude Include="..\..\src\components\components.h" />
     <ClInclude Include="..\..\src\components\component_archetypes.h" />
     <ClInclude Include="..\..\src\components\grid_cell.h" />
@@ -208,6 +209,7 @@
     <ClInclude Include="..\..\src\systems\render_characters.h" />
     <ClInclude Include="..\..\src\systems\systems.h" />
     <ClInclude Include="..\..\src\systems\update_movement.h" />
+    <ClInclude Include="..\..\src\systems\zombie_logic.h" />
     <ClInclude Include="..\..\src\tools\grid.h" />
     <ClInclude Include="..\..\src\tools\tools.h" />
   </ItemGroup>

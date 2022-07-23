@@ -29,8 +29,14 @@ public:
 		std::srand(101);
 
 		// Enemy prefabs
-		auto PrefabGuid = mManager->CreatePrefab<Position, Velocity, GridCell, Zombie, Health>(
-			[&](Position& pos, Velocity& vel, Health& health, GridCell& gridCell) noexcept
+		auto PrefabGuid = mManager->CreatePrefab<Position, Velocity, GridCell, Zombie, CharacterRenderDetails, Health>(
+			[&](
+				Position& pos, 
+				Velocity& vel, 
+				Health& health, 
+				GridCell& gridCell, 
+				CharacterRenderDetails& renderDetails, 
+				Zombie& zombie) noexcept
 			{
 				pos.mValue = xcore::vector2
 				{ 
@@ -44,6 +50,9 @@ public:
 
 				gridCell = Grid::ComputeGridCellFromWorldPosition(pos.mValue);
 
+				renderDetails.mColour = Colour{ 0, 255, 0 };
+				renderDetails.mSize = Size{ 3 , 3 };
+
 				health.mValue = 100;
 				//Timer.m_Value = 0;
 			});
@@ -55,7 +64,13 @@ public:
 
 
 		mManager->CreatePrefabInstance(100, PrefabGuid, 
-			[&](Position& pos, Velocity& vel, GridCell& gridCell, Health& health) noexcept
+			[&](
+				Position& pos, 
+				Velocity& vel, 
+				GridCell& gridCell, 
+				CharacterRenderDetails& renderDetails, 
+				Health& health, 
+				const Zombie& zombie) noexcept
 			{
 				pos.mValue = xcore::vector2
 				{ 
@@ -68,7 +83,8 @@ public:
 				// vel.x = std::rand() / static_cast<float>(RAND_MAX) - 0.5f;
 				// vel.y = std::rand() / static_cast<float>(RAND_MAX) - 0.5f;
 				// vel.mValue.Normalize();
-
+				renderDetails.mColour = Colour{ 0, 1, 0 };
+				renderDetails.mSize = Size{ 5 , 5 };
 				// Timer.m_Value = std::rand() / static_cast<float>(RAND_MAX) * 8;
 			});
 	}
@@ -118,7 +134,7 @@ public:
 		}
 		else if (button == GLUT_RIGHT_BUTTON)
 		{
-			mManager->SendGlobalEvent<OnMouseRightClick>(mouseX, mouseY);
+			// mManager->SendGlobalEvent<OnMouseRightClick>(mouseX, mouseY);
 		}
 	}
 
@@ -159,6 +175,7 @@ private:
 				Health, 
 				Timer,
 				GridCell,
+				CharacterRenderDetails,
 				PlayerTag
 			>();
 	}
@@ -172,6 +189,7 @@ private:
 				UpdateMovement,
 				PlayerLogic,
 				BulletLogic,
+				ZombieLogic,
 				Renderer,
 					RenderCharacters,
 					RenderBullets

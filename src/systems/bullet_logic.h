@@ -24,7 +24,7 @@ public:
 	{
 		mBulletArchetypePtr = &getOrCreateArchetype<BulletArchetype>();
 		
-		mQueryZombie.m_Must.AddFromComponents<Position>();
+		mQueryZombie.m_Must.AddFromComponents<Position, Zombie>();
 		mQueryZombie.m_NoneOf.AddFromComponents<PlayerTag>();
 	}
 
@@ -41,7 +41,8 @@ public:
 			return;
 		}
 		
-		Foreach(Search(mQueryZombie), [&](xecs::component::entity& entity2, const Position& zombiePos) constexpr noexcept
+		Foreach(Search(mQueryZombie), 
+			[&](xecs::component::entity& entity2, const Position& zombiePos) constexpr noexcept
 			{
 				if (entity2.isZombie() || entity == entity2)
 				{

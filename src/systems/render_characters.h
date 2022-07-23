@@ -24,13 +24,16 @@ struct RenderCharacters : xecs::system::instance
 		glEnd();
 	}
 
-	__inline void operator()(const Position& pos) const noexcept
+	__inline void operator()(const Position& pos, CharacterRenderDetails& renderDetails) const noexcept
 	{
-		constexpr auto size = 3;
+		glColor3f(
+			renderDetails.mColour.r, 
+			renderDetails.mColour.g, 
+			renderDetails.mColour.b);
 
-		glVertex2i(pos.x - size, pos.y - size);
-		glVertex2i(pos.x - size, pos.y + size);
-		glVertex2i(pos.x + size, pos.y + size);
-		glVertex2i(pos.x + size, pos.y - size);
+		glVertex2i(pos.x - renderDetails.mSize.x, pos.y - renderDetails.mSize.y);
+		glVertex2i(pos.x - renderDetails.mSize.x, pos.y + renderDetails.mSize.y);
+		glVertex2i(pos.x + renderDetails.mSize.x, pos.y + renderDetails.mSize.y);
+		glVertex2i(pos.x + renderDetails.mSize.x, pos.y - renderDetails.mSize.y);
 	}
 };

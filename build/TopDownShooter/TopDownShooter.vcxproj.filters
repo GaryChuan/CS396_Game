@@ -31,6 +31,12 @@
     <Filter Include="Components\Tags">
       <UniqueIdentifier>{06f5a860-ad58-4bf8-ab8f-5d788f68799e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Tools">
+      <UniqueIdentifier>{bbbfa8f9-4f93-459d-9e58-11c2b83aa001}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Systems\Events">
+      <UniqueIdentifier>{bce1271c-4cd3-49cf-8136-21db2124e0c2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\settings\PropertyConfig.h">
@@ -355,9 +361,6 @@
     <ClInclude Include="..\..\src\components\component_archetypes.h">
       <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\systems\player_input_on_key_down.h">
-      <Filter>Systems</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\events\on_key_down.h">
       <Filter>Events</Filter>
     </ClInclude>
@@ -367,17 +370,11 @@
     <ClInclude Include="..\..\src\events\on_key_up.h">
       <Filter>Events</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\systems\player_input_on_key_up.h">
-      <Filter>Systems</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\events\on_mouse_left_click.h">
       <Filter>Events</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\events\on_mouse_right_click.h">
       <Filter>Events</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\systems\player_input_on_mouse_left_click.h">
-      <Filter>Systems</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\components\player_tag.h">
       <Filter>Components\Tags</Filter>
@@ -387,6 +384,27 @@
     </ClInclude>
     <ClInclude Include="..\..\src\systems\bullet_logic.h">
       <Filter>Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\systems\player_input_on_key_down.h">
+      <Filter>Systems\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\systems\player_input_on_key_up.h">
+      <Filter>Systems\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\systems\player_input_on_mouse_left_click.h">
+      <Filter>Systems\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\tools\grid.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\tools\tools.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\components\grid_cell.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\components\zombie.h">
+      <Filter>Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

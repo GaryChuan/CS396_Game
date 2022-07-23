@@ -28,12 +28,14 @@ public:
 		// Create player
 		auto& playerArchetype = getOrCreateArchetype<PlayerArchetype>();
 
-		playerArchetype.CreateEntity([&](Position& pos, Velocity& vel, Health& health)
+		playerArchetype.CreateEntity([&](Position& pos, Velocity& vel, Health& health, GridCell& gridCell)
 			{
 				pos.mValue = xcore::vector2{ 512, 400 };
 				vel.mValue = xcore::vector2{ 0, 0 };
 
 				health.mValue = 100;
+
+				gridCell = Grid::ComputeGridCellFromWorldPosition(pos.mValue);
 			});
 		
 	}

@@ -44,13 +44,6 @@ struct PlayerInputOnKeyDown : xecs::system::instance
 				{
 					velocity.x = 1;
 				}
-
-				const bool spacePressed = keys[static_cast<uint8_t>(32)];
-
-				if (spacePressed)
-				{
-					std::cout << "Pew Pew" << std::endl;
-				}
 			});
 	}
 

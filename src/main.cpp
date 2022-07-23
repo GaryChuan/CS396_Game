@@ -2,6 +2,7 @@
 #include "pch.h"
 
 #include "components/components.h"
+#include "tools/tools.h"
 #include "events/events.h"
 #include "systems/systems.h"
 
@@ -28,21 +29,24 @@ public:
 		std::srand(101);
 
 		// Enemy prefabs
-		//auto PrefabGuid = mManager->CreatePrefab<Position, Velocity, Health>([&](Position& pos, Velocity& vel, Health& health) noexcept
-		//	{
-		//		pos.mValue = xcore::vector2
-		//		{ 
-		//			static_cast<float>(std::rand() % mResolution.first),
-		//			static_cast<float>(std::rand() % mResolution.second)
-		//		};
+		auto PrefabGuid = mManager->CreatePrefab<Position, Velocity, GridCell, Zombie, Health>(
+			[&](Position& pos, Velocity& vel, Health& health, GridCell& gridCell) noexcept
+			{
+				pos.mValue = xcore::vector2
+				{ 
+					static_cast<float>(std::rand() % mResolution.first),
+					static_cast<float>(std::rand() % mResolution.second)
+				};
 
-		//		vel.x = std::rand() / static_cast<float>(RAND_MAX) - 0.5f;
-		//		vel.y = std::rand() / static_cast<float>(RAND_MAX) - 0.5f;
-		//		vel.mValue.Normalize();
+				// vel.x = std::rand() / static_cast<float>(RAND_MAX) - 0.5f;
+				// vel.y = std::rand() / static_cast<float>(RAND_MAX) - 0.5f;
+				// vel.mValue.Normalize();
 
-		//		health.mValue = 100;
-		//		//Timer.m_Value = 0;
-		//	});
+				gridCell = Grid::ComputeGridCellFromWorldPosition(pos.mValue);
+
+				health.mValue = 100;
+				//Timer.m_Value = 0;
+			});
 
 		////auto PrefabVariantGuid = mManager->CreatePrefabVariant(PrefabGuid, [&](Position& pos, Velocity& vel) noexcept
 		////	{
@@ -50,20 +54,23 @@ public:
 		////	});
 
 
-		//mManager->CreatePrefabInstance(2000, PrefabGuid, [&](Position& pos, Velocity& vel, Health& health) noexcept
-		//	{
-		//		pos.mValue = xcore::vector2
-		//		{ 
-		//			static_cast<float>(std::rand() % mResolution.first), 
-		//			static_cast<float>(std::rand() % mResolution.second)
-		//		};
+		mManager->CreatePrefabInstance(100, PrefabGuid, 
+			[&](Position& pos, Velocity& vel, GridCell& gridCell, Health& health) noexcept
+			{
+				pos.mValue = xcore::vector2
+				{ 
+					static_cast<float>(std::rand() % mResolution.first), 
+					static_cast<float>(std::rand() % mResolution.second)
+				};
 
-		//		vel.x = std::rand() / static_cast<float>(RAND_MAX) - 0.5f;
-		//		vel.y = std::rand() / static_cast<float>(RAND_MAX) - 0.5f;
-		//		vel.mValue.Normalize();
+				gridCell = Grid::ComputeGridCellFromWorldPosition(pos.mValue);
+				
+				// vel.x = std::rand() / static_cast<float>(RAND_MAX) - 0.5f;
+				// vel.y = std::rand() / static_cast<float>(RAND_MAX) - 0.5f;
+				// vel.mValue.Normalize();
 
-		//		// Timer.m_Value = std::rand() / static_cast<float>(RAND_MAX) * 8;
-		//	});
+				// Timer.m_Value = std::rand() / static_cast<float>(RAND_MAX) * 8;
+			});
 	}
 
 	void Run() noexcept
@@ -147,9 +154,11 @@ private:
 			<
 				Position, 
 				Velocity, 
-				Bullet, 
+				Bullet,
+				Zombie,
 				Health, 
 				Timer,
+				GridCell,
 				PlayerTag
 			>();
 	}

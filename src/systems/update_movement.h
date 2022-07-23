@@ -7,8 +7,9 @@ struct UpdateMovement : xecs::system::instance
 		.m_pName = "UpdateMovement"
 	};
 
-	__inline void operator()(Position& pos, Velocity& vel) noexcept
+	__inline void operator()(Position& pos, Velocity& vel, GridCell& gridCell) noexcept
 	{
         pos.mValue += vel.mValue;
+		gridCell = Grid::ComputeGridCellFromWorldPosition(pos.mValue);
 	}
 };

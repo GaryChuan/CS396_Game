@@ -183,11 +183,13 @@
     <ClInclude Include="..\..\src\components\bullet.h" />
     <ClInclude Include="..\..\src\components\components.h" />
     <ClInclude Include="..\..\src\components\component_archetypes.h" />
+    <ClInclude Include="..\..\src\components\grid_cell.h" />
     <ClInclude Include="..\..\src\components\health.h" />
     <ClInclude Include="..\..\src\components\player_tag.h" />
     <ClInclude Include="..\..\src\components\position.h" />
     <ClInclude Include="..\..\src\components\timer.h" />
     <ClInclude Include="..\..\src\components\velocity.h" />
+    <ClInclude Include="..\..\src\components\zombie.h" />
     <ClInclude Include="..\..\src\events\events.h" />
     <ClInclude Include="..\..\src\events\on_key_down.h" />
     <ClInclude Include="..\..\src\events\on_key_up.h" />
@@ -206,6 +208,8 @@
     <ClInclude Include="..\..\src\systems\render_characters.h" />
     <ClInclude Include="..\..\src\systems\systems.h" />
     <ClInclude Include="..\..\src\systems\update_movement.h" />
+    <ClInclude Include="..\..\src\tools\grid.h" />
+    <ClInclude Include="..\..\src\tools\tools.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore.cpp" />

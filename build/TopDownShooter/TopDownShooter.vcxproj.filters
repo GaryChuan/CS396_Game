@@ -406,7 +406,7 @@
     <ClInclude Include="..\..\src\components\zombie.h">
       <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\components\character_render_details.h">
+    <ClInclude Include="..\..\src\components\render_details.h">
       <Filter>Components</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\systems\zombie_logic.h">
@@ -414,6 +414,21 @@
     </ClInclude>
     <ClInclude Include="..\..\src\systems\clamp_movement.h">
       <Filter>Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\systems\zombie_on_death.h">
+      <Filter>Systems\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\tools\math_random.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\systems\update_timer.h">
+      <Filter>Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\components\particle_tag.h">
+      <Filter>Components\Tags</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\systems\destroy_particle_on_remove_timer.h">
+      <Filter>Systems\Events</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -27,6 +27,8 @@ struct RenderBullets : xecs::system::instance
 		constexpr auto M_PI = 3.14159265358979323846f;
 		constexpr auto radius = 2;
 
+		glColor3f(1, 1, 1);
+
 		glBegin(GL_TRIANGLE_FAN);
 		for (float i = 0.0f; i <= 360; i++)
 		{
@@ -37,7 +39,6 @@ struct RenderBullets : xecs::system::instance
 				radius * sin(angleRad) + pos.y);
 		}
 		glEnd();
-			
 	}
 
 };

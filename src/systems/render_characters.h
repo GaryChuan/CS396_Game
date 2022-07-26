@@ -24,7 +24,7 @@ struct RenderCharacters : xecs::system::instance
 		glEnd();
 	}
 
-	__inline void operator()(const Position& pos, CharacterRenderDetails& renderDetails) const noexcept
+	__inline void operator()(const Position& pos, RenderDetails& renderDetails) const noexcept
 	{
 		glColor3f(
 			renderDetails.mColour.r, 

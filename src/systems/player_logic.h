@@ -33,7 +33,7 @@ public:
 				Position& pos, 
 				Velocity& vel, 
 				Health& health, 
-				CharacterRenderDetails& renderDetails,
+				RenderDetails& renderDetails,
 				GridCell& gridCell)
 			{
 				pos.mValue = xcore::vector2

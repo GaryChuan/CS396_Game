@@ -29,13 +29,13 @@ public:
 		std::srand(101);
 
 		// Enemy prefabs
-		auto PrefabGuid = mManager->CreatePrefab<Position, Velocity, GridCell, Zombie, CharacterRenderDetails, Health>(
+		auto PrefabGuid = mManager->CreatePrefab<Position, Velocity, GridCell, Zombie, RenderDetails, Health>(
 			[&](
 				Position& pos, 
 				Velocity& vel, 
 				Health& health, 
 				GridCell& gridCell, 
-				CharacterRenderDetails& renderDetails, 
+				RenderDetails& renderDetails, 
 				Zombie& zombie) noexcept
 			{
 				pos.mValue = xcore::vector2
@@ -68,7 +68,7 @@ public:
 				Position& pos, 
 				Velocity& vel, 
 				GridCell& gridCell, 
-				CharacterRenderDetails& renderDetails, 
+				RenderDetails& renderDetails, 
 				Health& health, 
 				const Zombie& zombie) noexcept
 			{
@@ -80,9 +80,6 @@ public:
 
 				gridCell = Grid::ComputeGridCellFromWorldPosition(pos.mValue);
 				
-				// vel.x = std::rand() / static_cast<float>(RAND_MAX) - 0.5f;
-				// vel.y = std::rand() / static_cast<float>(RAND_MAX) - 0.5f;
-				// vel.mValue.Normalize();
 				renderDetails.mColour = Colour{ 0, 1, 0 };
 				renderDetails.mSize = Size{ 3 , 3 };
 				// Timer.m_Value = std::rand() / static_cast<float>(RAND_MAX) * 8;
@@ -175,8 +172,9 @@ private:
 				Health, 
 				Timer,
 				GridCell,
-				CharacterRenderDetails,
-				PlayerTag
+				RenderDetails,
+				PlayerTag,
+				ParticleTag
 			>();
 	}
 
@@ -188,6 +186,7 @@ private:
 			<
 				UpdateMovement,
 				ClampMovement,
+				UpdateTimer,
 				PlayerLogic,
 				BulletLogic,
 				ZombieLogic,
@@ -198,9 +197,11 @@ private:
 
 		mManager->RegisterSystems
 			<
+				ZombieOnDeath,
 				PlayerInputOnKeyDown,
 				PlayerInputOnKeyUp,
-				PlayerInputOnMouseLeftClick
+				PlayerInputOnMouseLeftClick,
+				DestroyParticleOnRemoveTimer
 			>();
 	}
 

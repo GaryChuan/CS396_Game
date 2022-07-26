@@ -9,6 +9,13 @@
 #include "bullet_logic.h"
 #include "zombie_logic.h"
 
+// Timer
+#include "update_timer.h"
+
+// Game Events
+#include "zombie_on_death.h"
+#include "destroy_particle_on_remove_timer.h"
+
 // Input Events
 #include "player_input_on_key_down.h"
 #include "player_input_on_key_up.h"

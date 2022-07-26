@@ -9,10 +9,12 @@
 #include "timer.h"
 
 // Share
-#include "character_render_details.h"
+#include "render_details.h"
 #include "grid_cell.h"
 
 // Tags
 #include "player_tag.h"
+#include "particle_tag.h"
 
+// Archetypes
 #include "component_archetypes.h"

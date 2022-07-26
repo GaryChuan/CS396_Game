@@ -181,7 +181,8 @@
     <ClInclude Include="..\..\dependencies\xecs\src\xecs_tools.h" />
     <ClInclude Include="..\..\dependencies\xecs\src\xecs_tools_bits.h" />
     <ClInclude Include="..\..\src\components\bullet.h" />
-    <ClInclude Include="..\..\src\components\character_render_details.h" />
+    <ClInclude Include="..\..\src\components\particle_tag.h" />
+    <ClInclude Include="..\..\src\components\render_details.h" />
     <ClInclude Include="..\..\src\components\components.h" />
     <ClInclude Include="..\..\src\components\component_archetypes.h" />
     <ClInclude Include="..\..\src\components\grid_cell.h" />
@@ -201,6 +202,9 @@
     <ClInclude Include="..\..\src\settings\xcore_user_settings.h" />
     <ClInclude Include="..\..\src\systems\bullet_logic.h" />
     <ClInclude Include="..\..\src\systems\clamp_movement.h" />
+    <ClInclude Include="..\..\src\systems\destroy_particle_on_remove_timer.h" />
+    <ClInclude Include="..\..\src\systems\update_timer.h" />
+    <ClInclude Include="..\..\src\systems\zombie_on_death.h" />
     <ClInclude Include="..\..\src\systems\player_input_on_key_down.h" />
     <ClInclude Include="..\..\src\systems\player_input_on_key_up.h" />
     <ClInclude Include="..\..\src\systems\player_input_on_mouse_left_click.h" />
@@ -212,6 +216,7 @@
     <ClInclude Include="..\..\src\systems\update_movement.h" />
     <ClInclude Include="..\..\src\systems\zombie_logic.h" />
     <ClInclude Include="..\..\src\tools\grid.h" />
+    <ClInclude Include="..\..\src\tools\math_random.h" />
     <ClInclude Include="..\..\src\tools\tools.h" />
   </ItemGroup>
   <ItemGroup>

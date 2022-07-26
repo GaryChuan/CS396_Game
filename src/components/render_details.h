@@ -12,12 +12,12 @@ struct Size
 	std::uint16_t y;
 };
 
-struct CharacterRenderDetails
+struct RenderDetails
 {
 	constexpr static auto typedef_v
 		= xecs::component::type::share
 		{
-			.m_pName = "CharacterRenderDetails"
+			.m_pName = "RenderDetails"
 		};
 
 	Colour mColour;

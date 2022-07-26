@@ -10,7 +10,7 @@ struct RenderCharacters : xecs::system::instance
 	
 	using query = std::tuple
 		<
-			xecs::query::none_of<Bullet>,
+			xecs::query::none_of<Bullet, ParticleTag>,
 			xecs::query::one_of<entity>
 		>;
 

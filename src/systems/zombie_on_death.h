@@ -27,8 +27,8 @@ struct ZombieOnDeath : xecs::system::instance
 	__inline void operator()(Position& zombiePos) noexcept
 	{
 		constexpr float r = 226.f / 255.f;
-		constexpr float g = 174.f / 255.f;
-		constexpr float b = 221.f / 255.f;
+		constexpr float g = 0.05f;
+		constexpr float b = 60.f / 255.f;
 
 		mParticleArchetype->CreateEntities(50,
 			[&](Position& particlePos, Velocity& velocity, Timer& timer, RenderDetails& renderDetails)
@@ -39,7 +39,7 @@ struct ZombieOnDeath : xecs::system::instance
 
 				timer.mValue = 1.5f;
 
-				renderDetails.mColour = Colour{ r, 0.5, b };
+				renderDetails.mColour = Colour{ r, g, b };
 				renderDetails.mSize = Size{ 1, 1 };
 			});
 	}

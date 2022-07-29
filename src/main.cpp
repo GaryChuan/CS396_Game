@@ -180,6 +180,7 @@ private:
 				Zombie,
 				Health, 
 				Timer,
+				Text,
 				GridCell,
 				RenderDetails,
 				PlayerTag,
@@ -202,7 +203,8 @@ private:
 				Renderer,
 					RenderCharacters,
 					RenderBullets,
-					RenderParticles
+					RenderParticles,
+					RenderText
 			>();
 
 		mManager->RegisterSystems
@@ -212,6 +214,7 @@ private:
 				PlayerInputOnKeyDown,
 				PlayerInputOnKeyUp,
 				PlayerInputOnMouseLeftClick,
+				PlayerDeactivateTextOnRemoveTimer,
 				DestroyParticleOnRemoveTimer
 			>();
 	}

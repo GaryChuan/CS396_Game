@@ -46,6 +46,7 @@ struct Weapon
 		{
 			.m_pName = "Weapon"
 		};
-
-	WeaponType mType;
+	 
+	int mIndex{ 0 }; // Used for swapping weapons
+	WeaponType mType{ Pistol{} };
 };

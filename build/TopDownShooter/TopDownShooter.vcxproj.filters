@@ -445,6 +445,18 @@
     <ClInclude Include="..\..\src\systems\player_input_on_key_triggered.h">
       <Filter>Systems\Events</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\tools\glut_print.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\systems\render_text.h">
+      <Filter>Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\components\text.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\systems\player_deactivate_text_on_remove_timer.h">
+      <Filter>Systems\Events</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore.cpp">

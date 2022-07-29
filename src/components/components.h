@@ -8,6 +8,7 @@
 #include "health.h"
 #include "weapon.h"
 #include "timer.h"
+#include "text.h"
 
 // Share
 #include "render_details.h"

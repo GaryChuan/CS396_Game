@@ -15,6 +15,7 @@
 // Game Events
 #include "zombie_on_death.h"
 #include "destroy_particle_on_remove_timer.h"
+#include "player_deactivate_text_on_remove_timer.h"
 
 // Input Events
 #include "player_input_on_key_triggered.h"
@@ -27,3 +28,4 @@
 #include "render_characters.h"
 #include "render_bullets.h"
 #include "render_particles.h"
+#include "render_text.h"

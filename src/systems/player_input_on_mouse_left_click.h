@@ -60,6 +60,21 @@ private:
 				},
 				[&](const Shotgun& shotgun) noexcept
 				{
+					const long double angle = xcore::math::DegToRad(5.f);
+					int i = -2;
+
+					mBulletArchetypePtr->CreateEntities(5, [&](Position& bulletPos, Velocity& bulletVel)
+						{
+							auto shotDirection = aimDirection;
+
+							shotDirection.Rotate(xcore::math::radian{ angle * i });
+							
+							bulletPos = playerPos;
+							bulletVel.mValue = shotDirection * 5.f;
+							
+							++i;
+						});
+
 					std::cout << "Shotgun Shoot" << std::endl;
 				},
 				[&](const SubmachineGun& smg) noexcept

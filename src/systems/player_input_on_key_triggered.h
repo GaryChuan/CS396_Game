@@ -10,7 +10,8 @@ struct PlayerInputOnKeyTriggered : xecs::system::instance
 
 	PlayerInputOnKeyTriggered(xecs::game_mgr::instance& gameMgr)
 		: xecs::system::instance{ gameMgr }
-		, mWeaponArsenal { ConstructArsenal() }
+		, mWeaponArsenal { InitializeWeaponArsenal() }
+		, mWeaponNames { InitializeWeaponNames() }
 	{
 	}
 
@@ -24,34 +25,47 @@ struct PlayerInputOnKeyTriggered : xecs::system::instance
 
 	void OnEvent(const Keys& keys)
 	{
-		Foreach(Search(mQueryPlayerOnly), [&](Weapon& weapon)
+		Foreach(Search(mQueryPlayerOnly), [&](xecs::component::entity& entity, Weapon& weapon, Text& text)
 			{
-				const int currentWeaponIndex = static_cast<int>(weapon.mType.index());
-
 				if (keys[static_cast<uint8_t>('e')])
 				{
-					weapon.mType = mWeaponArsenal[(currentWeaponIndex + 1) % mWeaponArsenal.size()];
-					std::cout << "Swap weapon to " << currentWeaponIndex + 1 << std::endl;
+					weapon.mIndex = (++weapon.mIndex) % mWeaponArsenal.size();
+					weapon.mType = mWeaponArsenal[weapon.mIndex];
+					text.mValue = mWeaponNames[weapon.mIndex];
+					text.mActive = true;
+
+					AddOrRemoveComponents<std::tuple<Timer>, std::tuple<Timer>>(entity, [](Timer& timer)
+						{
+							timer.mValue = 0.5f;
+						});
+					// std::cout << "Swap weapon to " << currentWeaponIndex + 1 << std::endl;
 				}
 			});
 	}
 
 private:
 	using WeaponArsenal = std::array<WeaponType, std::variant_size_v<WeaponType>>;
+	using WeaponNames = std::array<std::string, std::variant_size_v<WeaponType>>;
 
-	constexpr WeaponArsenal ConstructArsenal() const noexcept
+	constexpr WeaponArsenal InitializeWeaponArsenal() const noexcept
 	{
-		WeaponArsenal weaponArsenal{};
+		return
+		{
+			Pistol{}, Shotgun{}, SubmachineGun{}
+		};
+	}
 
-		weaponArsenal[0] = Pistol{};
-		weaponArsenal[1] = Shotgun{};
-		weaponArsenal[2] = SubmachineGun{};
-
-		return weaponArsenal;
+	constexpr WeaponNames InitializeWeaponNames() const noexcept
+	{
+		return
+		{
+			"Pistol", "Shotgun", "SMG"
+		};
 	}
 
 private:
 	
+	WeaponNames mWeaponNames{};
 	WeaponArsenal mWeaponArsenal{};
 	xecs::query::instance mQueryPlayerOnly{};
 };

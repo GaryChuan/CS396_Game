@@ -23,18 +23,17 @@ public:
 
 	void OnGameStart() noexcept
 	{
-		mBulletArchetypePtr = &getOrCreateArchetype<BulletArchetype>();
-
 		// Create player
-		auto& playerArchetype = getOrCreateArchetype<PlayerArchetype>();
+		mPlayerArchetype = &getOrCreateArchetype<PlayerArchetype>();
 
-		playerArchetype.CreateEntity(
+		mPlayerArchetype->CreateEntity(
 			[&](
 				Position& pos, 
 				Velocity& vel, 
 				Health& health, 
 				Weapon& weapon,
 				RenderDetails& renderDetails,
+				Text& text, 
 				GridCell& gridCell)
 			{
 				pos.mValue = xcore::vector2
@@ -51,9 +50,12 @@ public:
 
 				weapon.mType = Pistol{};
 
+				text.mValue			= "Pistol";
+				text.mActive		= false;
+				text.mOffset.mValue = xcore::vector2{ -25 , -10 };
+
 				gridCell = Grid::ComputeGridCellFromWorldPosition(pos.mValue);
 			});
-		
 	}
 
 	__inline void operator()(const Position& pos, const Health& health)
@@ -61,5 +63,5 @@ public:
 	}
 
 private:
-	xecs::archetype::instance* mBulletArchetypePtr{};
+	xecs::archetype::instance* mPlayerArchetype{};
 };

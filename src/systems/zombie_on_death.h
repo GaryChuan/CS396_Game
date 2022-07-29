@@ -35,7 +35,7 @@ struct ZombieOnDeath : xecs::system::instance
 			{
 				particlePos.mValue = zombiePos.mValue;
 
-				velocity.mValue = UniformDiskRand(2.f);
+				velocity.mValue = Math::UniformDiskRand(2.f);
 
 				timer.mValue = 0.75f;
 

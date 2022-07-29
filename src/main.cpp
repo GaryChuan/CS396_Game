@@ -106,7 +106,14 @@ public:
 
 	void OnKeyboardDown(unsigned char key, int mouseX, int mouseY) noexcept
 	{
-		mKeys[static_cast<std::uint8_t>(key)] = true;
+		auto& pressed = mKeys[static_cast<std::uint8_t>(key)];
+
+		if (!pressed)
+		{
+			mManager->SendGlobalEvent<OnKeyTriggered>(mKeys);
+			pressed = true;
+		}
+		
 		mManager->SendGlobalEvent<OnKeyDown>(mKeys);
 	}
 
@@ -153,6 +160,7 @@ private:
 
 		mManager->RegisterGlobalEvents
 			<
+				OnKeyTriggered,
 				OnKeyDown,
 				OnKeyUp,
 				OnMouseLeftClick
@@ -166,7 +174,8 @@ private:
 		mManager->RegisterComponents
 			<
 				Position, 
-				Velocity, 
+				Velocity,
+				Weapon,
 				Bullet,
 				Zombie,
 				Health, 
@@ -192,12 +201,14 @@ private:
 				ZombieLogic,
 				Renderer,
 					RenderCharacters,
-					RenderBullets
+					RenderBullets,
+					RenderParticles
 			>();
 
 		mManager->RegisterSystems
 			<
 				ZombieOnDeath,
+				PlayerInputOnKeyTriggered,
 				PlayerInputOnKeyDown,
 				PlayerInputOnKeyUp,
 				PlayerInputOnMouseLeftClick,

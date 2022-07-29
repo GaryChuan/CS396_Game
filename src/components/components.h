@@ -6,6 +6,7 @@
 #include "bullet.h"
 #include "zombie.h"
 #include "health.h"
+#include "weapon.h"
 #include "timer.h"
 
 // Share

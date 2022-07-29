@@ -17,6 +17,7 @@
 #include "destroy_particle_on_remove_timer.h"
 
 // Input Events
+#include "player_input_on_key_triggered.h"
 #include "player_input_on_key_down.h"
 #include "player_input_on_key_up.h"
 #include "player_input_on_mouse_left_click.h"
@@ -25,3 +26,4 @@
 #include "renderer.h"
 #include "render_characters.h"
 #include "render_bullets.h"
+#include "render_particles.h"

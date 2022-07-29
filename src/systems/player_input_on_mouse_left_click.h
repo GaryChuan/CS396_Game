@@ -27,24 +27,47 @@ struct PlayerInputOnMouseLeftClick : xecs::system::instance
 	{
 		assert(mBulletArchetypePtr);
 
-		auto& bulletArchetype = *mBulletArchetypePtr;
-
-		Foreach(Search(mQueryPlayerOnly), [&](const Position& position)
+		Foreach(Search(mQueryPlayerOnly), [&](const Position& position, const Weapon& weapon)
 			{
-				xcore::vector2 bulletDirection
+				xcore::vector2 aimDirection
 				{
 					mouseX - position.x,
 					mouseY - position.y
 				};
 
-				bulletDirection.NormalizeSafe();
-
-				bulletArchetype.CreateEntity([&](Position& bulletPos, Velocity& bulletVel)
-					{
-						bulletPos = position;
-						bulletVel.mValue = bulletDirection * 5.f;
-					});
+				Shoot(weapon.mType, position, aimDirection.NormalizeSafe());
 			});
+	}
+
+private:
+	void Shoot(
+		const WeaponType& weaponType, 
+		const Position& playerPos, 
+		const xcore::vector2& aimDirection)
+	{
+		std::visit(
+			overload
+			{
+				[&](const Pistol& pistol) noexcept 
+				{
+					mBulletArchetypePtr->CreateEntity([&](Position& bulletPos, Velocity& bulletVel)
+						{
+							bulletPos = playerPos;
+							bulletVel.mValue = aimDirection * 5.f;
+						});
+
+					std::cout << "Pistol Shoot" << std::endl;
+				},
+				[&](const Shotgun& shotgun) noexcept
+				{
+					std::cout << "Shotgun Shoot" << std::endl;
+				},
+				[&](const SubmachineGun& smg) noexcept
+				{
+					std::cout << "SubmachineGun Shoot" << std::endl;
+				}
+			}, weaponType
+		);
 	}
 
 private:

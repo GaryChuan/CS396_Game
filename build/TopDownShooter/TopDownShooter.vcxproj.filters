@@ -430,6 +430,21 @@
     <ClInclude Include="..\..\src\systems\destroy_particle_on_remove_timer.h">
       <Filter>Systems\Events</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\systems\render_particles.h">
+      <Filter>Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\components\weapon.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\tools\crtp.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\events\on_key_triggered.h">
+      <Filter>Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\systems\player_input_on_key_triggered.h">
+      <Filter>Systems\Events</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore.cpp">

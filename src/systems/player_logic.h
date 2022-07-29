@@ -33,6 +33,7 @@ public:
 				Position& pos, 
 				Velocity& vel, 
 				Health& health, 
+				Weapon& weapon,
 				RenderDetails& renderDetails,
 				GridCell& gridCell)
 			{
@@ -47,6 +48,8 @@ public:
 
 				renderDetails.mColour = Colour{ 1, 1, 1 };
 				renderDetails.mSize = Size{ 3 , 3 };
+
+				weapon.mType = Pistol{};
 
 				gridCell = Grid::ComputeGridCellFromWorldPosition(pos.mValue);
 			});

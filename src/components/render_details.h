@@ -8,8 +8,8 @@ struct Colour
 
 struct Size
 {
-	std::uint16_t x;
-	std::uint16_t y;
+	float x;
+	float y;
 };
 
 struct RenderDetails

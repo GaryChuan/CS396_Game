@@ -28,17 +28,16 @@ struct PlayerInputOnKeyTriggered : xecs::system::instance
 		Foreach(Search(mQueryPlayerOnly), [&](xecs::component::entity& entity, Weapon& weapon, Text& text)
 			{
 				int weaponSelected = -1;
-				if (keys[static_cast<uint8_t>('1')])
+
+				for (int i = 0; i < mWeaponArsenal.size(); ++i)
 				{
-					weaponSelected = 0;
-				}
-				else if (keys[static_cast<uint8_t>('2')])
-				{
-					weaponSelected = 1;
-				}
-				else if (keys[static_cast<uint8_t>('3')])
-				{
-					weaponSelected = 2;
+					const auto keyIndex = static_cast<uint8_t>('0' + (i + 1));
+					
+					if(keys[keyIndex])
+					{
+						weaponSelected = i;
+						break;
+					}
 				}
 
 				if (weaponSelected != -1)
@@ -47,7 +46,8 @@ struct PlayerInputOnKeyTriggered : xecs::system::instance
 					text.mValue = mWeaponNames[weaponSelected];
 					text.mActive = true;
 
-					AddOrRemoveComponents<std::tuple<Timer>, std::tuple<Timer>>(entity, [](Timer& timer)
+					AddOrRemoveComponents<std::tuple<Timer>, std::tuple<Timer>>(
+						entity, [](Timer& timer)
 						{
 							timer.mValue = 0.5f;
 						});

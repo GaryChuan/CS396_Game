@@ -42,7 +42,7 @@ struct RenderText : xecs::system::instance
 
 		for (int i = 0; i < text.mValue.length(); ++i)
 		{
-			glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, text.mValue[i]);
+			glutBitmapCharacter(GLUT_BITMAP_HELVETICA_10, text.mValue[i]);
 		}
 
 		glPopMatrix();

@@ -55,8 +55,6 @@ private:
 							bulletPos = playerPos;
 							bulletVel.mValue = aimDirection * 5.f;
 						});
-
-					std::cout << "Pistol Shoot" << std::endl;
 				},
 				[&](const Shotgun& shotgun) noexcept
 				{
@@ -74,8 +72,6 @@ private:
 							
 							++i;
 						});
-
-					std::cout << "Shotgun Shoot" << std::endl;
 				},
 				[&](const SubmachineGun& smg) noexcept
 				{

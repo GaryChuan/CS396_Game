@@ -52,7 +52,7 @@ public:
 
 				text.mValue			= "Pistol";
 				text.mActive		= false;
-				text.mOffset.mValue = xcore::vector2{ -25 , -10 };
+				text.mOffset.mValue = xcore::vector2{ -15 , -10 };
 
 				gridCell = Grid::ComputeGridCellFromWorldPosition(pos.mValue);
 			});

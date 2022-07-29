@@ -46,7 +46,9 @@ struct Weapon
 		{
 			.m_pName = "Weapon"
 		};
+
+	enum struct State { RELOADING, SWAPPING, FIRING, INACTIVE };
 	 
-	int mIndex{ 0 }; // Used for swapping weapons
+	State mState;
 	WeaponType mType{ Pistol{} };
 };

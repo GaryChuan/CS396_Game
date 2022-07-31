@@ -21,11 +21,14 @@
 #include "player_input_on_key_triggered.h"
 #include "player_input_on_key_down.h"
 #include "player_input_on_key_up.h"
-#include "player_input_on_mouse_left_click.h"
+#include "player_input_on_mouse_left_clicked.h"
+#include "player_input_on_mouse_left_held.h"
+#include "player_input_on_mouse_left_released.h"
 
 // Renderer
 #include "renderer.h"
-#include "render_characters.h"
+#include "render_player.h"
+#include "render_zombies.h"
 #include "render_bullets.h"
 #include "render_particles.h"
 #include "render_text.h"

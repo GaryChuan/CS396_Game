@@ -37,4 +37,11 @@ struct Renderer : xecs::system::instance
         glutSwapBuffers();
 	}
 
+    __inline void OnGameEnd() noexcept
+    {
+        // Clear screen
+        glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+        glClear(GL_COLOR_BUFFER_BIT);
+        glutSwapBuffers();
+    }
 };

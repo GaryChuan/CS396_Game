@@ -1,14 +1,14 @@
 #pragma once
 
-struct PlayerInputOnMouseLeftClick : xecs::system::instance
+struct PlayerInputOnMouseLeftClicked : xecs::system::instance
 {
 	constexpr static auto typedef_v
-		= xecs::system::type::global_event<OnMouseLeftClick>
+		= xecs::system::type::global_event<OnMouseLeftClicked>
 	{
-		.m_pName = "PlayerInputOnMouseLeftClick"
+		.m_pName = "PlayerInputOnMouseLeftClicked"
 	};
 
-	PlayerInputOnMouseLeftClick(xecs::game_mgr::instance& gameMgr)
+	PlayerInputOnMouseLeftClicked(xecs::game_mgr::instance& gameMgr)
 		: xecs::system::instance{ gameMgr }
 	{
 	}
@@ -27,21 +27,27 @@ struct PlayerInputOnMouseLeftClick : xecs::system::instance
 	{
 		assert(mBulletArchetypePtr);
 
-		Foreach(Search(mQueryPlayerOnly), [&](const Position& position, const Weapon& weapon)
+		Foreach(Search(mQueryPlayerOnly), [&](const Position& position, Weapon& weapon)
 			{
+				if (weapon.mState == Weapon::State::RELOAD 
+				 || weapon.mState == Weapon::State::RELOADING)
+				{
+					return;
+				}
+
 				xcore::vector2 aimDirection
 				{
 					mouseX - position.x,
 					mouseY - position.y
 				};
 
-				Shoot(weapon.mType, position, aimDirection.NormalizeSafe());
+				Shoot(weapon, position, aimDirection.NormalizeSafe());
 			});
 	}
 
 private:
 	void Shoot(
-		const WeaponType& weaponType, 
+		Weapon& weapon, 
 		const Position& playerPos, 
 		const xcore::vector2& aimDirection)
 	{
@@ -75,10 +81,23 @@ private:
 				},
 				[&](const SubmachineGun& smg) noexcept
 				{
-					std::cout << "SubmachineGun Shoot" << std::endl;
+					mBulletArchetypePtr->CreateEntity([&](Position& bulletPos, Velocity& bulletVel)
+						{
+							bulletPos = playerPos;
+
+							auto newDirection = aimDirection;
+							auto randomAngle = xcore::math::DegToRad(Math::UniformRand(1.f, 15.f));
+
+							newDirection.Rotate(xcore::math::radian(static_cast<long double>(randomAngle)));
+							newDirection.NormalizeSafe();
+
+							bulletVel.mValue = newDirection * 5.f;
+						});
 				}
-			}, weaponType
+			}, weapon.mArsenal[static_cast<int>(weapon.mCurrentWeapon)]
 		);
+
+		weapon.Shoot();
 	}
 
 private:

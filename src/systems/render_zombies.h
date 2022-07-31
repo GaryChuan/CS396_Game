@@ -1,16 +1,17 @@
 #pragma once
 
-struct RenderCharacters : xecs::system::instance
+struct RenderZombies : xecs::system::instance
 {
 	constexpr static auto typedef_v 
 		= xecs::system::type::child_update<Renderer, Renderer::Update>
 		{
-			.m_pName = "RenderCharacters"
+			.m_pName = "RenderZombies"
 		};
 	
 	using query = std::tuple
 		<
-			xecs::query::none_of<Bullet, ParticleTag>,
+			xecs::query::must<Zombie>,
+			xecs::query::none_of<Bullet, ParticleTag, PlayerTag>,
 			xecs::query::one_of<entity>
 		>;
 

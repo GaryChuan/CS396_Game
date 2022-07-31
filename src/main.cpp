@@ -12,7 +12,7 @@ public:
 	using Manager = xecs::game_mgr::instance;
 
 	Game(int width = 1024, int height = 800) noexcept
-		: mResolution { 1024, 800 }
+		: mResolution{ 1024, 800 }
 	{
 		Initialize();
 	}
@@ -31,15 +31,15 @@ public:
 		// Enemy prefabs
 		auto PrefabGuid = mManager->CreatePrefab<Position, Velocity, GridCell, Zombie, RenderDetails, Health>(
 			[&](
-				Position& pos, 
-				Velocity& vel, 
-				Health& health, 
-				GridCell& gridCell, 
-				RenderDetails& renderDetails, 
+				Position& pos,
+				Velocity& vel,
+				Health& health,
+				GridCell& gridCell,
+				RenderDetails& renderDetails,
 				Zombie& zombie) noexcept
 			{
 				pos.mValue = xcore::vector2
-				{ 
+				{
 					static_cast<float>(std::rand() % mResolution.first),
 					static_cast<float>(std::rand() % mResolution.second)
 				};
@@ -63,23 +63,23 @@ public:
 		////	});
 
 
-		mManager->CreatePrefabInstance(100, PrefabGuid, 
+		mManager->CreatePrefabInstance(100, PrefabGuid,
 			[&](
-				Position& pos, 
-				Velocity& vel, 
-				GridCell& gridCell, 
-				RenderDetails& renderDetails, 
-				Health& health, 
+				Position& pos,
+				Velocity& vel,
+				GridCell& gridCell,
+				RenderDetails& renderDetails,
+				Health& health,
 				const Zombie& zombie) noexcept
 			{
 				pos.mValue = xcore::vector2
-				{ 
-					static_cast<float>(std::rand() % mResolution.first), 
+				{
+					static_cast<float>(std::rand() % mResolution.first),
 					static_cast<float>(std::rand() % mResolution.second)
 				};
 
 				gridCell = Grid::ComputeGridCellFromWorldPosition(pos.mValue);
-				
+
 				renderDetails.mColour = Colour{ 0, 1, 0 };
 				renderDetails.mSize = Size{ 3 , 3 };
 				// Timer.m_Value = std::rand() / static_cast<float>(RAND_MAX) * 8;
@@ -88,6 +88,11 @@ public:
 
 	void Run() noexcept
 	{
+		if (mMouseButtonState[GLUT_LEFT_BUTTON] == GLUT_DOWN)
+		{
+			mManager->SendGlobalEvent<OnMouseLeftHeld>(mMousePos.first, mMousePos.second);
+		}
+
 		mManager->Run();
 	}
 
@@ -113,7 +118,7 @@ public:
 			mManager->SendGlobalEvent<OnKeyTriggered>(mKeys);
 			pressed = true;
 		}
-		
+
 		mManager->SendGlobalEvent<OnKeyDown>(mKeys);
 	}
 
@@ -125,21 +130,46 @@ public:
 
 	void OnMouseClick(int button, int state, int mouseX, int mouseY) noexcept
 	{
-		bool clicked = state == GLUT_DOWN;
-
-		if (!clicked)
+		// Button is not registered, do not process
+		if (button > mMouseButtonState.size())
 		{
 			return;
 		}
 
-		if (button == GLUT_LEFT_BUTTON)
+		bool clicked = state == GLUT_DOWN;
+
+		if (!clicked)
 		{
-			mManager->SendGlobalEvent<OnMouseLeftClick>(mouseX, mouseY);
+			mMouseButtonState[button] = GLUT_UP;
+			mManager->SendGlobalEvent<OnMouseLeftReleased>(mouseX, mouseY);
+			return;
 		}
-		else if (button == GLUT_RIGHT_BUTTON)
+
+		if (mMouseButtonState[button] == GLUT_UP)
 		{
-			// mManager->SendGlobalEvent<OnMouseRightClick>(mouseX, mouseY);
+			mMouseButtonState[button] = GLUT_DOWN;
+
+			switch (button)
+			{
+			case GLUT_LEFT_BUTTON:
+				mManager->SendGlobalEvent<OnMouseLeftClicked>(mouseX, mouseY);
+				break;
+
+			case GLUT_RIGHT_BUTTON:
+				break;
+
+			case GLUT_MIDDLE_BUTTON:
+				break;
+			default:
+				assert(false); // unknown button pressed
+			}
 		}
+	}
+
+	void OnMouseMotion(int mouseX, int mouseY) noexcept
+	{
+		mMousePos.first = mouseX;
+		mMousePos.second = mouseY;
 	}
 
 private:
@@ -160,10 +190,12 @@ private:
 
 		mManager->RegisterGlobalEvents
 			<
-				OnKeyTriggered,
-				OnKeyDown,
-				OnKeyUp,
-				OnMouseLeftClick
+			OnKeyTriggered,
+			OnKeyDown,
+			OnKeyUp,
+			OnMouseLeftClicked,
+			OnMouseLeftHeld,
+			OnMouseLeftReleased
 			>();
 	}
 
@@ -173,18 +205,18 @@ private:
 
 		mManager->RegisterComponents
 			<
-				Position, 
-				Velocity,
-				Weapon,
-				Bullet,
-				Zombie,
-				Health, 
-				Timer,
-				Text,
-				GridCell,
-				RenderDetails,
-				PlayerTag,
-				ParticleTag
+			Position,
+			Velocity,
+			Weapon,
+			Bullet,
+			Zombie,
+			Health,
+			Timer,
+			Text,
+			GridCell,
+			RenderDetails,
+			PlayerTag,
+			ParticleTag
 			>();
 	}
 
@@ -194,34 +226,39 @@ private:
 
 		mManager->RegisterSystems
 			<
-				UpdateMovement,
-				ClampMovement,
-				UpdateTimer,
-				PlayerLogic,
-				BulletLogic,
-				ZombieLogic,
-				Renderer,
-					RenderCharacters,
-					RenderBullets,
-					RenderParticles,
-					RenderText
+			UpdateMovement,
+			ClampMovement,
+			UpdateTimer,
+			PlayerLogic,
+			BulletLogic,
+			ZombieLogic,
+			Renderer,
+			RenderPlayer,
+			RenderZombies,
+			RenderBullets,
+			RenderParticles,
+			RenderText
 			>();
 
 		mManager->RegisterSystems
 			<
-				ZombieOnDeath,
-				PlayerInputOnKeyTriggered,
-				PlayerInputOnKeyDown,
-				PlayerInputOnKeyUp,
-				PlayerInputOnMouseLeftClick,
-				PlayerDeactivateTextOnRemoveTimer,
-				DestroyParticleOnRemoveTimer
+			ZombieOnDeath,
+			PlayerInputOnKeyTriggered,
+			PlayerInputOnKeyDown,
+			PlayerInputOnKeyUp,
+			PlayerInputOnMouseLeftClicked,
+			PlayerInputOnMouseLeftHeld,
+			PlayerInputOnMouseLeftReleased,
+			PlayerDeactivateTextOnRemoveTimer,
+			DestroyParticleOnRemoveTimer
 			>();
 	}
 
 private:
 	std::unique_ptr<Manager> mManager{};
 	std::pair<int, int> mResolution{};
+	std::pair<int, int> mMousePos{};
+	std::array<int, 3> mMouseButtonState{ GLUT_UP, GLUT_UP, GLUT_UP };
 	Keys mKeys{};
 };
 
@@ -274,6 +311,10 @@ int main(int argc, char** argv)
 	glutMouseFunc([](int button, int state, int mouseX, int mouseY) noexcept
 		{
 			game.OnMouseClick(button, state, mouseX, mouseY);
+		});
+	glutMotionFunc([](int mouseX, int mouseY) noexcept
+		{
+			game.OnMouseMotion(mouseX, mouseY);
 		});
     glutTimerFunc(0, timer, 0);
 

@@ -10,8 +10,6 @@ struct PlayerInputOnKeyTriggered : xecs::system::instance
 
 	PlayerInputOnKeyTriggered(xecs::game_mgr::instance& gameMgr)
 		: xecs::system::instance{ gameMgr }
-		, mWeaponArsenal { InitializeWeaponArsenal() }
-		, mWeaponNames { InitializeWeaponNames() }
 	{
 	}
 
@@ -29,7 +27,7 @@ struct PlayerInputOnKeyTriggered : xecs::system::instance
 			{
 				int weaponSelected = -1;
 
-				for (int i = 0; i < mWeaponArsenal.size(); ++i)
+				for (int i = 0; i < weapon.mArsenal.size(); ++i)
 				{
 					const auto keyIndex = static_cast<uint8_t>('0' + (i + 1));
 					
@@ -42,8 +40,8 @@ struct PlayerInputOnKeyTriggered : xecs::system::instance
 
 				if (weaponSelected != -1)
 				{
-					weapon.mType = mWeaponArsenal[weaponSelected];
-					text.mValue = mWeaponNames[weaponSelected];
+					weapon.mCurrentWeapon = static_cast<Weapon::Type>(weaponSelected);
+					text.mValue = Weapon::names[weaponSelected];
 					text.mActive = true;
 
 					AddOrRemoveComponents<std::tuple<Timer>, std::tuple<Timer>>(
@@ -57,28 +55,5 @@ struct PlayerInputOnKeyTriggered : xecs::system::instance
 	}
 
 private:
-	using WeaponArsenal = std::array<WeaponType, std::variant_size_v<WeaponType>>;
-	using WeaponNames = std::array<std::string, std::variant_size_v<WeaponType>>;
-
-	constexpr WeaponArsenal InitializeWeaponArsenal() const noexcept
-	{
-		return
-		{
-			Pistol{}, Shotgun{}, SubmachineGun{}
-		};
-	}
-
-	constexpr WeaponNames InitializeWeaponNames() const noexcept
-	{
-		return
-		{
-			"Pistol", "Shotgun", "SMG"
-		};
-	}
-
-private:
-	
-	WeaponNames mWeaponNames{};
-	WeaponArsenal mWeaponArsenal{};
 	xecs::query::instance mQueryPlayerOnly{};
 };

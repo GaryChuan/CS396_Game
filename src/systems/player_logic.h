@@ -48,9 +48,9 @@ public:
 				renderDetails.mColour = Colour{ 1, 1, 1 };
 				renderDetails.mSize = Size{ 3 , 3 };
 
-				weapon.mType = Pistol{};
+				weapon.mCurrentWeapon = Weapon::Type::PISTOL;
 
-				text.mValue			= "Pistol";
+				text.mValue			= Weapon::names.front();
 				text.mActive		= false;
 				text.mOffset.mValue = xcore::vector2{ -15 , -10 };
 
@@ -58,8 +58,34 @@ public:
 			});
 	}
 
-	__inline void operator()(const Position& pos, const Health& health)
+	__inline void operator()(Weapon& weapon, Text& text, const Health& health)
 	{
+		switch(weapon.mState)
+		{
+		case Weapon::State::RELOAD:
+			weapon.mState = Weapon::State::RELOADING;
+			weapon.mReloadTimer = 0.f;
+			text.mValue = "Reloading";
+			text.mActive = true;
+			[[fallthrough]];
+		case Weapon::State::RELOADING:
+			
+			weapon.mReloadTimer += 1 / 60.f;
+
+			if (weapon.mReloadTimer >= weapon.GetReloadRate())
+			{
+				weapon.mState = Weapon::State::INACTIVE;
+				weapon.Reloaded();
+				text.mValue = Weapon::names[static_cast<int>(weapon.mCurrentWeapon)];
+			}
+			break;
+
+		case Weapon::State::FIRING:
+			break;
+
+		case Weapon::State::INACTIVE:
+			break;
+		}
 	}
 
 private:

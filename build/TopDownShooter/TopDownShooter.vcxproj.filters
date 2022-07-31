@@ -343,7 +343,7 @@
     <ClInclude Include="..\..\src\components\velocity.h">
       <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\systems\render_characters.h">
+    <ClInclude Include="..\..\src\systems\render_zombies.h">
       <Filter>Systems</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\systems\render_bullets.h">
@@ -370,7 +370,7 @@
     <ClInclude Include="..\..\src\events\on_key_up.h">
       <Filter>Events</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\events\on_mouse_left_click.h">
+    <ClInclude Include="..\..\src\events\on_mouse_left_clicked.h">
       <Filter>Events</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\events\on_mouse_right_click.h">
@@ -391,7 +391,7 @@
     <ClInclude Include="..\..\src\systems\player_input_on_key_up.h">
       <Filter>Systems\Events</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\systems\player_input_on_mouse_left_click.h">
+    <ClInclude Include="..\..\src\systems\player_input_on_mouse_left_clicked.h">
       <Filter>Systems\Events</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\tools\grid.h">
@@ -456,6 +456,21 @@
     </ClInclude>
     <ClInclude Include="..\..\src\systems\player_deactivate_text_on_remove_timer.h">
       <Filter>Systems\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\systems\render_player.h">
+      <Filter>Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\systems\player_input_on_mouse_left_released.h">
+      <Filter>Systems\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\systems\player_input_on_mouse_left_held.h">
+      <Filter>Systems\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\events\on_mouse_left_held.h">
+      <Filter>Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\events\on_mouse_left_released.h">
+      <Filter>Events</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

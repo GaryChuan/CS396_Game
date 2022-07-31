@@ -13,8 +13,9 @@ public:
 	void Reloaded() { mAmmoCount = mMaxAmmoCount; }
 
 protected:
-	WeaponInterface(float damage, float reloadRate, unsigned ammoCount)
+	WeaponInterface(float damage, float reloadRate, float fireRate, unsigned ammoCount)
 		: mDamage		{ damage }
+		, mFireRate		{ fireRate }
 		, mReloadRate	{ reloadRate }
 		, mMaxAmmoCount	{ ammoCount }
 		, mAmmoCount	{ mMaxAmmoCount }
@@ -25,6 +26,7 @@ protected:
 	friend Weapon;
 
 	float mDamage{};
+	float mFireRate{};
 	float mReloadRate{};
 	unsigned mMaxAmmoCount{};
 	unsigned mAmmoCount{};
@@ -33,22 +35,22 @@ protected:
 struct Shotgun : public WeaponInterface<Shotgun>
 {
 public:
-	Shotgun()  : WeaponInterface{ 10, 2, 4u } {}
+	Shotgun()  : WeaponInterface{ 10, 2, 0.5f, 2u } {}
 };
 
-struct Pistol : public WeaponInterface<Shotgun>
+struct Pistol : public WeaponInterface<Pistol>
 {
 public:
-	Pistol() : WeaponInterface{ 5, 1, 10u } {}
+	Pistol() : WeaponInterface{ 5, 1, 1, 10u } {}
 };
 
-struct SubmachineGun : public WeaponInterface<Shotgun>
+struct SubmachineGun : public WeaponInterface<SubmachineGun>
 {
 public:
-	SubmachineGun() : WeaponInterface{ 3, 3, 30u } {}
+	SubmachineGun() : WeaponInterface{ 3, 3, 0.1f, 30u } {}
 };
 
-using WeaponType = std::variant<Shotgun, Pistol, SubmachineGun>;
+using WeaponType = std::variant<Pistol, Shotgun, SubmachineGun>;
 
 struct Weapon
 {
@@ -81,6 +83,11 @@ struct Weapon
 		assert(mState != Weapon::State::RELOAD);
 		assert(mState != Weapon::State::RELOADING);
 
+		if (mCanShoot == false)
+		{
+			return;
+		}
+
 		std::visit
 		(
 			[&](auto& weaponType)
@@ -95,6 +102,8 @@ struct Weapon
 				}
 			}, mArsenal[static_cast<int>(mCurrentWeapon)]
 		);
+
+		mCanShoot = false;
 	}
 
 	void Reloaded()
@@ -112,14 +121,27 @@ struct Weapon
 	{
 		return std::visit
 		(
-			[](auto& weaponType)
+			[](const auto& weaponType) noexcept
 			{
 				return weaponType.mReloadRate;
 			}, mArsenal[static_cast<int>(mCurrentWeapon)]
 		);
 	}
+	
+	float GetFireRate() const
+	{
+		return std::visit
+		(
+			[](const auto& weaponType) noexcept
+			{
+				return weaponType.mFireRate;
+			}, mArsenal[static_cast<int>(mCurrentWeapon)]
+		);
+	}
 
+	float mShootTimer = 0.f;
 	float mReloadTimer = 0.f;
+	bool mCanShoot = true;
 	Type mCurrentWeapon = Type::PISTOL;
 	State mState{ State::INACTIVE };
 	Arsenal mArsenal{ Pistol{}, Shotgun{}, SubmachineGun{} };

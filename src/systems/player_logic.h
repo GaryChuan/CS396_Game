@@ -14,7 +14,6 @@ public:
 	{
 	}
 
-
 	using query = std::tuple
 		<
 			xecs::query::must<PlayerTag>,
@@ -60,17 +59,21 @@ public:
 
 	__inline void operator()(Weapon& weapon, Text& text, const Health& health)
 	{
+		constexpr float DELTA = 1 / 60.f;
+
 		switch(weapon.mState)
 		{
 		case Weapon::State::RELOAD:
 			weapon.mState = Weapon::State::RELOADING;
 			weapon.mReloadTimer = 0.f;
+			weapon.mShootTimer = 0.f;
+			weapon.mCanShoot = true;
 			text.mValue = "Reloading";
 			text.mActive = true;
 			[[fallthrough]];
+
 		case Weapon::State::RELOADING:
-			
-			weapon.mReloadTimer += 1 / 60.f;
+			weapon.mReloadTimer += DELTA;
 
 			if (weapon.mReloadTimer >= weapon.GetReloadRate())
 			{
@@ -81,9 +84,21 @@ public:
 			break;
 
 		case Weapon::State::FIRING:
+
+			if (weapon.mCanShoot == false)
+			{
+				weapon.mShootTimer += DELTA;
+
+				if (weapon.mShootTimer >= weapon.GetFireRate())
+				{
+					weapon.mShootTimer = 0.f;
+					weapon.mCanShoot = true;
+				}
+			}
 			break;
 
 		case Weapon::State::INACTIVE:
+			weapon.mCanShoot = true;
 			break;
 		}
 	}

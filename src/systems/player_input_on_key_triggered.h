@@ -25,6 +25,12 @@ struct PlayerInputOnKeyTriggered : xecs::system::instance
 	{
 		Foreach(Search(mQueryPlayerOnly), [&](xecs::component::entity& entity, Weapon& weapon, Text& text)
 			{
+				if (weapon.mState == Weapon::State::RELOADING 
+				 || weapon.mState == Weapon::State::RELOAD)
+				{
+					return;
+				}
+
 				int weaponSelected = -1;
 
 				for (int i = 0; i < weapon.mArsenal.size(); ++i)

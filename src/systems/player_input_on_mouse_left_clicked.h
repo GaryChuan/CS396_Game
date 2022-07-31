@@ -35,6 +35,8 @@ struct PlayerInputOnMouseLeftClicked : xecs::system::instance
 					return;
 				}
 
+				weapon.mState = Weapon::State::FIRING;
+
 				xcore::vector2 aimDirection
 				{
 					mouseX - position.x,
@@ -48,7 +50,7 @@ struct PlayerInputOnMouseLeftClicked : xecs::system::instance
 private:
 	void Shoot(
 		Weapon& weapon, 
-		const Position& playerPos, 
+		const Position& playerPos,
 		const xcore::vector2& aimDirection)
 	{
 		std::visit(
@@ -64,17 +66,18 @@ private:
 				},
 				[&](const Shotgun& shotgun) noexcept
 				{
-					const long double angle = xcore::math::DegToRad(5.f);
 					int i = -2;
 
 					mBulletArchetypePtr->CreateEntities(5, [&](Position& bulletPos, Velocity& bulletVel)
 						{
 							auto shotDirection = aimDirection;
+							auto randomAngle = xcore::math::DegToRad(Math::UniformRand(3.f, 5.f));
 
-							shotDirection.Rotate(xcore::math::radian{ angle * i });
+							shotDirection.Rotate(xcore::math::radian{ randomAngle * i });
+							shotDirection.NormalizeSafe();
 							
 							bulletPos = playerPos;
-							bulletVel.mValue = shotDirection * 5.f;
+							bulletVel.mValue = shotDirection * Math::UniformRand(4.f, 5.f);
 							
 							++i;
 						});
@@ -103,4 +106,5 @@ private:
 private:
 	xecs::archetype::instance* mBulletArchetypePtr{};
 	xecs::query::instance mQueryPlayerOnly{};
+
 };

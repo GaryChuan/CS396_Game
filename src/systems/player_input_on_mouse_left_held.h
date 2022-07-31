@@ -30,10 +30,13 @@ struct PlayerInputOnMouseLeftHeld : xecs::system::instance
 		Foreach(Search(mQueryPlayerOnly), [&](const Position& position, Weapon& weapon)
 			{
 				if (weapon.mState == Weapon::State::RELOAD
-				 || weapon.mState == Weapon::State::RELOADING)
+				 || weapon.mState == Weapon::State::RELOADING
+				 || weapon.mCanShoot == false)
 				{
 					return;
 				}
+				
+				weapon.mState = Weapon::State::FIRING;
 
 				xcore::vector2 aimDirection
 				{

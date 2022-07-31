@@ -1,10 +1,10 @@
 #include <iostream>
 #include "pch.h"
 
-#include "components/components.h"
+#include "components/_components.h"
 #include "tools/tools.h"
 #include "events/events.h"
-#include "systems/systems.h"
+#include "systems/_systems.h"
 
 class Game
 {
@@ -29,33 +29,33 @@ public:
 		std::srand(101);
 
 		// Enemy prefabs
-		auto PrefabGuid = mManager->CreatePrefab<Position, Velocity, GridCell, Zombie, RenderDetails, Health>(
-			[&](
-				Position& pos,
-				Velocity& vel,
-				Health& health,
-				GridCell& gridCell,
-				RenderDetails& renderDetails,
-				Zombie& zombie) noexcept
-			{
-				pos.mValue = xcore::vector2
-				{
-					static_cast<float>(std::rand() % mResolution.first),
-					static_cast<float>(std::rand() % mResolution.second)
-				};
+		//auto PrefabGuid = mManager->CreatePrefab<Position, Velocity, GridCell, Zombie, RenderDetails, Health>(
+		//	[&](
+		//		Position& pos,
+		//		Velocity& vel,
+		//		Health& health,
+		//		GridCell& gridCell,
+		//		RenderDetails& renderDetails,
+		//		Zombie& zombie) noexcept
+		//	{
+		//		pos.mValue = xcore::vector2
+		//		{
+		//			static_cast<float>(std::rand() % mResolution.first),
+		//			static_cast<float>(std::rand() % mResolution.second)
+		//		};
 
-				// vel.x = std::rand() / static_cast<float>(RAND_MAX) - 0.5f;
-				// vel.y = std::rand() / static_cast<float>(RAND_MAX) - 0.5f;
-				// vel.mValue.Normalize();
+		//		// vel.x = std::rand() / static_cast<float>(RAND_MAX) - 0.5f;
+		//		// vel.y = std::rand() / static_cast<float>(RAND_MAX) - 0.5f;
+		//		// vel.mValue.Normalize();
 
-				gridCell = Grid::ComputeGridCellFromWorldPosition(pos.mValue);
+		//		gridCell = Grid::ComputeGridCellFromWorldPosition(pos.mValue);
 
-				renderDetails.mColour = Colour{ 0, 255, 0 };
-				renderDetails.mSize = Size{ 3 , 3 };
+		//		renderDetails.mColour = Colour{ 0, 255, 0 };
+		//		renderDetails.mSize = Size{ 3 , 3 };
 
-				health.mValue = 100;
-				//Timer.m_Value = 0;
-			});
+		//		health.mValue = 100;
+		//		//Timer.m_Value = 0;
+		//	});
 
 		////auto PrefabVariantGuid = mManager->CreatePrefabVariant(PrefabGuid, [&](Position& pos, Velocity& vel) noexcept
 		////	{
@@ -63,27 +63,27 @@ public:
 		////	});
 
 
-		mManager->CreatePrefabInstance(100, PrefabGuid,
-			[&](
-				Position& pos,
-				Velocity& vel,
-				GridCell& gridCell,
-				RenderDetails& renderDetails,
-				Health& health,
-				const Zombie& zombie) noexcept
-			{
-				pos.mValue = xcore::vector2
-				{
-					static_cast<float>(std::rand() % mResolution.first),
-					static_cast<float>(std::rand() % mResolution.second)
-				};
+		//mManager->CreatePrefabInstance(100, PrefabGuid,
+		//	[&](
+		//		Position& pos,
+		//		Velocity& vel,
+		//		GridCell& gridCell,
+		//		RenderDetails& renderDetails,
+		//		Health& health,
+		//		const Zombie& zombie) noexcept
+		//	{
+		//		pos.mValue = xcore::vector2
+		//		{
+		//			static_cast<float>(std::rand() % mResolution.first),
+		//			static_cast<float>(std::rand() % mResolution.second)
+		//		};
 
-				gridCell = Grid::ComputeGridCellFromWorldPosition(pos.mValue);
+		//		gridCell = Grid::ComputeGridCellFromWorldPosition(pos.mValue);
 
-				renderDetails.mColour = Colour{ 0, 1, 0 };
-				renderDetails.mSize = Size{ 3 , 3 };
-				// Timer.m_Value = std::rand() / static_cast<float>(RAND_MAX) * 8;
-			});
+		//		renderDetails.mColour = Colour{ 0, 1, 0 };
+		//		renderDetails.mSize = Size{ 3 , 3 };
+		//		// Timer.m_Value = std::rand() / static_cast<float>(RAND_MAX) * 8;
+		//	});
 	}
 
 	void Run() noexcept
@@ -215,6 +215,7 @@ private:
 			Text,
 			GridCell,
 			RenderDetails,
+			ZombieGroup,
 			PlayerTag,
 			ParticleTag
 			>();
@@ -232,6 +233,7 @@ private:
 			PlayerLogic,
 			BulletLogic,
 			ZombieLogic,
+			ZombieGroupLogic,
 			Renderer,
 			RenderPlayer,
 			RenderZombies,

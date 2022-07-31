@@ -8,6 +8,7 @@
 #include "player_logic.h"
 #include "bullet_logic.h"
 #include "zombie_logic.h"
+#include "zombie_group_logic.h"
 
 // Timer
 #include "update_timer.h"

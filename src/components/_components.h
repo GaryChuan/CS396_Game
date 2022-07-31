@@ -12,6 +12,7 @@
 
 // Share
 #include "render_details.h"
+#include "zombie_group.h"
 #include "grid_cell.h"
 
 // Tags

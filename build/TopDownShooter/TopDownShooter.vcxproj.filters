@@ -37,6 +37,9 @@
     <Filter Include="Systems\Events">
       <UniqueIdentifier>{bce1271c-4cd3-49cf-8136-21db2124e0c2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Components\Shared">
+      <UniqueIdentifier>{a6fbb157-bfb1-4afd-b21a-9c4c8caa5577}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\settings\PropertyConfig.h">
@@ -271,10 +274,10 @@
     <ClInclude Include="..\..\src\components\position.h">
       <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\components\components.h">
+    <ClInclude Include="..\..\src\components\_components.h">
       <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\systems\systems.h">
+    <ClInclude Include="..\..\src\systems\_systems.h">
       <Filter>Systems</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\systems\renderer.h">
@@ -400,13 +403,7 @@
     <ClInclude Include="..\..\src\tools\tools.h">
       <Filter>Tools</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\components\grid_cell.h">
-      <Filter>Components</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\components\zombie.h">
-      <Filter>Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\components\render_details.h">
       <Filter>Components</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\systems\zombie_logic.h">
@@ -471,6 +468,18 @@
     </ClInclude>
     <ClInclude Include="..\..\src\systems\destroy_bullet_on_remove_timer.h">
       <Filter>Systems\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\components\grid_cell.h">
+      <Filter>Components\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\components\render_details.h">
+      <Filter>Components\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\components\zombie_group.h">
+      <Filter>Components\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\systems\zombie_group_logic.h">
+      <Filter>Systems</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

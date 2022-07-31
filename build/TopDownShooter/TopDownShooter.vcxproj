@@ -183,7 +183,7 @@
     <ClInclude Include="..\..\src\components\bullet.h" />
     <ClInclude Include="..\..\src\components\particle_tag.h" />
     <ClInclude Include="..\..\src\components\render_details.h" />
-    <ClInclude Include="..\..\src\components\components.h" />
+    <ClInclude Include="..\..\src\components\_components.h" />
     <ClInclude Include="..\..\src\components\component_archetypes.h" />
     <ClInclude Include="..\..\src\components\grid_cell.h" />
     <ClInclude Include="..\..\src\components\health.h" />
@@ -194,6 +194,7 @@
     <ClInclude Include="..\..\src\components\velocity.h" />
     <ClInclude Include="..\..\src\components\weapon.h" />
     <ClInclude Include="..\..\src\components\zombie.h" />
+    <ClInclude Include="..\..\src\components\zombie_group.h" />
     <ClInclude Include="..\..\src\events\events.h" />
     <ClInclude Include="..\..\src\events\on_mouse_left_released.h" />
     <ClInclude Include="..\..\src\events\on_key_down.h" />
@@ -217,6 +218,7 @@
     <ClInclude Include="..\..\src\systems\render_player.h" />
     <ClInclude Include="..\..\src\systems\render_text.h" />
     <ClInclude Include="..\..\src\systems\update_timer.h" />
+    <ClInclude Include="..\..\src\systems\zombie_group_logic.h" />
     <ClInclude Include="..\..\src\systems\zombie_on_death.h" />
     <ClInclude Include="..\..\src\systems\player_input_on_key_down.h" />
     <ClInclude Include="..\..\src\systems\player_input_on_key_up.h" />
@@ -225,7 +227,7 @@
     <ClInclude Include="..\..\src\systems\renderer.h" />
     <ClInclude Include="..\..\src\systems\render_bullets.h" />
     <ClInclude Include="..\..\src\systems\render_zombies.h" />
-    <ClInclude Include="..\..\src\systems\systems.h" />
+    <ClInclude Include="..\..\src\systems\_systems.h" />
     <ClInclude Include="..\..\src\systems\update_movement.h" />
     <ClInclude Include="..\..\src\systems\zombie_logic.h" />
     <ClInclude Include="..\..\src\tools\crtp.h" />

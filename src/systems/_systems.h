@@ -9,15 +9,18 @@
 #include "bullet_logic.h"
 #include "zombie_logic.h"
 #include "zombie_group_logic.h"
+#include "zombie_group_spawn_timer_logic.h"
 
 // Timer
 #include "update_timer.h"
 
 // Game Events
-#include "zombie_on_death.h"
+#include "spawn_particle_on_zombie_death.h"
 #include "destroy_particle_on_remove_timer.h"
 #include "destroy_bullet_on_remove_timer.h"
 #include "player_deactivate_text_on_remove_timer.h"
+#include "start_timer_on_zombie_group_cleared.h"
+#include "spawn_zombie_group_on_timer_end.h"
 
 // Input Events
 #include "player_input_on_key_triggered.h"

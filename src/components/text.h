@@ -18,6 +18,14 @@ struct Text
 		xcore::vector2 mValue{};
 	} mOffset;
 
-	std::string mValue{};
+	enum struct Font : short
+	{
+		HELVETICA_10,
+		HELVETICA_12,
+		HELVETICA_18,
+	};
+
 	bool mActive{ true };
+	Font mFont{ Font::HELVETICA_10 };
+	std::string mValue{};
 };

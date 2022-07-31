@@ -1,11 +1,11 @@
 #pragma once
 
-struct ZombieOnDeath : xecs::system::instance
+struct SpawnParticleOnZombieDeath : xecs::system::instance
 {
 	constexpr static auto typedef_v
 		= xecs::system::type::notify_destroy
 		{
-			.m_pName = "ZombieOnDeath"
+			.m_pName = "SpawnParticleOnZombieDeath"
 		};
 
 	using query = std::tuple
@@ -14,7 +14,7 @@ struct ZombieOnDeath : xecs::system::instance
 			xecs::query::none_of<PlayerTag>
 		>;
 
-	ZombieOnDeath(xecs::game_mgr::instance& gameMgr)
+	SpawnParticleOnZombieDeath(xecs::game_mgr::instance& gameMgr)
 		: xecs::system::instance { gameMgr }
 	{
 	}
@@ -24,7 +24,7 @@ struct ZombieOnDeath : xecs::system::instance
 		mParticleArchetype = &getOrCreateArchetype<ParticleArchetype>();
 	}
 
-	__inline void operator()(Position& zombiePos) noexcept
+	__inline void operator()(const Position& zombiePos) noexcept
 	{
 		constexpr float r = 0.05f;
 		constexpr float g = 226.f / 255.f;

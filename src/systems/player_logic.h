@@ -86,6 +86,7 @@ public:
 			{
 				weapon.mState = Weapon::State::INACTIVE;
 				weapon.Reloaded();
+				text.mActive = false;
 				text.mValue = Weapon::names[static_cast<int>(weapon.mCurrentWeapon)];
 			}
 			break;

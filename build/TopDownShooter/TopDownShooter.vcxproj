@@ -217,9 +217,12 @@
     <ClInclude Include="..\..\src\systems\render_particles.h" />
     <ClInclude Include="..\..\src\systems\render_player.h" />
     <ClInclude Include="..\..\src\systems\render_text.h" />
+    <ClInclude Include="..\..\src\systems\spawn_zombie_group_on_timer_end.h" />
     <ClInclude Include="..\..\src\systems\update_timer.h" />
     <ClInclude Include="..\..\src\systems\zombie_group_logic.h" />
-    <ClInclude Include="..\..\src\systems\zombie_on_death.h" />
+    <ClInclude Include="..\..\src\systems\zombie_group_spawn_timer_logic.h" />
+    <ClInclude Include="..\..\src\systems\start_timer_on_zombie_group_cleared.h" />
+    <ClInclude Include="..\..\src\systems\spawn_particle_on_zombie_death.h" />
     <ClInclude Include="..\..\src\systems\player_input_on_key_down.h" />
     <ClInclude Include="..\..\src\systems\player_input_on_key_up.h" />
     <ClInclude Include="..\..\src\systems\player_input_on_mouse_left_clicked.h" />

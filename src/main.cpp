@@ -234,17 +234,20 @@ private:
 			BulletLogic,
 			ZombieLogic,
 			ZombieGroupLogic,
+			ZombieGroupSpawnTimerLogic,
 			Renderer,
-			RenderPlayer,
-			RenderZombies,
-			RenderBullets,
-			RenderParticles,
-			RenderText
+				RenderPlayer,
+				RenderZombies,
+				RenderBullets,
+				RenderParticles,
+				RenderText
 			>();
 
 		mManager->RegisterSystems
 			<
-			ZombieOnDeath,
+			SpawnParticleOnZombieDeath,
+			StartTimerOnZombieGroupCleared,
+			SpawnZombieGroupOnTimerEnd,
 			PlayerInputOnKeyTriggered,
 			PlayerInputOnKeyDown,
 			PlayerInputOnKeyUp,

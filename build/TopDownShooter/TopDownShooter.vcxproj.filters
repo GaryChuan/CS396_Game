@@ -412,7 +412,7 @@
     <ClInclude Include="..\..\src\systems\clamp_movement.h">
       <Filter>Systems</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\systems\zombie_on_death.h">
+    <ClInclude Include="..\..\src\systems\spawn_particle_on_zombie_death.h">
       <Filter>Systems\Events</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\tools\math_random.h">
@@ -477,6 +477,15 @@
     </ClInclude>
     <ClInclude Include="..\..\src\components\zombie_group.h">
       <Filter>Components\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\systems\zombie_group_spawn_timer_logic.h">
+      <Filter>Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\systems\start_timer_on_zombie_group_cleared.h">
+      <Filter>Systems\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\systems\spawn_zombie_group_on_timer_end.h">
+      <Filter>Systems\Events</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\systems\zombie_group_logic.h">
       <Filter>Systems</Filter>

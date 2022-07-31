@@ -445,9 +445,6 @@
     <ClInclude Include="..\..\src\systems\player_input_on_key_triggered.h">
       <Filter>Systems\Events</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\tools\glut_print.h">
-      <Filter>Tools</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\systems\render_text.h">
       <Filter>Systems</Filter>
     </ClInclude>
@@ -471,6 +468,9 @@
     </ClInclude>
     <ClInclude Include="..\..\src\events\on_mouse_left_released.h">
       <Filter>Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\systems\destroy_bullet_on_remove_timer.h">
+      <Filter>Systems\Events</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

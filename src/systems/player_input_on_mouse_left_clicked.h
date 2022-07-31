@@ -58,17 +58,19 @@ private:
 			{
 				[&](const Pistol& pistol) noexcept 
 				{
-					mBulletArchetypePtr->CreateEntity([&](Position& bulletPos, Velocity& bulletVel)
+					mBulletArchetypePtr->CreateEntity([&](Position& bulletPos, Timer& timer, Velocity& bulletVel)
 						{
 							bulletPos = playerPos;
 							bulletVel.mValue = aimDirection * 5.f;
+
+							timer.mValue = 1.2f;
 						});
 				},
 				[&](const Shotgun& shotgun) noexcept
 				{
 					int i = -2;
 
-					mBulletArchetypePtr->CreateEntities(5, [&](Position& bulletPos, Velocity& bulletVel)
+					mBulletArchetypePtr->CreateEntities(5, [&](Position& bulletPos, Timer& timer, Velocity& bulletVel)
 						{
 							auto shotDirection = aimDirection;
 							auto randomAngle = xcore::math::DegToRad(Math::UniformRand(3.f, 5.f));
@@ -76,6 +78,8 @@ private:
 							shotDirection.Rotate(xcore::math::radian{ randomAngle * i });
 							shotDirection.NormalizeSafe();
 							
+							timer.mValue = 0.8f;
+
 							bulletPos = playerPos;
 							bulletVel.mValue = shotDirection * Math::UniformRand(4.f, 5.f);
 							
@@ -84,7 +88,7 @@ private:
 				},
 				[&](const SubmachineGun& smg) noexcept
 				{
-					mBulletArchetypePtr->CreateEntity([&](Position& bulletPos, Velocity& bulletVel)
+					mBulletArchetypePtr->CreateEntity([&](Position& bulletPos, Timer& timer, Velocity& bulletVel)
 						{
 							bulletPos = playerPos;
 
@@ -93,6 +97,8 @@ private:
 
 							newDirection.Rotate(xcore::math::radian(static_cast<long double>(randomAngle)));
 							newDirection.NormalizeSafe();
+
+							timer.mValue = 1.f;
 
 							bulletVel.mValue = newDirection * 5.f;
 						});

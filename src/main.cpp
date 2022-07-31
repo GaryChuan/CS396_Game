@@ -250,6 +250,7 @@ private:
 			PlayerInputOnMouseLeftHeld,
 			PlayerInputOnMouseLeftReleased,
 			PlayerDeactivateTextOnRemoveTimer,
+			DestroyBulletOnRemoveTimer,
 			DestroyParticleOnRemoveTimer
 			>();
 	}

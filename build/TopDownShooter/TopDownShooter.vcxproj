@@ -207,6 +207,7 @@
     <ClInclude Include="..\..\src\settings\xcore_user_settings.h" />
     <ClInclude Include="..\..\src\systems\bullet_logic.h" />
     <ClInclude Include="..\..\src\systems\clamp_movement.h" />
+    <ClInclude Include="..\..\src\systems\destroy_bullet_on_remove_timer.h" />
     <ClInclude Include="..\..\src\systems\player_deactivate_text_on_remove_timer.h" />
     <ClInclude Include="..\..\src\systems\destroy_particle_on_remove_timer.h" />
     <ClInclude Include="..\..\src\systems\player_input_on_key_triggered.h" />
@@ -228,7 +229,6 @@
     <ClInclude Include="..\..\src\systems\update_movement.h" />
     <ClInclude Include="..\..\src\systems\zombie_logic.h" />
     <ClInclude Include="..\..\src\tools\crtp.h" />
-    <ClInclude Include="..\..\src\tools\glut_print.h" />
     <ClInclude Include="..\..\src\tools\grid.h" />
     <ClInclude Include="..\..\src\tools\math_random.h" />
     <ClInclude Include="..\..\src\tools\tools.h" />

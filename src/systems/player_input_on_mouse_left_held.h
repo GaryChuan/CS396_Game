@@ -59,7 +59,7 @@ private:
 			{
 				[&](const SubmachineGun& smg) noexcept
 				{
-					mBulletArchetypePtr->CreateEntity([&](Position& bulletPos, Velocity& bulletVel)
+					mBulletArchetypePtr->CreateEntity([&](Position& bulletPos, Timer& timer, Velocity& bulletVel)
 						{
 							bulletPos = playerPos;
 
@@ -68,6 +68,8 @@ private:
 
 							newDirection.Rotate(xcore::math::radian(static_cast<long double>(randomAngle)));
 							newDirection.NormalizeSafe();
+
+							timer.mValue = 1.f;
 
 							bulletVel.mValue = newDirection * 5.f;
 						});

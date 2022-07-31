@@ -75,6 +75,13 @@ public:
 		case Weapon::State::RELOADING:
 			weapon.mReloadTimer += DELTA;
 
+			text.mValue = "Reloading";
+
+			for (int i = 0; i < (int)weapon.mReloadTimer + 1; ++i)
+			{
+				text.mValue += ".";
+			}
+
 			if (weapon.mReloadTimer >= weapon.GetReloadRate())
 			{
 				weapon.mState = Weapon::State::INACTIVE;

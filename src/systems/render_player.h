@@ -41,7 +41,7 @@ struct RenderPlayer : xecs::system::instance
 		constexpr xcore::vector2 ammoSize{ 1.f, 1.f };
 
 		// Render ammo count
-		for (int i = 0; i < weapon.GetAmmoCount(); ++i)
+		for (auto i = 0u; i < weapon.GetAmmoCount(); ++i)
 		{
 			glColor3f(0, 1, 1);
 

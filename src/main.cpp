@@ -228,6 +228,7 @@ private:
 		mManager->RegisterSystems
 			<
 			UpdateMovement,
+			UpdateParticles,
 			ClampMovement,
 			UpdateTimer,
 			PlayerLogic,
@@ -236,6 +237,7 @@ private:
 			ZombieGroupLogic,
 			ZombieGroupSpawnTimerLogic,
 			Renderer,
+				RenderGrid,
 				RenderPlayer,
 				RenderZombies,
 				RenderBullets,

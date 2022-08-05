@@ -4,6 +4,9 @@
 #include "update_movement.h"
 #include "clamp_movement.h"
 
+// Particles
+#include "update_particles.h"
+
 // Logic
 #include "player_logic.h"
 #include "bullet_logic.h"
@@ -37,3 +40,4 @@
 #include "render_bullets.h"
 #include "render_particles.h"
 #include "render_text.h"
+#include "render_grid.h"

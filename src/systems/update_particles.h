@@ -10,10 +10,10 @@ struct UpdateParticles : xecs::system::instance
 
 	using query = std::tuple
 		<
-			xecs::component::must<ParticleTag>
+			xecs::query::must<ParticleTag>
 		>;
 	
-	__inline operator()(Position& pos, const Velocity& vel) const noexcept 
+	__inline void operator()(Position& pos, const Velocity& vel) const noexcept 
 	{
 		pos.mValue += vel.mValue;
 	}

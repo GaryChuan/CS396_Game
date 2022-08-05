@@ -237,7 +237,7 @@ private:
 			ZombieGroupLogic,
 			ZombieGroupSpawnTimerLogic,
 			Renderer,
-				RenderGrid,
+				// RenderGrid,
 				RenderPlayer,
 				RenderZombies,
 				RenderBullets,

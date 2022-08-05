@@ -76,9 +76,11 @@ struct Grid
 		const auto X = static_cast<int>(pos.m_X / (CELL_WIDTH / 2.0f));
 		const auto Y = std::max(0, std::min(static_cast<int>(pos.m_Y / CELL_HEIGHT), CELL_ROW_COUNT - 1));
 		const auto x = 1 & ((X ^ Y) & Y);
+		
 		return
-		{ static_cast<std::int16_t>(std::max(0, std::min(1 + ((X - x) >> 1), CELL_COL_COUNT - 1)))
-		, static_cast<std::int16_t>(Y)
+		{ 
+			static_cast<std::int16_t>(std::max(0, std::min(1 + ((X - x) >> 1), CELL_COL_COUNT - 1))), 
+			static_cast<std::int16_t>(Y)
 		};
 	}
 };

@@ -59,7 +59,7 @@ private:
 
 				zombieGroup.mID = zombieWaveID;
 
-				zombieDetails.mMaxHealth		= 10.f;
+				zombieDetails.mMaxHealth		= 11.f;
 				zombieDetails.mMaxSpeed			= 0.5f;
 				zombieDetails.mMaxAcceleration	= 2.f;
 
@@ -69,7 +69,7 @@ private:
 				scale.mValue = xcore::vector2{ 3 , 3 };
 			});
 
-		mZombieToSpawn += zombieWaveID * 2;
+		mZombieToSpawn = 1 + std::powf(2, zombieWaveID);
 	}
 
 private:

@@ -77,6 +77,11 @@ public:
 									zombiePos.mValue += bulletDir * bullet.mPushback;
 									zombieHealth.mValue -= bullet.mDamage;
 
+									AddOrRemoveComponents<std::tuple<Timer>, std::tuple<>>
+										(
+											zombieEntity, [](Timer& timer) { timer.mValue = 0.15f; }
+										);
+
 									DeleteEntity(bulletEntity);
 									return true;
 								}

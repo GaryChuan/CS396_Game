@@ -269,7 +269,8 @@ private:
 				PlayerInputOnMouseLeftReleased,
 				PlayerDeactivateTextOnRemoveTimer,
 				DestroyBulletOnRemoveTimer,
-				DestroyParticleOnRemoveTimer
+				DestroyParticleOnRemoveTimer,
+				ZombieRestoreColourOnRemoveTimer
 			>();
 	}
 

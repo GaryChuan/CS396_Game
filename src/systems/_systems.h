@@ -27,6 +27,7 @@
 #include "player_deactivate_text_on_remove_timer.h"
 #include "start_timer_on_zombie_wave_cleared.h"
 #include "spawn_zombie_wave_on_timer_end.h"
+#include "zombie_restore_colour_on_remove_timer.h"
 
 // Input Events
 #include "player_input_on_key_triggered.h"

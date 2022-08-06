@@ -518,6 +518,9 @@
     <ClInclude Include="..\..\src\components\spawn_zombie_wave_details.h">
       <Filter>Components</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\systems\zombie_restore_colour_on_remove_timer.h">
+      <Filter>Systems\Events</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore.cpp">

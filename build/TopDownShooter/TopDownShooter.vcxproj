@@ -227,6 +227,7 @@
     <ClInclude Include="..\..\src\systems\spawn_zombie_wave_on_timer_end.h" />
     <ClInclude Include="..\..\src\systems\update_particles.h" />
     <ClInclude Include="..\..\src\systems\update_timer.h" />
+    <ClInclude Include="..\..\src\systems\zombie_restore_colour_on_remove_timer.h" />
     <ClInclude Include="..\..\src\systems\zombie_wave_logic.h" />
     <ClInclude Include="..\..\src\systems\zombie_wave_spawn_timer_logic.h" />
     <ClInclude Include="..\..\src\systems\start_timer_on_zombie_wave_cleared.h" />

@@ -39,7 +39,7 @@ struct Grid
 
 		for (std::int16_t y = std::max(0, yPos - 1), 
 			 endY = std::min(CELL_ROW_COUNT - 1, yPos + 1);
-			 y != endY; ++y)
+			 y <= endY; ++y)
 		{
 			auto shareFilter = system.findShareFilter
 			(

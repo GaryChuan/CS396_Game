@@ -44,4 +44,5 @@
 #include "render_bullets.h"
 #include "render_particles.h"
 #include "render_text.h"
+#include "render_buttons.h"
 #include "render_grid.h"

@@ -521,6 +521,15 @@
     <ClInclude Include="..\..\src\systems\zombie_restore_colour_on_remove_timer.h">
       <Filter>Systems\Events</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\components\button.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\components\button_details.h">
+      <Filter>Components\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\systems\render_buttons.h">
+      <Filter>Systems</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore.cpp">

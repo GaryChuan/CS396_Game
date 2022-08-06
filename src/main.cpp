@@ -217,10 +217,11 @@ private:
 			Health,
 			Timer,
 			Text,
+			Button,
 			// Share
 			GridCell,
 			ZombieDetails,
-			RenderDetails,
+			ButtonDetails,
 			ZombieWave,
 			// Tag
 			PlayerTag,
@@ -252,6 +253,7 @@ private:
 				RenderZombies,
 				RenderBullets,
 				RenderParticles,
+				RenderButtons,
 				RenderText
 			>();
 

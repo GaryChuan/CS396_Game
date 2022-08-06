@@ -181,6 +181,8 @@
     <ClInclude Include="..\..\dependencies\xecs\src\xecs_tools.h" />
     <ClInclude Include="..\..\dependencies\xecs\src\xecs_tools_bits.h" />
     <ClInclude Include="..\..\src\components\bullet.h" />
+    <ClInclude Include="..\..\src\components\button.h" />
+    <ClInclude Include="..\..\src\components\button_details.h" />
     <ClInclude Include="..\..\src\components\colour.h" />
     <ClInclude Include="..\..\src\components\particle_tag.h" />
     <ClInclude Include="..\..\src\components\render_details.h" />
@@ -219,6 +221,7 @@
     <ClInclude Include="..\..\src\systems\player_input_on_key_triggered.h" />
     <ClInclude Include="..\..\src\systems\player_input_on_mouse_left_held.h" />
     <ClInclude Include="..\..\src\systems\player_input_on_mouse_left_released.h" />
+    <ClInclude Include="..\..\src\systems\render_buttons.h" />
     <ClInclude Include="..\..\src\systems\render_grid.h" />
     <ClInclude Include="..\..\src\systems\render_particles.h" />
     <ClInclude Include="..\..\src\systems\render_player.h" />

@@ -11,10 +11,12 @@
 #include "weapon.h"
 #include "timer.h"
 #include "text.h"
+#include "button.h"
 #include "spawn_zombie_wave_details.h"
 
 // Share
 #include "render_details.h"
+#include "button_details.h"
 #include "zombie_wave.h"
 #include "zombie_details.h"
 #include "grid_cell.h"

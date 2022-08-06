@@ -251,18 +251,19 @@ private:
 
 		mManager->RegisterSystems
 			<
-			SpawnParticleOnZombieDeath,
-			StartTimerOnZombieGroupCleared,
-			SpawnZombieGroupOnTimerEnd,
-			PlayerInputOnKeyTriggered,
-			PlayerInputOnKeyDown,
-			PlayerInputOnKeyUp,
-			PlayerInputOnMouseLeftClicked,
-			PlayerInputOnMouseLeftHeld,
-			PlayerInputOnMouseLeftReleased,
-			PlayerDeactivateTextOnRemoveTimer,
-			DestroyBulletOnRemoveTimer,
-			DestroyParticleOnRemoveTimer
+				SpawnParticleOnZombieDeath,
+				SpawnParticleOnZombieHit,
+				StartTimerOnZombieGroupCleared,
+				SpawnZombieGroupOnTimerEnd,
+				PlayerInputOnKeyTriggered,
+				PlayerInputOnKeyDown,
+				PlayerInputOnKeyUp,
+				PlayerInputOnMouseLeftClicked,
+				PlayerInputOnMouseLeftHeld,
+				PlayerInputOnMouseLeftReleased,
+				PlayerDeactivateTextOnRemoveTimer,
+				DestroyBulletOnRemoveTimer,
+				DestroyParticleOnRemoveTimer
 			>();
 	}
 

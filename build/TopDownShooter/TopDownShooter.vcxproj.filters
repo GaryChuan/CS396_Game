@@ -506,6 +506,9 @@
     <ClInclude Include="..\..\src\systems\zombie_update_velocity.h">
       <Filter>Systems</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\systems\spawn_particle_on_zombie_hit.h">
+      <Filter>Systems\Events</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore.cpp">

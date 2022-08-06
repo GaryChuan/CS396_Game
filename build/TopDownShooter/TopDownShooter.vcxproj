@@ -220,6 +220,7 @@
     <ClInclude Include="..\..\src\systems\render_particles.h" />
     <ClInclude Include="..\..\src\systems\render_player.h" />
     <ClInclude Include="..\..\src\systems\render_text.h" />
+    <ClInclude Include="..\..\src\systems\spawn_particle_on_zombie_hit.h" />
     <ClInclude Include="..\..\src\systems\spawn_zombie_group_on_timer_end.h" />
     <ClInclude Include="..\..\src\systems\update_particles.h" />
     <ClInclude Include="..\..\src\systems\update_timer.h" />

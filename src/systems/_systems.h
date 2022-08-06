@@ -21,6 +21,7 @@
 
 // Game Events
 #include "spawn_particle_on_zombie_death.h"
+#include "spawn_particle_on_zombie_hit.h"
 #include "destroy_particle_on_remove_timer.h"
 #include "destroy_bullet_on_remove_timer.h"
 #include "player_deactivate_text_on_remove_timer.h"

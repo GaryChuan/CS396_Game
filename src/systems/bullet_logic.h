@@ -9,6 +9,12 @@ public:
 		.m_pName = "BulletLogic"
 	};
 
+	using ZombieHit 
+		= xecs::event::instance<const Position&, const xcore::vector2&>;
+
+	using events = std::tuple<ZombieHit>;
+
+
 	BulletLogic(xecs::game_mgr::instance& gameMgr)
 		: xecs::system::instance{ gameMgr }
 	{
@@ -62,10 +68,13 @@ public:
 
 									bulletDir.Normalize();
 
+									// Spawn hit particles
+									SendEventFrom<ZombieHit>(this, bulletPos, -bulletDir);
+
 									// Pushback zombie
 									zombiePos.mValue += bulletDir * bullet.mPushback;
-
 									zombieHealth.mValue -= bullet.mDamage;
+
 									DeleteEntity(bulletEntity);
 									return true;
 								}

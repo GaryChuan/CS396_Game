@@ -8,6 +8,12 @@ struct Zombie
 			.m_pName = "Zombie"
 		};
 
+	enum class State
+	{
+		NORMAL,
+		HIT
+	};
+
 	// Add zombie state here
 	union
 	{
@@ -19,4 +25,6 @@ struct Zombie
 		xcore::vector2 mValue{};
 
 	} mDesiredVelocity;
+
+	State mState{ State::NORMAL };
 };

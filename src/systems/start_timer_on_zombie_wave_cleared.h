@@ -1,27 +1,34 @@
 #pragma once
 
-struct StartTimerOnZombieGroupCleared : xecs::system::instance
+struct StartTimerOnZombieWaveCleared : xecs::system::instance
 {
 	constexpr static auto typedef_v
 		= xecs::system::type::system_event
 		<
-			ZombieGroupLogic,
-			ZombieGroupLogic::StartSpawnTimer
+			ZombieWaveLogic,
+			ZombieWaveLogic::StartSpawnTimer
 		>
 		{
-			.m_pName = "StartTimerOnZombieGroupCleared"
+			.m_pName = "StartTimerOnZombieWaveCleared"
 		};
 
-	StartTimerOnZombieGroupCleared(xecs::game_mgr::instance& gameMgr)
+	StartTimerOnZombieWaveCleared(xecs::game_mgr::instance& gameMgr)
 		: xecs::system::instance{ gameMgr }
 	{
 	}
 
 	__inline void OnEvent(int currentWave) noexcept
 	{
-		mSpawnTimerArchetypePtr = &getOrCreateArchetype<ZombieGroupSpawnTimerArchetype>();
+		mSpawnTimerArchetypePtr = &getOrCreateArchetype<ZombieWaveSpawnTimerArchetype>();
 
-		mSpawnTimerArchetypePtr->CreateEntity([currentWave](Position& position, ZombieGroup& group, Timer& timer, Text& text)
+		mSpawnTimerArchetypePtr->CreateEntity(
+			[currentWave]
+			(
+				Position& position, 
+				SpawnZombieWaveDetails& zombieWaveDetails, 
+				Timer& timer, 
+				Text& text
+			)
 			{
 				position.mValue = xcore::vector2
 				{
@@ -29,10 +36,9 @@ struct StartTimerOnZombieGroupCleared : xecs::system::instance
 					Grid::MAX_RESOLUTION_HEIGHT / 2
 				};
 
-
-				group.mID = currentWave;
-
 				timer.mValue = 5.f;
+
+				zombieWaveDetails.mID = currentWave;
 
 				text.mFont = Text::Font::HELVETICA_18;
 				text.mActive = true;

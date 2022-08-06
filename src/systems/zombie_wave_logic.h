@@ -1,15 +1,15 @@
 #pragma once
 
-struct ZombieGroupLogic : xecs::system::instance
+struct ZombieWaveLogic : xecs::system::instance
 {
 public:
 	constexpr static auto typedef_v
 		= xecs::system::type::update
 	{
-		.m_pName = "ZombieGroupLogic"
+		.m_pName = "ZombieWaveLogic"
 	};
 
-	ZombieGroupLogic(xecs::game_mgr::instance& gameMgr)
+	ZombieWaveLogic(xecs::game_mgr::instance& gameMgr)
 		: xecs::system::instance{ gameMgr }
 	{
 	}
@@ -20,7 +20,7 @@ public:
 
 	using query = std::tuple
 		<
-			xecs::query::must<ZombieGroup, xecs::component::share_as_data_exclusive_tag>
+			xecs::query::must<ZombieWave, xecs::component::share_as_data_exclusive_tag>
 		>;
 
 	__inline void OnGameStart() noexcept
@@ -30,10 +30,10 @@ public:
 	}
 
 	__inline void operator()(
-		const ZombieGroup& zombieGroup,
+		const ZombieWave& zombieWave,
 		const xecs::component::share_filter& shareFilter)
 	{
-		if (zombieGroup.mID < mCurrentWave)
+		if (zombieWave.mID < mCurrentWave)
 		{
 			return;
 		}

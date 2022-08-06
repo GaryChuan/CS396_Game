@@ -25,7 +25,7 @@ struct SpawnParticleOnZombieHit : xecs::system::instance
 		constexpr float b = 0.05f;
 
 		mParticleArchetype->CreateEntities(25,
-			[&](Position& particlePos, Velocity& velocity, Timer& timer, RenderDetails& renderDetails)
+			[&](Position& particlePos, Velocity& velocity, Timer& timer, Colour& colour, Scale& scale)
 			{
 				auto particleDir = invBulletDir;
 				
@@ -38,8 +38,8 @@ struct SpawnParticleOnZombieHit : xecs::system::instance
 
 				timer.mValue = 0.15f;
 
-				renderDetails.mColour = Colour{ r, g, b };
-				renderDetails.mSize = Size{ 0.5, 0.5 };
+				colour.mValue = xcore::vector3{ r, g, b };
+				scale.mValue = xcore::vector2{ 0.5, 0.5 };
 			});
 	}
 

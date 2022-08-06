@@ -53,7 +53,7 @@ public:
 
 						Grid::Search(
 							*this, *shareFilterPtr, x, y, mQueryZombies,
-							[&](const xecs::component::entity& zombieEntity, Health& zombieHealth, Position& zombiePos) constexpr noexcept
+							[&](const xecs::component::entity& zombieEntity, Health& zombieHealth, Colour& colour, Zombie& zombie, Position& zombiePos) constexpr noexcept
 							{
 								if (zombieEntity.isZombie())
 								{
@@ -70,6 +70,8 @@ public:
 
 									// Spawn hit particles
 									SendEventFrom<ZombieHit>(this, bulletPos, -bulletDir);
+
+									colour.mValue = ZOMBIE_HIT_COLOUR;
 
 									// Pushback zombie
 									zombiePos.mValue += bulletDir * bullet.mPushback;

@@ -25,16 +25,13 @@ struct RenderZombies : xecs::system::instance
 		glEnd();
 	}
 
-	__inline void operator()(const Position& pos, RenderDetails& renderDetails) const noexcept
+	__inline void operator()(const Position& pos, Colour& colour, Scale& scale) const noexcept
 	{
-		glColor3f(
-			renderDetails.mColour.r, 
-			renderDetails.mColour.g, 
-			renderDetails.mColour.b);
+		glColor3f(colour.r, colour.g, colour.b);
 
-		glVertex2i(pos.x - renderDetails.mSize.x, pos.y - renderDetails.mSize.y);
-		glVertex2i(pos.x - renderDetails.mSize.x, pos.y + renderDetails.mSize.y);
-		glVertex2i(pos.x + renderDetails.mSize.x, pos.y + renderDetails.mSize.y);
-		glVertex2i(pos.x + renderDetails.mSize.x, pos.y - renderDetails.mSize.y);
+		glVertex2i(pos.x - scale.x, pos.y - scale.y);
+		glVertex2i(pos.x - scale.x, pos.y + scale.y);
+		glVertex2i(pos.x + scale.x, pos.y + scale.y);
+		glVertex2i(pos.x + scale.x, pos.y - scale.y);
 	}
 };

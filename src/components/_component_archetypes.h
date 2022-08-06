@@ -1,7 +1,7 @@
 #pragma once
 
 using BulletArchetype = std::tuple<Position, Velocity, Bullet, Timer, GridCell>;
-using ZombieArchetype = std::tuple<Position, Velocity, Health, GridCell, Zombie, RenderDetails, ZombieDetails, ZombieGroup>;
-using PlayerArchetype = std::tuple<Position, Velocity, Health, Weapon, Text, GridCell, RenderDetails, PlayerTag>;
-using ParticleArchetype = std::tuple<Position, Velocity, Timer, RenderDetails, ParticleTag>;
-using ZombieGroupSpawnTimerArchetype = std::tuple<Position, Timer, Text, ZombieGroup>;
+using ZombieArchetype = std::tuple<Position, Velocity, Health, GridCell, Zombie, Colour, Scale, ZombieDetails, ZombieWave>;
+using PlayerArchetype = std::tuple<Position, Velocity, Health, Weapon, Text, GridCell, Colour, Scale, PlayerTag>;
+using ParticleArchetype = std::tuple<Position, Velocity, Timer, Colour, Scale, ParticleTag>;
+using ZombieWaveSpawnTimerArchetype = std::tuple<Position, Timer, Text, SpawnZombieWaveDetails>;

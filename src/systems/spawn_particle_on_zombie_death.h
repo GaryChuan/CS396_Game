@@ -31,7 +31,7 @@ struct SpawnParticleOnZombieDeath : xecs::system::instance
 		constexpr float b = 60.f / 255.f;
 
 		mParticleArchetype->CreateEntities(50,
-			[&](Position& particlePos, Velocity& velocity, Timer& timer, RenderDetails& renderDetails)
+			[&](Position& particlePos, Velocity& velocity, Timer& timer, Colour& colour, Scale& scale)
 			{
 				particlePos.mValue = zombiePos.mValue;
 
@@ -39,8 +39,8 @@ struct SpawnParticleOnZombieDeath : xecs::system::instance
 
 				timer.mValue = 0.75f;
 
-				renderDetails.mColour = Colour{ r, g, b };
-				renderDetails.mSize = Size{ 0.5, 0.5 };
+				colour.mValue = xcore::vector3{ r, g, b };
+				scale.mValue = xcore::vector2{ 0.5, 0.5 };
 			});
 	}
 

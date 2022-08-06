@@ -181,8 +181,11 @@
     <ClInclude Include="..\..\dependencies\xecs\src\xecs_tools.h" />
     <ClInclude Include="..\..\dependencies\xecs\src\xecs_tools_bits.h" />
     <ClInclude Include="..\..\src\components\bullet.h" />
+    <ClInclude Include="..\..\src\components\colour.h" />
     <ClInclude Include="..\..\src\components\particle_tag.h" />
     <ClInclude Include="..\..\src\components\render_details.h" />
+    <ClInclude Include="..\..\src\components\scale.h" />
+    <ClInclude Include="..\..\src\components\spawn_zombie_wave_details.h" />
     <ClInclude Include="..\..\src\components\zombie_details.h" />
     <ClInclude Include="..\..\src\components\_components.h" />
     <ClInclude Include="..\..\src\components\_component_archetypes.h" />
@@ -195,7 +198,7 @@
     <ClInclude Include="..\..\src\components\velocity.h" />
     <ClInclude Include="..\..\src\components\weapon.h" />
     <ClInclude Include="..\..\src\components\zombie.h" />
-    <ClInclude Include="..\..\src\components\zombie_group.h" />
+    <ClInclude Include="..\..\src\components\zombie_wave.h" />
     <ClInclude Include="..\..\src\events\events.h" />
     <ClInclude Include="..\..\src\events\on_mouse_left_released.h" />
     <ClInclude Include="..\..\src\events\on_key_down.h" />
@@ -221,12 +224,12 @@
     <ClInclude Include="..\..\src\systems\render_player.h" />
     <ClInclude Include="..\..\src\systems\render_text.h" />
     <ClInclude Include="..\..\src\systems\spawn_particle_on_zombie_hit.h" />
-    <ClInclude Include="..\..\src\systems\spawn_zombie_group_on_timer_end.h" />
+    <ClInclude Include="..\..\src\systems\spawn_zombie_wave_on_timer_end.h" />
     <ClInclude Include="..\..\src\systems\update_particles.h" />
     <ClInclude Include="..\..\src\systems\update_timer.h" />
-    <ClInclude Include="..\..\src\systems\zombie_group_logic.h" />
-    <ClInclude Include="..\..\src\systems\zombie_group_spawn_timer_logic.h" />
-    <ClInclude Include="..\..\src\systems\start_timer_on_zombie_group_cleared.h" />
+    <ClInclude Include="..\..\src\systems\zombie_wave_logic.h" />
+    <ClInclude Include="..\..\src\systems\zombie_wave_spawn_timer_logic.h" />
+    <ClInclude Include="..\..\src\systems\start_timer_on_zombie_wave_cleared.h" />
     <ClInclude Include="..\..\src\systems\spawn_particle_on_zombie_death.h" />
     <ClInclude Include="..\..\src\systems\player_input_on_key_down.h" />
     <ClInclude Include="..\..\src\systems\player_input_on_key_up.h" />

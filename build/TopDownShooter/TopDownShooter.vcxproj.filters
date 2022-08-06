@@ -475,19 +475,19 @@
     <ClInclude Include="..\..\src\components\render_details.h">
       <Filter>Components\Shared</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\components\zombie_group.h">
+    <ClInclude Include="..\..\src\components\zombie_wave.h">
       <Filter>Components\Shared</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\systems\zombie_group_spawn_timer_logic.h">
+    <ClInclude Include="..\..\src\systems\zombie_wave_spawn_timer_logic.h">
       <Filter>Systems</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\systems\start_timer_on_zombie_group_cleared.h">
+    <ClInclude Include="..\..\src\systems\start_timer_on_zombie_wave_cleared.h">
       <Filter>Systems\Events</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\systems\spawn_zombie_group_on_timer_end.h">
+    <ClInclude Include="..\..\src\systems\spawn_zombie_wave_on_timer_end.h">
       <Filter>Systems\Events</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\systems\zombie_group_logic.h">
+    <ClInclude Include="..\..\src\systems\zombie_wave_logic.h">
       <Filter>Systems</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\systems\render_grid.h">
@@ -508,6 +508,15 @@
     </ClInclude>
     <ClInclude Include="..\..\src\systems\spawn_particle_on_zombie_hit.h">
       <Filter>Systems\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\components\scale.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\components\colour.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\components\spawn_zombie_wave_details.h">
+      <Filter>Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

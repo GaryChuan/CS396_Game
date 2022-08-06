@@ -31,7 +31,8 @@ public:
 				Velocity& vel, 
 				Health& health, 
 				Weapon& weapon,
-				RenderDetails& renderDetails,
+				Colour& colour,
+				Scale& scale,
 				Text& text, 
 				GridCell& gridCell)
 			{
@@ -44,8 +45,8 @@ public:
 
 				health.mValue = 100;
 
-				renderDetails.mColour = Colour{ 1, 1, 1 };
-				renderDetails.mSize = Size{ 3 , 3 };
+				colour.mValue = xcore::vector3{ 1, 1, 1 };
+				scale.mValue = xcore::vector2{ 3 , 3 };
 
 				weapon.mCurrentWeapon = Weapon::Type::PISTOL;
 

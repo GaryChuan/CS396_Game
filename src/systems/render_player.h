@@ -25,17 +25,14 @@ struct RenderPlayer : xecs::system::instance
 		glEnd();
 	}
 
-	__inline void operator()(const Position& pos, const Weapon& weapon, RenderDetails& renderDetails) const noexcept
+	__inline void operator()(const Position& pos, const Weapon& weapon, Colour& colour, Scale& scale) const noexcept
 	{
-		glColor3f(
-			renderDetails.mColour.r,
-			renderDetails.mColour.g,
-			renderDetails.mColour.b);
+		glColor3f(colour.r, colour.g, colour.b);
 
-		glVertex2i(pos.x - renderDetails.mSize.x, pos.y - renderDetails.mSize.y);
-		glVertex2i(pos.x - renderDetails.mSize.x, pos.y + renderDetails.mSize.y);
-		glVertex2i(pos.x + renderDetails.mSize.x, pos.y + renderDetails.mSize.y);
-		glVertex2i(pos.x + renderDetails.mSize.x, pos.y - renderDetails.mSize.y);
+		glVertex2i(pos.x - scale.x, pos.y - scale.y);
+		glVertex2i(pos.x - scale.x, pos.y + scale.y);
+		glVertex2i(pos.x + scale.x, pos.y + scale.y);
+		glVertex2i(pos.x + scale.x, pos.y - scale.y);
 
 		constexpr float ammoOffset{ 7.5f };
 		constexpr xcore::vector2 ammoSize{ 1.f, 1.f };

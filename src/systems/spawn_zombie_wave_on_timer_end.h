@@ -1,19 +1,19 @@
 #pragma once
 
-struct SpawnZombieGroupOnTimerEnd : xecs::system::instance
+struct SpawnZombieWaveOnTimerEnd : xecs::system::instance
 {
 	constexpr static auto typedef_v
 		= xecs::system::type::notify_moved_out
 		{
-			.m_pName = "SpawnZombieGroupOnTimerEnd"
+			.m_pName = "SpawnZombieWaveOnTimerEnd"
 		};
 
 	using query = std::tuple
 		<
-			xecs::query::must<Timer, ZombieGroup>
+			xecs::query::must<Timer, SpawnZombieWaveDetails>
 		>;
 
-	SpawnZombieGroupOnTimerEnd(xecs::game_mgr::instance& gameMgr)
+	SpawnZombieWaveOnTimerEnd(xecs::game_mgr::instance& gameMgr)
 		: xecs::system::instance{ gameMgr }
 	{
 	}
@@ -23,9 +23,11 @@ struct SpawnZombieGroupOnTimerEnd : xecs::system::instance
 		mZombieArchetypePtr = &getOrCreateArchetype<ZombieArchetype>();
 	}
 
-	__inline void operator ()(xecs::component::entity& entity) noexcept
+	__inline void operator ()(
+		xecs::component::entity& entity, 
+		const SpawnZombieWaveDetails& zombieWaveDetails) noexcept
 	{
-		SpawnZombies();
+		SpawnZombies(zombieWaveDetails.mID);
 		
 		// Delete timer entity
 		DeleteEntity(entity);
@@ -33,17 +35,18 @@ struct SpawnZombieGroupOnTimerEnd : xecs::system::instance
 
 private:
 
-	void SpawnZombies()
+	void SpawnZombies(int zombieWaveID)
 	{
 		mZombieArchetypePtr->CreateEntities(mZombieToSpawn,
 			[&](
 				Position& pos,
+				Colour& colour,
+				Scale& scale,
 				Velocity& vel,
 				Health& health,
 				GridCell& gridCell,
 				ZombieDetails& zombieDetails,
-				RenderDetails& renderDetails,
-				ZombieGroup& zombieGroup,
+				ZombieWave& zombieGroup,
 				Zombie& zombie) noexcept
 			{
 				pos.mValue = xcore::vector2
@@ -54,7 +57,7 @@ private:
 
 				gridCell = Grid::ComputeGridCellFromWorldPosition(pos.mValue);
 
-				zombieGroup.mID = mCurrentWave;
+				zombieGroup.mID = zombieWaveID;
 
 				zombieDetails.mMaxHealth		= 10.f;
 				zombieDetails.mMaxSpeed			= 0.5f;
@@ -62,16 +65,14 @@ private:
 
 				health.mValue = zombieDetails.mMaxHealth;
 
-				renderDetails.mColour = Colour{ 0, 1, 0 };
-				renderDetails.mSize = Size{ 3 , 3 };
+				colour.mValue = ZOMBIE_BASE_COLOUR;
+				scale.mValue = xcore::vector2{ 3 , 3 };
 			});
 
-		++mCurrentWave;
-		mZombieToSpawn += mCurrentWave * 2;
+		mZombieToSpawn += zombieWaveID * 2;
 	}
 
 private:
 	int mZombieToSpawn = 1;
-	int mCurrentWave = 0;
 	xecs::archetype::instance* mZombieArchetypePtr{};
 };

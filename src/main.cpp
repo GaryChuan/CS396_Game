@@ -206,20 +206,26 @@ private:
 
 		mManager->RegisterComponents
 			<
+			// Data
 			Position,
 			Velocity,
+			Colour,
+			Scale,
 			Weapon,
 			Bullet,
 			Zombie,
 			Health,
 			Timer,
 			Text,
+			// Share
 			GridCell,
 			ZombieDetails,
 			RenderDetails,
-			ZombieGroup,
+			ZombieWave,
+			// Tag
 			PlayerTag,
-			ParticleTag
+			ParticleTag,
+			SpawnZombieWaveDetails
 			>();
 	}
 
@@ -238,8 +244,8 @@ private:
 			ZombieLogic,
 				ZombieSteeringLogic,
 				ZombieUpdateVelocity,
-			ZombieGroupLogic,
-			ZombieGroupSpawnTimerLogic,
+			ZombieWaveLogic,
+			ZombieWaveSpawnTimerLogic,
 			Renderer,
 				// RenderGrid,
 				RenderPlayer,
@@ -253,8 +259,8 @@ private:
 			<
 				SpawnParticleOnZombieDeath,
 				SpawnParticleOnZombieHit,
-				StartTimerOnZombieGroupCleared,
-				SpawnZombieGroupOnTimerEnd,
+				StartTimerOnZombieWaveCleared,
+				SpawnZombieWaveOnTimerEnd,
 				PlayerInputOnKeyTriggered,
 				PlayerInputOnKeyDown,
 				PlayerInputOnKeyUp,

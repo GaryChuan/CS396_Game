@@ -496,6 +496,7 @@
     <ClInclude Include="..\..\src\systems\update_particles.h">
       <Filter>Systems</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\global_settings.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore.cpp">

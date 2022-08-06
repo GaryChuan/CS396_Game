@@ -35,7 +35,6 @@ public:
 
 	void OnUpdate() noexcept
 	{
-		constexpr float delta = 1 / 60.f;
 		constexpr float zombieSpeed = 0.5f;
 		constexpr float separationDist = 4.f;
 		constexpr float separationWeight = 2.f;
@@ -126,7 +125,7 @@ public:
 		Foreach(Search(mQueryZombies),
 			[&](Position& zombiePos, Velocity& zombieVel, const Zombie& zombie)
 			{
-				const float maxDelta = zombieAcceleration * delta;
+				const float maxDelta = zombieAcceleration;
 				const auto& dVel = zombie.mDesiredVelocity.mValue;
 
 				auto dv = dVel - zombieVel.mValue;
@@ -138,29 +137,8 @@ public:
 				}
 
 				zombieVel.mValue += dv;
-				zombiePos.mValue += zombieVel.mValue * delta;
+				zombiePos.mValue += zombieVel.mValue;
 			});
-
-		/*Foreach(Search(mQueryZombies),
-			[&](xecs::component::entity& zombie1, Velocity& zombieVel, const Position& zombiePos) noexcept
-			{
-				Grid::Search(*this, )
-				Foreach(
-					Search(mQueryZombies),
-					[&](xecs::component::entity& zombie2, const Position& zombiePos2)
-					{
-						if (zombie2.isZombie() || zombie1 == zombie2)
-						{
-							return;
-						}
-
-						auto desiredVel = playerPos - zombiePos;
-
-
-					});
-
-				zombieVel.mValue = (playerPos - zombiePos.mValue).NormalizeSafe() * 0.5f;
-			});*/
 	}
 
 private:

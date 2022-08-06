@@ -10,9 +10,7 @@ struct UpdateTimer : xecs::system::instance
 
 	__inline void operator()(xecs::component::entity& entity, Timer& timer)
 	{
-		constexpr float delta = 1 / 60.f;
-
-		timer.mValue -= delta;
+		timer.mValue -= F_DT;
 
 		if (timer.mValue <= 0)
 		{

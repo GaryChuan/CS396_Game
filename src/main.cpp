@@ -1,5 +1,6 @@
 #include <iostream>
 #include "pch.h"
+#include "global_settings.h"
 
 #include "components/_components.h"
 #include "tools/tools.h"

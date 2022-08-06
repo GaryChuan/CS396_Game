@@ -203,6 +203,7 @@
     <ClInclude Include="..\..\src\events\on_mouse_left_clicked.h" />
     <ClInclude Include="..\..\src\events\on_mouse_left_held.h" />
     <ClInclude Include="..\..\src\events\on_mouse_right_click.h" />
+    <ClInclude Include="..\..\src\global_settings.h" />
     <ClInclude Include="..\..\src\pch.h" />
     <ClInclude Include="..\..\src\settings\PropertyConfig.h" />
     <ClInclude Include="..\..\src\settings\xcore_user_settings.h" />

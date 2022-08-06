@@ -28,7 +28,7 @@ struct RenderText : xecs::system::instance
 			return;
 		}
 
-		glColor3f(1.f, 1.f, 1.f);
+		glColor3f(text.mColour.r, text.mColour.g, text.mColour.b);
 
 		glMatrixMode(GL_PROJECTION);
 		glPushMatrix();

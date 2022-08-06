@@ -6,4 +6,4 @@ using PlayerArchetype = std::tuple<Position, Velocity, Health, Weapon, Text, Gri
 using ParticleArchetype = std::tuple<Position, Velocity, Timer, Colour, Scale, ParticleTag>;
 using ZombieWaveSpawnTimerArchetype = std::tuple<Position, Timer, Text, SpawnZombieWaveDetails>;
 
-using ButtonArchetype = std::tuple<Position, Colour, Scale, Button, ButtonDetails>;
+using ButtonArchetype = std::tuple<Position, Colour, Scale, Text, Button, ButtonDetails>;

@@ -8,6 +8,13 @@ struct Text
 			.m_pName = "Text"
 		};
 
+	enum struct Font : short
+	{
+		HELVETICA_10,
+		HELVETICA_12,
+		HELVETICA_18,
+	};
+
 	union
 	{
 		struct
@@ -18,12 +25,15 @@ struct Text
 		xcore::vector2 mValue{};
 	} mOffset;
 
-	enum struct Font : short
+	union
 	{
-		HELVETICA_10,
-		HELVETICA_12,
-		HELVETICA_18,
-	};
+		struct
+		{
+			float r, g, b;
+		};
+
+		xcore::vector3 mValue{1.f, 1.f, 1.f};
+	} mColour;
 
 	bool mActive{ true };
 	Font mFont{ Font::HELVETICA_10 };

@@ -59,7 +59,7 @@ private:
 			{
 				[&](const SubmachineGun& smg) noexcept
 				{
-					mBulletArchetypePtr->CreateEntity([&](Position& bulletPos, Timer& timer, Velocity& bulletVel)
+					mBulletArchetypePtr->CreateEntity([&](Position& bulletPos, Timer& timer, Velocity& bulletVel, Bullet& bullet)
 						{
 							bulletPos = playerPos;
 
@@ -70,6 +70,9 @@ private:
 							newDirection.NormalizeSafe();
 
 							timer.mValue = 1.f;
+
+							bullet.mDamage = smg.GetDamage();
+							bullet.mPushback = smg.GetPushback();
 
 							bulletVel.mValue = newDirection * 5.f;
 						});

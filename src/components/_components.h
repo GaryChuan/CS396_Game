@@ -13,6 +13,7 @@
 // Share
 #include "render_details.h"
 #include "zombie_group.h"
+#include "zombie_details.h"
 #include "grid_cell.h"
 
 // Tags
@@ -20,4 +21,4 @@
 #include "particle_tag.h"
 
 // Archetypes
-#include "component_archetypes.h"
+#include "_component_archetypes.h"

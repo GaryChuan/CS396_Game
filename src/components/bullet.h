@@ -8,5 +8,6 @@ struct Bullet
 			.m_pName = "Bullet"
 		};
 
-	float mDamage;
+	float mDamage{};
+	float mPushback{};
 };

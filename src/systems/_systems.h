@@ -11,6 +11,8 @@
 #include "player_logic.h"
 #include "bullet_logic.h"
 #include "zombie_logic.h"
+#include "zombie_steering_logic.h"
+#include "zombie_update_velocity.h"
 #include "zombie_group_logic.h"
 #include "zombie_group_spawn_timer_logic.h"
 

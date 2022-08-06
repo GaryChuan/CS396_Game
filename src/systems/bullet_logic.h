@@ -38,7 +38,7 @@ public:
 
 				Foreach(
 					*shareFilterPtr, mQueryBullets,
-					[&](xecs::component::entity& bulletEntity, const Position& bulletPos, const Bullet& bullet)
+					[&](xecs::component::entity& bulletEntity, const Position& bulletPos, const Velocity& bulletVel, const Bullet& bullet)
 					{
 						if (bulletEntity.isZombie())
 						{
@@ -47,7 +47,7 @@ public:
 
 						Grid::Search(
 							*this, *shareFilterPtr, x, y, mQueryZombies,
-							[&](xecs::component::entity& zombieEntity, const Position& zombiePos) constexpr noexcept
+							[&](const xecs::component::entity& zombieEntity, Health& zombieHealth, Position& zombiePos) constexpr noexcept
 							{
 								if (zombieEntity.isZombie())
 								{
@@ -58,8 +58,15 @@ public:
 
 								if ((zombiePos.mValue - bulletPos.mValue).getLengthSquared() < distanceSq)
 								{
+									xcore::vector2 bulletDir = bulletVel.mValue;
+
+									bulletDir.Normalize();
+
+									// Pushback zombie
+									zombiePos.mValue += bulletDir * bullet.mPushback;
+
+									zombieHealth.mValue -= bullet.mDamage;
 									DeleteEntity(bulletEntity);
-									DeleteEntity(zombieEntity);
 									return true;
 								}
 
@@ -69,41 +76,6 @@ public:
 			}
 		}
 	}
-
-	//__inline void operator()(
-	//	xecs::component::entity& entity, 
-	//	const Position& bulletPos, 
-	//	const Bullet& bullet)
-	//{
-	//	// Destroy if out of bounds
-	//	if (bulletPos.x < 0 || bulletPos.x >= Grid::MAX_RESOLUTION_WIDTH 
-	//	 || bulletPos.y < 0 || bulletPos.y >= Grid::MAX_RESOLUTION_HEIGHT)
-	//	{
-	//		DeleteEntity(entity);
-	//		return;
-	//	}
-	//	
-	//	/*Foreach(Search(mQueryZombie), 
-	//		[&](xecs::component::entity& entity2, const Position& zombiePos) constexpr noexcept
-	//		{
-	//			if (entity2.isZombie() || entity == entity2)
-	//			{
-	//				return false;
-	//			}
-
-	//			constexpr auto distanceSq = 4 * 4;
-
-	//			if ((zombiePos.mValue - bulletPos.mValue).getLengthSquared() < distanceSq)
-	//			{
-	//				DeleteEntity(entity);
-	//				DeleteEntity(entity2);
-	//				return true;
-	//			}
-
-	//			return false;
-	//		});*/
-	//	}
-	//}
 
 private:
 	xecs::query::instance mQueryBullets{};

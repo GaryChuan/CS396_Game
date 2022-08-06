@@ -6,15 +6,17 @@ template <typename T>
 struct WeaponInterface : CRTP<T>
 {
 public:
-	float GetDamage() const { return mDamage; }
-	unsigned GetMaxAmmoCount() const { return mMaxAmmoCount; }
-	unsigned GetAmmoCount() const { return mAmmoCount; }
-	float GetReloadRate() const { return mReloadRate; }
-	void Reloaded() { mAmmoCount = mMaxAmmoCount; }
+	float GetDamage() const noexcept { return mDamage; }
+	unsigned GetMaxAmmoCount() const noexcept { return mMaxAmmoCount; }
+	unsigned GetAmmoCount() const noexcept { return mAmmoCount; }
+	float GetReloadRate() const noexcept { return mReloadRate; }
+	float GetPushback() const noexcept { return mPushback; }
+	void Reloaded() noexcept { mAmmoCount = mMaxAmmoCount; }
 
 protected:
-	WeaponInterface(float damage, float reloadRate, float fireRate, unsigned ammoCount)
+	WeaponInterface(float damage, float reloadRate, float fireRate, float pushback, unsigned ammoCount)
 		: mDamage		{ damage }
+		, mPushback		{ pushback }
 		, mFireRate		{ fireRate }
 		, mReloadRate	{ reloadRate }
 		, mMaxAmmoCount	{ ammoCount }
@@ -26,6 +28,7 @@ protected:
 	friend Weapon;
 
 	float mDamage{};
+	float mPushback{};
 	float mFireRate{};
 	float mReloadRate{};
 	unsigned mMaxAmmoCount{};
@@ -35,19 +38,19 @@ protected:
 struct Shotgun : public WeaponInterface<Shotgun>
 {
 public:
-	Shotgun()  : WeaponInterface{ 10, 2, 0.5f, 2u } {}
+	Shotgun() : WeaponInterface { 8, 2, 0.5f, 5.f, 2u } {}
 };
 
 struct Pistol : public WeaponInterface<Pistol>
 {
 public:
-	Pistol() : WeaponInterface{ 5, 1, 1, 10u } {}
+	Pistol() : WeaponInterface{ 5, 1, 1, 2.5f, 10u } {}
 };
 
 struct SubmachineGun : public WeaponInterface<SubmachineGun>
 {
 public:
-	SubmachineGun() : WeaponInterface{ 3, 3, 0.1f, 30u } {}
+	SubmachineGun() : WeaponInterface{ 3, 3, 0.1f, 2.f, 30u } {}
 };
 
 using WeaponType = std::variant<Pistol, Shotgun, SubmachineGun>;
@@ -73,7 +76,7 @@ struct Weapon
 		(
 			[](const auto& weaponType) 
 			{ 
-				return weaponType.GetAmmoCount(); 
+				return weaponType.mAmmoCount; 
 			}, mArsenal[static_cast<int>(mCurrentWeapon)]
 		);
 	}
@@ -135,6 +138,28 @@ struct Weapon
 			[](const auto& weaponType) noexcept
 			{
 				return weaponType.mFireRate;
+			}, mArsenal[static_cast<int>(mCurrentWeapon)]
+		);
+	}
+
+	float GetDamage() const
+	{
+		return std::visit
+		(
+			[](const auto& weaponType) noexcept
+			{
+				return weaponType.mDamage;
+			}, mArsenal[static_cast<int>(mCurrentWeapon)]
+		);
+	}
+
+	float GetPushback() const
+	{
+		return std::visit
+		(
+			[] (const auto& weaponType) noexcept
+			{
+				return weaponType.mPushback;
 			}, mArsenal[static_cast<int>(mCurrentWeapon)]
 		);
 	}

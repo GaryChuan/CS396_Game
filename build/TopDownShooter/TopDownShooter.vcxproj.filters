@@ -361,7 +361,7 @@
     <ClInclude Include="..\..\src\components\health.h">
       <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\components\component_archetypes.h">
+    <ClInclude Include="..\..\src\components\_component_archetypes.h">
       <Filter>Components</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\events\on_key_down.h">
@@ -497,6 +497,15 @@
       <Filter>Systems</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\global_settings.h" />
+    <ClInclude Include="..\..\src\components\zombie_details.h">
+      <Filter>Components\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\systems\zombie_steering_logic.h">
+      <Filter>Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\systems\zombie_update_velocity.h">
+      <Filter>Systems</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore.cpp">

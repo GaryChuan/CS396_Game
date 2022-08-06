@@ -183,8 +183,9 @@
     <ClInclude Include="..\..\src\components\bullet.h" />
     <ClInclude Include="..\..\src\components\particle_tag.h" />
     <ClInclude Include="..\..\src\components\render_details.h" />
+    <ClInclude Include="..\..\src\components\zombie_details.h" />
     <ClInclude Include="..\..\src\components\_components.h" />
-    <ClInclude Include="..\..\src\components\component_archetypes.h" />
+    <ClInclude Include="..\..\src\components\_component_archetypes.h" />
     <ClInclude Include="..\..\src\components\grid_cell.h" />
     <ClInclude Include="..\..\src\components\health.h" />
     <ClInclude Include="..\..\src\components\player_tag.h" />
@@ -233,6 +234,8 @@
     <ClInclude Include="..\..\src\systems\renderer.h" />
     <ClInclude Include="..\..\src\systems\render_bullets.h" />
     <ClInclude Include="..\..\src\systems\render_zombies.h" />
+    <ClInclude Include="..\..\src\systems\zombie_steering_logic.h" />
+    <ClInclude Include="..\..\src\systems\zombie_update_velocity.h" />
     <ClInclude Include="..\..\src\systems\_systems.h" />
     <ClInclude Include="..\..\src\systems\update_movement.h" />
     <ClInclude Include="..\..\src\systems\zombie_logic.h" />

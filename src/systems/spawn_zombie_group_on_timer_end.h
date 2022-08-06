@@ -41,6 +41,7 @@ private:
 				Velocity& vel,
 				Health& health,
 				GridCell& gridCell,
+				ZombieDetails& zombieDetails,
 				RenderDetails& renderDetails,
 				ZombieGroup& zombieGroup,
 				Zombie& zombie) noexcept
@@ -54,6 +55,12 @@ private:
 				gridCell = Grid::ComputeGridCellFromWorldPosition(pos.mValue);
 
 				zombieGroup.mID = mCurrentWave;
+
+				zombieDetails.mMaxHealth		= 10.f;
+				zombieDetails.mMaxSpeed			= 0.5f;
+				zombieDetails.mMaxAcceleration	= 2.f;
+
+				health.mValue = zombieDetails.mMaxHealth;
 
 				renderDetails.mColour = Colour{ 0, 1, 0 };
 				renderDetails.mSize = Size{ 3 , 3 };

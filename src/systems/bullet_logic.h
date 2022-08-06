@@ -66,8 +66,6 @@ public:
 								return false;
 							});
 					});
-
-				
 			}
 		}
 	}

@@ -9,4 +9,14 @@ struct Zombie
 		};
 
 	// Add zombie state here
+	union
+	{
+		struct
+		{
+			float x, y;
+		};
+
+		xcore::vector2 mValue{};
+
+	} mDesiredVelocity;
 };

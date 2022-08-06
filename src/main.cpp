@@ -283,6 +283,20 @@ void timer(int value) noexcept
 	glutTimerFunc(15, timer, 0);
 }
 
+//---------------------------------------------------------------------------------------
+// GLUT TOGGLE MAXIMIZE BUTTON
+//---------------------------------------------------------------------------------------
+void toggleGlutWindowMaximizeBox(LPCWSTR szWindowTitle)
+{
+	long dwStyle;
+	HWND hwndGlut;
+
+	hwndGlut = FindWindow(NULL, szWindowTitle);
+
+	dwStyle = GetWindowLong(hwndGlut, GWL_STYLE);
+	dwStyle ^= WS_MAXIMIZEBOX;
+	SetWindowLong(hwndGlut, GWL_STYLE, dwStyle);
+}
 
 int main(int argc, char** argv)
 {
@@ -298,15 +312,18 @@ int main(int argc, char** argv)
 	glutInitWindowSize(width, height);
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE);
-	glutCreateWindow("CS396 Game");
+	glutCreateWindow("Topdown Shooter");
+	toggleGlutWindowMaximizeBox(L"Topdown Shooter");
 
 	glutDisplayFunc([](void) noexcept
 		{
 			game.Run();
 		});
-	glutReshapeFunc([](int w, int h) noexcept
+	glutReshapeFunc([](int, int) noexcept
 		{
-			game.SetResolution(w, h);
+			// Prevent resizing (fix height/width)
+			const auto& [width, height] = game.GetResolution();
+			glutReshapeWindow(width, height);
 		});
 	glutKeyboardFunc([](unsigned char key, int mouseX, int mouseY) noexcept
 		{

@@ -51,7 +51,7 @@ public:
 
 				text.mValue			= Weapon::names.front();
 				text.mActive		= false;
-				text.mOffset.mValue = xcore::vector2{ -15 , -10 };
+				text.mOffset.mValue = xcore::vector2{ -21.5 , -10 };
 
 				gridCell = Grid::ComputeGridCellFromWorldPosition(pos.mValue);
 			});

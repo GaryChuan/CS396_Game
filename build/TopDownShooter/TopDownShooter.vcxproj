@@ -67,6 +67,9 @@
       <AdditionalLibraryDirectories>..\..\dependencies\fmod\lib;..\..\dependencies\xecs\dependencies\xcore;..\..\dependencies\xecs\dependencies\glut\x64\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>fmod_vc.lib;fmodL_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /y /d "..\..\dependencies\fmod\lib\*.dll" "$(OutDir)"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -87,6 +90,9 @@
       <AdditionalLibraryDirectories>..\..\dependencies\fmod\lib;..\..\dependencies\xecs\dependencies\xcore;..\..\dependencies\xecs\dependencies\glut\x64\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>fmod_vc.lib;fmodL_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /y /d "..\..\dependencies\fmod\lib\*.dll" "$(OutDir)"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\dependencies\fmod\include\fmod.h" />
@@ -190,6 +196,7 @@
     <ClInclude Include="..\..\dependencies\xecs\src\xecs_system_mgr.h" />
     <ClInclude Include="..\..\dependencies\xecs\src\xecs_tools.h" />
     <ClInclude Include="..\..\dependencies\xecs\src\xecs_tools_bits.h" />
+    <ClInclude Include="..\..\src\audio\audio_manager.h" />
     <ClInclude Include="..\..\src\components\bullet.h" />
     <ClInclude Include="..\..\src\components\button.h" />
     <ClInclude Include="..\..\src\components\button_details.h" />
@@ -210,6 +217,7 @@
     <ClInclude Include="..\..\src\components\weapon.h" />
     <ClInclude Include="..\..\src\components\zombie.h" />
     <ClInclude Include="..\..\src\components\zombie_wave.h" />
+    <ClInclude Include="..\..\src\events\play_sound.h" />
     <ClInclude Include="..\..\src\events\_events.h" />
     <ClInclude Include="..\..\src\events\on_mouse_left_released.h" />
     <ClInclude Include="..\..\src\events\on_key_down.h" />
@@ -236,6 +244,7 @@
     <ClInclude Include="..\..\src\systems\button_on_left_mouse_clicked.h" />
     <ClInclude Include="..\..\src\systems\clamp_movement.h" />
     <ClInclude Include="..\..\src\systems\destroy_bullet_on_remove_timer.h" />
+    <ClInclude Include="..\..\src\systems\on_play_sound.h" />
     <ClInclude Include="..\..\src\systems\player_deactivate_text_on_remove_timer.h" />
     <ClInclude Include="..\..\src\systems\destroy_particle_on_remove_timer.h" />
     <ClInclude Include="..\..\src\systems\player_input_on_key_triggered.h" />
@@ -271,6 +280,7 @@
     <ClInclude Include="..\..\src\tools\crtp.h" />
     <ClInclude Include="..\..\src\tools\grid.h" />
     <ClInclude Include="..\..\src\tools\math_random.h" />
+    <ClInclude Include="..\..\src\tools\service.h" />
     <ClInclude Include="..\..\src\tools\tools.h" />
   </ItemGroup>
   <ItemGroup>

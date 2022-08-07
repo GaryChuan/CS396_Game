@@ -20,3 +20,4 @@ using Keys = std::array<std::uint8_t, 0xff + 1>;
 #include "on_mouse_left_released.h"
 #include "on_mouse_right_click.h"
 #include "on_mouse_move.h"
+#include "play_sound.h"

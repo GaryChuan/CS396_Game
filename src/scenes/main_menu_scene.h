@@ -23,6 +23,13 @@ struct MainMenuScene : public Scene<MainMenuScene>
 		RegisterSystems();
 
 		InitializeScene();
+
+		Service<AudioManager>::Get().PlaySound("BGM");
+	}
+
+	void Unload() noexcept
+	{
+		Release();
 	}
 
 private:
@@ -64,7 +71,7 @@ private:
 			Button,
 			// Share
 			ButtonDetails
-			> ();
+			>();
 	}
 
 	void RegisterSystems() noexcept

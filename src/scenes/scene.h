@@ -19,7 +19,7 @@ struct Scene : CRTP<T>
 	{
 	}
 
-	Scene& operator = (Scene&& scene)
+	Scene& operator = (Scene&& scene) noexcept
 	{
 		mGSM = scene.mGSM;
 		mManager = std::move(scene.mManager);
@@ -104,10 +104,9 @@ struct Scene : CRTP<T>
 		mManager->Run();
 	}
 
-	void Unload()
+	void Unload() noexcept
 	{
-		mManager.reset();
-		xecs::component::mgr::resetRegistrations();
+		this->underlying().Unload();
 	}
 
 	void OnMousePassiveMotion(int mouseX, int mouseY) noexcept
@@ -124,6 +123,12 @@ protected:
 	Scene(GameStateManager& gsm)
 		: mGSM { gsm }
 	{
+	}
+
+	void Release() noexcept
+	{
+		mManager.reset();
+		xecs::component::mgr::resetRegistrations();
 	}
 
 	std::reference_wrapper<GameStateManager> mGSM;

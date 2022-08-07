@@ -25,6 +25,13 @@ struct GameScene : public Scene<GameScene>
 		PlayerLogic::mGSMPtr = &(mGSM.get());
 	}
 
+	void Unload() noexcept
+	{
+		Release();
+
+		Service<AudioManager>::Get().StopAllChannels();
+	}
+
 private:
 	void RegisterEvents()
 	{
@@ -38,7 +45,8 @@ private:
 			OnMouseLeftClicked,
 			OnMouseLeftHeld,
 			OnMouseLeftReleased,
-			OnMouseMove
+			OnMouseMove,
+			PlaySound
 			>();
 	}
 
@@ -103,6 +111,7 @@ private:
 
 		mManager->RegisterSystems
 			<
+				OnPlaySound,
 				SpawnParticleOnZombieDeath,
 				SpawnParticleOnZombieHit,
 				StartTimerOnZombieWaveCleared,

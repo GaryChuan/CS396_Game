@@ -38,6 +38,9 @@ Description:
 #include "spawn_zombie_wave_on_timer_end.h"
 #include "zombie_restore_colour_on_remove_timer.h"
 
+// Sound Events
+#include "on_play_sound.h"
+
 // Input Events
 #include "player_input_on_key_triggered.h"
 #include "player_input_on_key_down.h"

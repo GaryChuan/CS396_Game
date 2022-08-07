@@ -9,6 +9,8 @@ Description:
 #include "pch.h"
 #include "global_settings.h"
 
+#include "audio/audio_manager.h"
+
 #include "game_state_manager.h"
 
 #include "components/_components.h"
@@ -24,7 +26,7 @@ public:
 	using Manager = xecs::game_mgr::instance;
 
 	Game(int width = 1024, int height = 800) noexcept
-		: mResolution{ 1024, 800 }
+		: mResolution{ width, height}
 	{
 		Initialize();
 	}
@@ -200,11 +202,30 @@ void toggleGlutWindowMaximizeBox(LPCWSTR szWindowTitle)
 	SetWindowLong(hwndGlut, GWL_STYLE, dwStyle);
 }
 
+//---------------------------------------------------------------------------------------
+// INTIALIZE ALL AUDIO
+//---------------------------------------------------------------------------------------
+void InitializeAudio()
+{
+	auto& audioManager = Service<AudioManager>::Get();
+	
+	audioManager.Initialize();
+
+	audioManager.CreateSound(BGM, "../../resources/BGM.wav");
+	audioManager.CreateSound(PISTOL_SHOT_SOUND, "../../resources/pistol_shot.wav");
+}
+
+
 int main(int argc, char** argv)
 {
 	static Game game{};
 
+	Service<AudioManager>::Register();
+
 	const auto& [width, height] = game.GetResolution();
+
+	// Initialize audio -- adding sounds etc..
+	InitializeAudio();
 
 	//
 	// Create the graphics and main loop
@@ -218,6 +239,7 @@ int main(int argc, char** argv)
 	glutDisplayFunc([](void) noexcept
 		{
 			game.Run();
+			Service<AudioManager>::Get().Update();
 		});
 	glutReshapeFunc([](int, int) noexcept
 		{
@@ -250,6 +272,8 @@ int main(int argc, char** argv)
     glutTimerFunc(0, timer, 0);
 
     glutMainLoop();
+
+	Service<AudioManager>::Release();
 
 	return 0;
 }

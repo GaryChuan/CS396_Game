@@ -8,4 +8,5 @@ Description:
 #pragma once
 
 #include "grid.h"
+#include "service.h"
 #include "math_random.h"

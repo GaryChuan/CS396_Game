@@ -46,6 +46,9 @@
     <Filter Include="_Dependencies\FMOD">
       <UniqueIdentifier>{fdd46e1b-4bcc-4f3b-bb5c-f3bcc5d3b46d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Audio">
+      <UniqueIdentifier>{bb9b80cc-c73b-4e55-9534-c50a064d9675}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\settings\PropertyConfig.h">
@@ -590,6 +593,18 @@
     </ClInclude>
     <ClInclude Include="..\..\dependencies\fmod\include\fmod_output.h">
       <Filter>_Dependencies\FMOD</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\audio\audio_manager.h">
+      <Filter>Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\tools\service.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\events\play_sound.h">
+      <Filter>Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\systems\on_play_sound.h">
+      <Filter>Systems\Events</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

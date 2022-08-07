@@ -24,3 +24,7 @@ constexpr static xcore::vector3 BUTTON_RELEASED_COLOUR{ 0.2f, 0.5f, 0.2f };
 
 // Player
 constexpr static float PLAYER_MAX_HEALTH = 15.f;
+
+// Audio
+constexpr static const char* PISTOL_SHOT_SOUND = "PistolShot";
+constexpr static const char* BGM = "BGM";

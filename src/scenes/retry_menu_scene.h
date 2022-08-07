@@ -25,6 +25,11 @@ struct RetryMenuScene : public Scene<RetryMenuScene>
 		InitializeScene();
 	}
 
+	void Unload() noexcept
+	{
+		Release();
+	}
+
 private:
 	void InitializeScene() noexcept
 	{

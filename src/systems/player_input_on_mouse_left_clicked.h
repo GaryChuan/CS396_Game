@@ -80,6 +80,8 @@ private:
 							bullet.mPushback = pistol.GetPushback();
 
 							timer.mValue = 1.2f;
+
+							SendGlobalEvent<PlaySound>(PISTOL_SHOT_SOUND);
 						});
 				},
 				[&](const Shotgun& shotgun) noexcept

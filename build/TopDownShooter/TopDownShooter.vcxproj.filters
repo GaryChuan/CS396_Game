@@ -43,6 +43,9 @@
     <Filter Include="Scenes">
       <UniqueIdentifier>{bce5173b-73be-4124-8690-1e7b6c0ff693}</UniqueIdentifier>
     </Filter>
+    <Filter Include="_Dependencies\FMOD">
+      <UniqueIdentifier>{fdd46e1b-4bcc-4f3b-bb5c-f3bcc5d3b46d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\settings\PropertyConfig.h">
@@ -563,6 +566,30 @@
     </ClInclude>
     <ClInclude Include="..\..\src\scenes\retry_menu_scene.h">
       <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\fmod\include\fmod.h">
+      <Filter>_Dependencies\FMOD</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\fmod\include\fmod.hpp">
+      <Filter>_Dependencies\FMOD</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\fmod\include\fmod_codec.h">
+      <Filter>_Dependencies\FMOD</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\fmod\include\fmod_common.h">
+      <Filter>_Dependencies\FMOD</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\fmod\include\fmod_dsp.h">
+      <Filter>_Dependencies\FMOD</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\fmod\include\fmod_dsp_effects.h">
+      <Filter>_Dependencies\FMOD</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\fmod\include\fmod_errors.h">
+      <Filter>_Dependencies\FMOD</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dependencies\fmod\include\fmod_output.h">
+      <Filter>_Dependencies\FMOD</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

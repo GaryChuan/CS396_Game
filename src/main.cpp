@@ -147,7 +147,7 @@ public:
 	void OnKeyboardUp(unsigned char key, int mouseX, int mouseY) noexcept
 	{
 		if (mGameState == GameState::LOAD
-			|| mGameState == GameState::UNLOAD)
+		 || mGameState == GameState::UNLOAD)
 		{
 			return;
 		}
@@ -160,7 +160,7 @@ public:
 	void OnMouseClick(int button, int state, int mouseX, int mouseY) noexcept
 	{
 		if (mGameState == GameState::LOAD
-			|| mGameState == GameState::UNLOAD)
+		 || mGameState == GameState::UNLOAD)
 		{
 			return;
 		}
@@ -173,7 +173,7 @@ public:
 	void OnMouseMotion(int mouseX, int mouseY) noexcept
 	{
 		if (mGameState == GameState::LOAD
-			|| mGameState == GameState::UNLOAD)
+		 || mGameState == GameState::UNLOAD)
 		{
 			return;
 		}
@@ -186,7 +186,7 @@ public:
 	void OnMousePassiveMotion(int mouseX, int mouseY) noexcept
 	{
 		if (mGameState == GameState::LOAD
-			|| mGameState == GameState::UNLOAD)
+		 || mGameState == GameState::UNLOAD)
 		{
 			return;
 		}

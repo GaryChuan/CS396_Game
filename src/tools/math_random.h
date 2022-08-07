@@ -33,7 +33,7 @@ namespace Math
 	template <typename T>
 	inline static xcore::vector2 DiskRand(T radius)
 	{
-		xcore::vector3 result = xcore::vector3::ZERO;
+		xcore::vector2 result{};
 
 		if (radius <= static_cast<T>(0))
 			return result;
@@ -53,6 +53,7 @@ namespace Math
 
 		return result;
 	}
+
 	template <typename T>
 	inline static xcore::vector2 UniformDiskRand(T radius)
 	{

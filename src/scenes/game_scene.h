@@ -112,6 +112,7 @@ private:
 		mManager->RegisterSystems
 			<
 				OnPlaySound,
+				PlaySoundOnZombieDead,
 				SpawnParticleOnZombieDeath,
 				SpawnParticleOnZombieHit,
 				StartTimerOnZombieWaveCleared,

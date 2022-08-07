@@ -57,7 +57,7 @@ struct PlayerInputOnKeyTriggered : xecs::system::instance
 					}
 				}
 
-				if (weaponSelected != -1)
+				if (weaponSelected != -1 && weaponSelected != static_cast<int>(weapon.mCurrentWeapon))
 				{
 					weapon.mCurrentWeapon = static_cast<Weapon::Type>(weaponSelected);
 					text.mValue = Weapon::names[weaponSelected];

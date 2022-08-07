@@ -8,7 +8,7 @@ Description:
 ******************************************************************************/
 #pragma once
 
-struct PlaySound : xecs::event::instance<const char*>
+struct PlaySound : xecs::event::instance<const char*, float>
 {
 	constexpr static auto typedef_v
 		= xecs::event::type::global

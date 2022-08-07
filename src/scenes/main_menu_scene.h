@@ -24,7 +24,7 @@ struct MainMenuScene : public Scene<MainMenuScene>
 
 		InitializeScene();
 
-		Service<AudioManager>::Get().PlaySound("BGM");
+		Service<AudioManager>::Get().PlaySound(BGM);
 	}
 
 	void Unload() noexcept

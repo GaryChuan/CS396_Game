@@ -26,5 +26,17 @@ constexpr static xcore::vector3 BUTTON_RELEASED_COLOUR{ 0.2f, 0.5f, 0.2f };
 constexpr static float PLAYER_MAX_HEALTH = 15.f;
 
 // Audio
-constexpr static const char* PISTOL_SHOT_SOUND = "PistolShot";
-constexpr static const char* BGM = "BGM";
+constexpr static const char* BGM				= "BGM";
+constexpr static const char* PISTOL_SHOT_SOUND	= "PistolShot";
+constexpr static const char* SMG_SHOT_SOUND		= "SmgShot";
+constexpr static const char* SHOTGUN_SHOT_SOUND	= "ShotgunShot";
+constexpr static const char* ZOMBIE_DEAD_SOUND	= "ZombieDead";
+constexpr static const char* ZOMBIE_GRUNT_SOUND = "ZombieGrunt";
+
+// Volume
+constexpr static float MASTER_VOLUME = 0.3f;
+constexpr static float ZOMBIE_DEAD_SOUND_VOL = 1.5f;
+constexpr static float ZOMBIE_GRUNT_SOUND_VOL = 1.f;
+constexpr static float SHOTGUN_SHOT_SOUND_VOL = 0.3f;
+constexpr static float PISTOL_SHOT_SOUND_VOL = 0.3f;
+constexpr static float SMG_SHOT_SOUND_VOL = 0.3f;

@@ -26,9 +26,9 @@ struct OnPlaySound : xecs::system::instance
 		
 	}
 
-	void OnEvent(const char* soundName)
+	void OnEvent(const char* soundName, float volume)
 	{
-		Service<AudioManager>::Get().PlaySound(soundName);
+		Service<AudioManager>::Get().PlaySound(soundName, volume);
 	}
 
 private:

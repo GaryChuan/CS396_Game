@@ -245,6 +245,7 @@
     <ClInclude Include="..\..\src\systems\clamp_movement.h" />
     <ClInclude Include="..\..\src\systems\destroy_bullet_on_remove_timer.h" />
     <ClInclude Include="..\..\src\systems\on_play_sound.h" />
+    <ClInclude Include="..\..\src\systems\play_sound_on_zombie_dead.h" />
     <ClInclude Include="..\..\src\systems\player_deactivate_text_on_remove_timer.h" />
     <ClInclude Include="..\..\src\systems\destroy_particle_on_remove_timer.h" />
     <ClInclude Include="..\..\src\systems\player_input_on_key_triggered.h" />

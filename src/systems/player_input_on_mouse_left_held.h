@@ -84,6 +84,8 @@ private:
 							bullet.mPushback = smg.GetPushback();
 
 							bulletVel.mValue = newDirection * 5.f;
+
+							SendGlobalEvent<PlaySound>(SMG_SHOT_SOUND, SMG_SHOT_SOUND_VOL);
 						});
 
 					weapon.Shoot();

@@ -111,6 +111,7 @@ struct Scene : CRTP<T>
 
 	void OnMousePassiveMotion(int mouseX, int mouseY) noexcept
 	{
+		mMousePos = std::make_pair(mouseX, mouseY);
 		mManager->SendGlobalEvent<OnMouseMove>(mouseX, mouseY);
 	}
 

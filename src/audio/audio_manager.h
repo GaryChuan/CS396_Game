@@ -12,7 +12,7 @@ class AudioManager
 {
 public:
 	using SoundMap = std::unordered_map<std::string, FMOD::Sound*>;
-	using ChannelMap = std::unordered_map<std::size_t, FMOD::Channel*>;
+	using ChannelList = std::vector<FMOD::Channel*>;
 
 	void Initialize() noexcept
 	{
@@ -27,7 +27,7 @@ public:
 		assert(result == FMOD_OK);
 	}
 
-	void CreateSound(const std::string& soundName, const std::string& fileName) noexcept
+	void CreateSound(const std::string& soundName, const std::string& fileName, bool loop = false) noexcept
 	{
 		assert(!mSoundMap.count(soundName));
 		
@@ -35,7 +35,11 @@ public:
 
 		FMOD::Sound* newSound;
 
-		result = mSystem->createSound(fileName.c_str(), FMOD_DEFAULT, 0, &newSound);
+		FMOD_MODE mode = FMOD_DEFAULT;
+
+		mode |= loop ? FMOD_LOOP_NORMAL : FMOD_LOOP_OFF;
+
+		result = mSystem->createSound(fileName.c_str(), mode, 0, &newSound);
 
 		assert(result == FMOD_OK);
 
@@ -44,39 +48,33 @@ public:
 
 	void Update() noexcept
 	{
-		std::vector<ChannelMap::iterator> stoppedChannels{};
-
-		for (auto it = mChannelMap.begin(), itEnd = mChannelMap.end(); it != itEnd; ++it)
-		{
-			const auto& [CID, channelPtr] = *it;
-
-			bool playing = false;		
-
-			channelPtr->isPlaying(&playing);
-
-			if (!playing)
+		std::erase_if(mChannels, [](const auto& channel)
 			{
-				stoppedChannels.push_back(it);
-			}
-		}
+				bool playing;
 
-		// Clean up stopped channels
-		for (auto& it : stoppedChannels)
-		{
-			mChannelMap.erase(it);
-		}
-
+				channel->isPlaying(&playing);
+				
+				return !playing;
+			});
 		mSystem->update();
 	}
 
-	void StopChannel(std::size_t CID) noexcept
+	void SetMasterChannelVolume(float vol)
 	{
-		assert(mChannelMap.count(CID));
+		if (vol < 0)
+		{
+			vol = 0;
+		}
 
-		mChannelMap[CID]->stop();
+		FMOD::ChannelGroup* master;
+		FMOD_RESULT result = mSystem->getMasterChannelGroup(&master);
+		
+		assert(result == FMOD_OK);
+
+		master->setVolume(vol);
 	}
 
-	void PlaySound(const std::string& soundName) noexcept
+	void PlaySound(const std::string& soundName, float vol = MASTER_VOLUME) noexcept
 	{
 		assert(mSoundMap.count(soundName));
 
@@ -88,7 +86,9 @@ public:
 
 		assert(result == FMOD_OK);
 
-		mChannelMap[0] = newChannel;
+		newChannel->setVolume(vol);
+
+		mChannels.emplace_back(newChannel);
 	}
 
 	void ReleaseSound(const std::string& soundName) noexcept
@@ -104,7 +104,7 @@ public:
 
 	void StopAllChannels() noexcept
 	{
-		for (auto& [CID, channel] : mChannelMap)
+		for (auto& channel : mChannels)
 		{
 			channel->stop();
 		}
@@ -128,5 +128,5 @@ public:
 private:
 	FMOD::System* mSystem{};
 	SoundMap mSoundMap{};
-	ChannelMap mChannelMap{};
+	ChannelList mChannels{};
 };

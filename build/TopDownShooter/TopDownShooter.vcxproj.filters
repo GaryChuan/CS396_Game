@@ -606,6 +606,9 @@
     <ClInclude Include="..\..\src\systems\on_play_sound.h">
       <Filter>Systems\Events</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\systems\play_sound_on_zombie_dead.h">
+      <Filter>Systems\Events</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore.cpp">

@@ -81,7 +81,7 @@ private:
 
 							timer.mValue = 1.2f;
 
-							SendGlobalEvent<PlaySound>(PISTOL_SHOT_SOUND);
+							SendGlobalEvent<PlaySound>(PISTOL_SHOT_SOUND, PISTOL_SHOT_SOUND_VOL);
 						});
 				},
 				[&](const Shotgun& shotgun) noexcept
@@ -107,6 +107,8 @@ private:
 							
 							++i;
 						});
+
+					SendGlobalEvent<PlaySound>(SHOTGUN_SHOT_SOUND, SHOTGUN_SHOT_SOUND_VOL);
 				},
 				[&](const SubmachineGun& smg) noexcept
 				{
@@ -125,6 +127,8 @@ private:
 							bullet.mPushback = smg.GetPushback();
 
 							bulletVel.mValue = newDirection * 5.f;
+
+							SendGlobalEvent<PlaySound>(SMG_SHOT_SOUND, SMG_SHOT_SOUND_VOL);
 						});
 				}
 			}, weapon.mArsenal[static_cast<int>(weapon.mCurrentWeapon)]

@@ -85,6 +85,8 @@ public:
 									zombiePos.mValue += bulletDir * bullet.mPushback;
 									zombieHealth.mValue -= bullet.mDamage;
 
+									SendGlobalEvent<PlaySound>(ZOMBIE_GRUNT_SOUND, ZOMBIE_GRUNT_SOUND_VOL);
+
 									AddOrRemoveComponents<std::tuple<Timer>, std::tuple<>>
 										(
 											zombieEntity, [](Timer& timer) { timer.mValue = 0.15f; }

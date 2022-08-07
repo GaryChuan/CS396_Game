@@ -40,6 +40,7 @@ Description:
 
 // Sound Events
 #include "on_play_sound.h"
+#include "play_sound_on_zombie_dead.h";
 
 // Input Events
 #include "player_input_on_key_triggered.h"

@@ -23,6 +23,8 @@ struct RetryMenuScene : public Scene<RetryMenuScene>
 		RegisterSystems();
 
 		InitializeScene();
+
+		Service<AudioManager>::Get().StopAllChannels();
 	}
 
 	void Unload() noexcept

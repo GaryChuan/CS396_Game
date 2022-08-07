@@ -1,3 +1,11 @@
+/******************************************************************************
+filename: clamp_movement.h
+author: Gary Chuan gary.chuan@digipen.edu
+Project: CS396 Final Project
+Description:
+  This file contains the definition of ClampMovement which clmaps all position
+  to within the screen.
+******************************************************************************/
 #pragma once
 
 struct ClampMovement : xecs::system::instance

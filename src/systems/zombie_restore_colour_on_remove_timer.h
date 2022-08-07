@@ -1,3 +1,11 @@
+/******************************************************************************
+filename: zombie_restore_colour_on_remove_timer.h
+author: Gary Chuan gary.chuan@digipen.edu
+Project: CS396 Final Project
+Description:
+  This file contains the definition of ZombieRestoreColourOnRemoveTimer
+  which handles the restoring of zombie colour when timer gets removed.
+******************************************************************************/
 #pragma once
 
 struct ZombieRestoreColourOnRemoveTimer : xecs::system::instance

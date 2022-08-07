@@ -1,3 +1,13 @@
+/******************************************************************************
+filename: zombie_steering_logic.h
+author: Gary Chuan gary.chuan@digipen.edu
+Project: CS396 Final Project
+Description:
+  This file contains the definition of ZombieSteeringLogic which carries
+  out steering logic for all zombies (avoidance, seeking). It computes
+  the desired velocity of all zombies which will then get updated in
+  ZombieUpdateVelocity.
+******************************************************************************/
 #pragma once
 
 struct ZombieSteeringLogic : xecs::system::instance

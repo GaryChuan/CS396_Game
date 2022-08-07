@@ -1,3 +1,11 @@
+/******************************************************************************
+filename: player_input_on_mouse_left_clicked.h
+author: Gary Chuan gary.chuan@digipen.edu
+Project: CS396 Final Project
+Description:
+  This file contains the definition of PlayerInputOnMouseLeftClicked which handles
+  shooting of all wepaon bullets when mouse left click is pressed.
+******************************************************************************/
 #pragma once
 
 struct PlayerInputOnMouseLeftClicked : xecs::system::instance

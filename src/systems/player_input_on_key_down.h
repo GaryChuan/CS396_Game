@@ -1,3 +1,11 @@
+/******************************************************************************
+filename: player_input_on_key_down.h
+author: Gary Chuan gary.chuan@digipen.edu
+Project: CS396 Final Project
+Description:
+  This file contains the definition of PlayerInputOnKeyDown which handles
+  settting velocity of player to 1/-1 depending on input.
+******************************************************************************/
 #pragma once
 
 struct PlayerInputOnKeyDown : xecs::system::instance

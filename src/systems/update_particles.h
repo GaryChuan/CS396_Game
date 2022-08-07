@@ -1,3 +1,11 @@
+/******************************************************************************
+filename: update_particles.h
+author: Gary Chuan gary.chuan@digipen.edu
+Project: CS396 Final Project
+Description:
+  This file contains the definition of UpdateParticles which updates
+  all particles.
+******************************************************************************/
 #pragma once
 
 struct UpdateParticles : xecs::system::instance

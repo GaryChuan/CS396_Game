@@ -1,3 +1,11 @@
+/******************************************************************************
+filename: render_grid.h
+author: Gary Chuan gary.chuan@digipen.edu
+Project: CS396 Final Project
+Description:
+  This file contains the definition of RenderGrid which renders the grid.
+  It is currently unused. Used for debugging purposes only.
+******************************************************************************/
 struct RenderGrid : xecs::system::instance
 {
     constexpr static auto typedef_v = xecs::system::type::child_update<Renderer, Renderer::Update>

@@ -1,3 +1,12 @@
+/******************************************************************************
+filename: player_logic.h
+author: Gary Chuan gary.chuan@digipen.edu
+Project: CS396 Final Project
+Description:
+  This file contains the definition of PlayerLogic which manages the player
+  logic. Specifically the state of the weapon such as if it is shooting
+  or reloading etc..
+******************************************************************************/
 #pragma once
 
 struct PlayerLogic : xecs::system::instance

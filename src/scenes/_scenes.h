@@ -1,6 +1,13 @@
+/******************************************************************************
+filename: _scenes.h
+author: Gary Chuan gary.chuan@digipen.edu
+Project: CS396 Final Project
+Description:
+  This file contains the includes of all relevant scene header files.
+  It also includes the definition of the game state that determines if
+  the game is running/loading/unloading.
+******************************************************************************/
 #pragma once
-
-class Game;
 
 enum struct GameState
 {

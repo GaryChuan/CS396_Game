@@ -1,3 +1,10 @@
+/******************************************************************************
+filename: math_random.h
+author: Gary Chuan gary.chuan@digipen.edu
+Project: CS396 Final Project
+Description:
+  This file contains the definition of math helper functions and variables.
+******************************************************************************/
 #pragma once
 
 namespace Math

@@ -1,3 +1,11 @@
+/******************************************************************************
+filename: render_text.h
+author: Gary Chuan gary.chuan@digipen.edu
+Project: CS396 Final Project
+Description:
+  This file contains the definition of RenderText which manages the rendering
+  of all text.
+******************************************************************************/
 #pragma once
 
 struct RenderText : xecs::system::instance

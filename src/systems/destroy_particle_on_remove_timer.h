@@ -1,3 +1,11 @@
+/******************************************************************************
+filename: destroy_particle_on_remove_timer.h
+author: Gary Chuan gary.chuan@digipen.edu
+Project: CS396 Final Project
+Description:
+  This file contains the definition of DestroyParticleOnRemoveTimer
+  which handles deleting of particles when their lifetime (timer) ends.
+******************************************************************************/
 #pragma once
 
 struct DestroyParticleOnRemoveTimer : xecs::system::instance

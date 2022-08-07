@@ -1,3 +1,11 @@
+/******************************************************************************
+filename: render_particles.h
+author: Gary Chuan gary.chuan@digipen.edu
+Project: CS396 Final Project
+Description:
+  This file contains the definition of RenderParticles which manages the rendering
+  of all particles.
+******************************************************************************/
 #pragma once
 
 struct RenderParticles : xecs::system::instance

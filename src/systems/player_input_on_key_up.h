@@ -1,3 +1,11 @@
+/******************************************************************************
+filename: player_input_on_key_up.h
+author: Gary Chuan gary.chuan@digipen.edu
+Project: CS396 Final Project
+Description:
+  This file contains the definition of PlayerInputOnKeyUp which handles
+  settting velocity of player to 0 depending on input.
+******************************************************************************/
 #pragma once
 
 struct PlayerInputOnKeyUp : xecs::system::instance

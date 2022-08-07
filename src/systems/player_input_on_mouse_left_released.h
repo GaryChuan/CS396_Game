@@ -1,3 +1,11 @@
+/******************************************************************************
+filename: player_input_on_mouse_left_released.h
+author: Gary Chuan gary.chuan@digipen.edu
+Project: CS396 Final Project
+Description:
+  This file contains the definition of PlayerInputOnMouseLeftReleased which handles
+  setting weapon to inactive when mouse is released.
+******************************************************************************/
 #pragma once
 
 struct PlayerInputOnMouseLeftReleased : xecs::system::instance

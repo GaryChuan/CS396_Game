@@ -1,3 +1,11 @@
+/******************************************************************************
+filename: render_bullets.h
+author: Gary Chuan gary.chuan@digipen.edu
+Project: CS396 Final Project
+Description:
+  This file contains the definition of RenderButton which renders all
+  bullets.
+******************************************************************************/
 #pragma once
 
 struct RenderBullets : xecs::system::instance

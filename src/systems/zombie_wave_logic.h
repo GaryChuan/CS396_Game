@@ -1,3 +1,12 @@
+/******************************************************************************
+filename: zombie_wave_logic.h
+author: Gary Chuan gary.chuan@digipen.edu
+Project: CS396 Final Project
+Description:
+  This file contains the definition of ZombieWaveLogic which checks
+  if current wave is cleared and is in charge of triggering an event
+  to start spawning the next wave.
+******************************************************************************/
 #pragma once
 
 struct ZombieWaveLogic : xecs::system::instance

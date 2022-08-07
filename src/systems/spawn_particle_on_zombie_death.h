@@ -1,3 +1,11 @@
+/******************************************************************************
+filename: spawn_particle_on_zombie_death.h
+author: Gary Chuan gary.chuan@digipen.edu
+Project: CS396 Final Project
+Description:
+  This file contains the definition of SpawnParticleOnZombieDeath which handles
+  spawning of particles when a zombie is dead.
+******************************************************************************/
 #pragma once
 
 struct SpawnParticleOnZombieDeath : xecs::system::instance

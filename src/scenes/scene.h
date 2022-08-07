@@ -1,3 +1,11 @@
+/******************************************************************************
+filename: scene.h
+author: Gary Chuan gary.chuan@digipen.edu
+Project: CS396 Final Project
+Description:
+  This file contains the definition of Scene which serve as the base class
+  for all scenes.
+******************************************************************************/
 #pragma once
 
 template <typename T>

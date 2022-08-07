@@ -1,3 +1,11 @@
+/******************************************************************************
+filename: spawn_zombie_wave_on_timer_end.h
+author: Gary Chuan gary.chuan@digipen.edu
+Project: CS396 Final Project
+Description:
+  This file contains the definition of SpawnZombieWaveOnTimerEnd which handles
+  spawning of zombie waves when the timer ends.
+******************************************************************************/
 #pragma once
 
 struct SpawnZombieWaveOnTimerEnd : xecs::system::instance

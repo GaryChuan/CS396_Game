@@ -1,3 +1,11 @@
+/******************************************************************************
+filename: player_deactivate_text_on_remove_timer.h
+author: Gary Chuan gary.chuan@digipen.edu
+Project: CS396 Final Project
+Description:
+  This file contains the definition of PlayerDeactivateTextOnRemoveTimer
+  which handles deactiving reloading text when gun is finished reloading.
+******************************************************************************/
 #pragma once
 
 struct PlayerDeactivateTextOnRemoveTimer : xecs::system::instance

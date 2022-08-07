@@ -1,3 +1,11 @@
+/******************************************************************************
+filename: spawn_particle_on_zombie_hit.h
+author: Gary Chuan gary.chuan@digipen.edu
+Project: CS396 Final Project
+Description:
+  This file contains the definition of SpawnParticleOnZombieHit which handles
+  spawning of particles when a zombie gets hit.
+******************************************************************************/
 #pragma once
 
 struct SpawnParticleOnZombieHit : xecs::system::instance

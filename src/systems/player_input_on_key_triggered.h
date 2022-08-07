@@ -1,3 +1,11 @@
+/******************************************************************************
+filename: player_input_on_key_triggered.h
+author: Gary Chuan gary.chuan@digipen.edu
+Project: CS396 Final Project
+Description:
+  This file contains the definition of PlayerInputOnKeyTriggered which handles
+  settting velocity of player to 1/-1 depending on input.
+******************************************************************************/
 #pragma once
 
 struct PlayerInputOnKeyTriggered : xecs::system::instance

@@ -1,3 +1,10 @@
+/******************************************************************************
+filename: main_menu_scene.h
+author: Gary Chuan gary.chuan@digipen.edu
+Project: CS396 Final Project
+Description:
+  This file contains the definition of MainMenuScene.
+******************************************************************************/
 #pragma once
 
 struct MainMenuScene : public Scene<MainMenuScene>

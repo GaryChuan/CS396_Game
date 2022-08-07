@@ -1,3 +1,11 @@
+/******************************************************************************
+filename: player_input_on_mouse_left_held.h
+author: Gary Chuan gary.chuan@digipen.edu
+Project: CS396 Final Project
+Description:
+  This file contains the definition of PlayerInputOnMouseLeftHeld which handles
+  shooting of SMG bullets when mouse left click is held.
+******************************************************************************/
 #pragma once
 
 struct PlayerInputOnMouseLeftHeld : xecs::system::instance

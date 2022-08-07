@@ -1,3 +1,11 @@
+/******************************************************************************
+filename: button_on_mouse_released.h
+author: Gary Chuan gary.chuan@digipen.edu
+Project: CS396 Final Project
+Description:
+  This file contains the definition of ButtonOnLeftMouseReleased
+  which handles triggering button released state if necessary.
+******************************************************************************/
 #pragma once
 
 struct ButtonOnLeftMouseReleased : xecs::system::instance

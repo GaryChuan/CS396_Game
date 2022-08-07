@@ -1,3 +1,12 @@
+/******************************************************************************
+filename: update_movement.h
+author: Gary Chuan gary.chuan@digipen.edu
+Project: CS396 Final Project
+Description:
+  This file contains the definition of UpdateMovement which updates
+  all entity position using their velocity. It also updates the grid cell
+  shared component based on updated position.
+******************************************************************************/
 #pragma once
 
 struct UpdateMovement : xecs::system::instance

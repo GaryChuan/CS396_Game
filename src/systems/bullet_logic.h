@@ -1,3 +1,11 @@
+/******************************************************************************
+filename: bullet_logic.h
+author: Gary Chuan gary.chuan@digipen.edu
+Project: CS396 Final Project
+Description:
+  This file contains the definition of BulletLogic which manages logic of
+  bullets such as if it is colliding with zombies.
+******************************************************************************/
 #pragma once
 
 struct BulletLogic : xecs::system::instance

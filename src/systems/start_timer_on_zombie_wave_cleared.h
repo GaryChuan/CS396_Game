@@ -1,3 +1,12 @@
+/******************************************************************************
+filename: start_timer_on_zombie_wave_cleared.h
+author: Gary Chuan gary.chuan@digipen.edu
+Project: CS396 Final Project
+Description:
+  This file contains the definition of StartTimerOnZombieWaveCleared
+  which handles the starting of the timer when a zombie wave is cleared.
+  It spawns an entity which acts as the timer.
+******************************************************************************/
 #pragma once
 
 struct StartTimerOnZombieWaveCleared : xecs::system::instance

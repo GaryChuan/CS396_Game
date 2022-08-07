@@ -1,3 +1,14 @@
+/******************************************************************************
+filename: game_state_manager.h
+author: Gary Chuan gary.chuan@digipen.edu
+Project: CS396 Final Project 
+Description:
+ This file contains the definition of scene state which determines which 
+ scene the game is in.
+
+ It also contains the definition of the GameStateManager which manages
+ the game state.
+******************************************************************************/
 #pragma once
 
 enum struct SceneState

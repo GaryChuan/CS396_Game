@@ -1,3 +1,13 @@
+/******************************************************************************
+filename: grid.h
+author: 
+	Tomas Arce tomas.arcegil@digipen.edu
+Project: CS396 Final Project
+Description:
+  This file contains the implementation of Grid done by Professor Tomas. 
+  Note: I fixed a bug in line 51 which was previously != and I changed it to
+  <=. Previously it was not checking the 'lower' neighbours as it skips end_Y
+******************************************************************************/
 #pragma once
 
 struct Grid

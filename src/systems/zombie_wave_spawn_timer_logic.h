@@ -1,3 +1,11 @@
+/******************************************************************************
+filename: zombie_wave_spawn_timer_logic.h
+author: Gary Chuan gary.chuan@digipen.edu
+Project: CS396 Final Project
+Description:
+  This file contains the definition of ZombieWaveSpawnTimerLogic system
+  where it updates the timer till the next zombie wave spawns.
+******************************************************************************/
 #pragma once
 
 struct ZombieWaveSpawnTimerLogic : xecs::system::instance

@@ -1,3 +1,11 @@
+/******************************************************************************
+filename: renderer.h
+author: Gary Chuan gary.chuan@digipen.edu
+Project: CS396 Final Project
+Description:
+  This file contains the definition of Renderer which manages the rendering
+  of all objects.
+******************************************************************************/
 #pragma once
 
 struct Renderer : xecs::system::instance

@@ -1,3 +1,14 @@
+/******************************************************************************
+filename: crtp.h
+author: Gary Chuan gary.chuan@digipen.edu
+Project: CS396 Final Project
+Description:
+  This file contains the defintion of the CRTP helper class.
+  CRTP - Curiously Recurring Template Pattern.
+
+  It also contains the helper overload for overloading lambdas when visiting
+  variants.
+******************************************************************************/
 #pragma once
 
 template<class... Ts> struct overload : Ts... { using Ts::operator()...; };

@@ -1,3 +1,12 @@
+/******************************************************************************
+filename: zombie_logic.h
+author: Gary Chuan gary.chuan@digipen.edu
+Project: CS396 Final Project
+Description:
+  This file contains the definition of ZombieLogic which handles the 
+  deletion of "dead" zombies (health <= 0). It also triggers child systems
+  such as the steering logic and update velocity in sequence.
+******************************************************************************/
 #pragma once
 
 struct ZombieLogic : xecs::system::instance

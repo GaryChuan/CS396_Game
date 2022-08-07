@@ -1,3 +1,11 @@
+/******************************************************************************
+filename: zombioe_update_velocity.h
+author: Gary Chuan gary.chuan@digipen.edu
+Project: CS396 Final Project
+Description:
+  This file contains the definition of ZombieUpdateVelocity which
+  updates the velocity of all zombies using their computed desired velocity.
+******************************************************************************/
 #pragma once
 
 struct ZombieUpdateVelocity : xecs::system::instance

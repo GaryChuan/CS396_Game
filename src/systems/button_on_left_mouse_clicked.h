@@ -1,3 +1,11 @@
+/******************************************************************************
+filename: button_on_left_mouse_clicked.h
+author: Gary Chuan gary.chuan@digipen.edu
+Project: CS396 Final Project
+Description:
+  This file contains the definition of ButtonOnLeftMouseClicked
+  which handles triggering button pressed state if necessary.
+******************************************************************************/
 #pragma once
 
 struct ButtonOnLeftMouseClicked : xecs::system::instance

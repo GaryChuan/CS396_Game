@@ -1,3 +1,11 @@
+/******************************************************************************
+filename: button_on_mouse_move.h
+author: Gary Chuan gary.chuan@digipen.edu
+Project: CS396 Final Project
+Description:
+  This file contains the definition of ButtonOnMouseMove
+  which handles triggering button hovered state if necessary.
+******************************************************************************/
 #pragma once
 
 struct ButtonOnMouseMove : xecs::system::instance

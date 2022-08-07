@@ -11,7 +11,7 @@ struct Button
 	enum State
 	{
 		DEFAULT,
-		HOVER,
+		HOVERED,
 		PRESSED,
 		RELEASED
 	};

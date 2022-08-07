@@ -9,13 +9,13 @@
 
 // Logic
 #include "player_logic.h"
+#include "button_logic.h"
 #include "bullet_logic.h"
 #include "zombie_logic.h"
 #include "zombie_steering_logic.h"
 #include "zombie_update_velocity.h"
 #include "zombie_wave_logic.h"
 #include "zombie_wave_spawn_timer_logic.h"
-
 // Timer
 #include "update_timer.h"
 
@@ -36,6 +36,7 @@
 #include "player_input_on_mouse_left_clicked.h"
 #include "player_input_on_mouse_left_held.h"
 #include "player_input_on_mouse_left_released.h"
+#include "button_on_mouse_move.h"
 
 // Renderer
 #include "renderer.h"

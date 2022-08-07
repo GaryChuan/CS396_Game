@@ -40,6 +40,9 @@
     <Filter Include="Components\Shared">
       <UniqueIdentifier>{a6fbb157-bfb1-4afd-b21a-9c4c8caa5577}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Scenes">
+      <UniqueIdentifier>{bce5173b-73be-4124-8690-1e7b6c0ff693}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\settings\PropertyConfig.h">
@@ -529,6 +532,24 @@
     </ClInclude>
     <ClInclude Include="..\..\src\systems\render_buttons.h">
       <Filter>Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\systems\button_on_mouse_move.h">
+      <Filter>Systems\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\events\on_mouse_move.h">
+      <Filter>Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\systems\button_logic.h">
+      <Filter>Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\scenes\_scenes.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\scenes\main_menu_scene.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\scenes\scene.h">
+      <Filter>Scenes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

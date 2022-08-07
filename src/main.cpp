@@ -7,6 +7,8 @@
 #include "events/events.h"
 #include "systems/_systems.h"
 
+#include "scenes/_scenes.h"
+
 class Game
 {
 public:
@@ -25,7 +27,7 @@ public:
 
 	void CreateDefaultScene() noexcept
 	{
-		assert(mManager);
+		// assert(mManager);
 
 		std::srand(101);
 
@@ -89,12 +91,18 @@ public:
 
 	void Run() noexcept
 	{
-		if (mMouseButtonState[GLUT_LEFT_BUTTON] == GLUT_DOWN)
+		std::visit(
+			[](auto& scene)
+			{
+				scene.Run();
+			}, mCurrentScene);
+
+		/*if (mMouseButtonState[GLUT_LEFT_BUTTON] == GLUT_DOWN)
 		{
 			mManager->SendGlobalEvent<OnMouseLeftHeld>(mMousePos.first, mMousePos.second);
 		}
 
-		mManager->Run();
+		mManager->Run();*/
 	}
 
 	void SetResolution(int width, int height)
@@ -173,21 +181,31 @@ public:
 		mMousePos.second = mouseY;
 	}
 
+	void OnMousePassiveMotion(int mouseX, int mouseY) noexcept
+	{
+		std::visit(
+			[&](auto& scene) { scene.OnMousePassiveMotion(mouseX, mouseY); }, 
+			mCurrentScene);
+		// mManager->SendGlobalEvent<OnMouseMove>(mouseX, mouseY);
+	}
+
 private:
 	void Initialize() noexcept
 	{
 		xcore::Init("ECS Example");
 
-		mManager = std::make_unique<Manager>();
+		std::visit([](auto& scene) { scene.Load(); }, mCurrentScene);
 
-		RegisterComponents();
-		RegisterEvents();
-		RegisterSystems();
+		// mManager = std::make_unique<Manager>();
+
+		// RegisterComponents();
+		// RegisterEvents();
+		// RegisterSystems();
 	}
 
 	void RegisterEvents()
 	{
-		assert(mManager);
+		/*assert(mManager);
 
 		mManager->RegisterGlobalEvents
 			<
@@ -196,87 +214,92 @@ private:
 			OnKeyUp,
 			OnMouseLeftClicked,
 			OnMouseLeftHeld,
-			OnMouseLeftReleased
-			>();
+			OnMouseLeftReleased,
+			OnMouseMove
+			>();*/
 	}
 
 	void RegisterComponents()
 	{
-		assert(mManager);
+		//assert(mManager);
 
-		mManager->RegisterComponents
-			<
-			// Data
-			Position,
-			Velocity,
-			Colour,
-			Scale,
-			Weapon,
-			Bullet,
-			Zombie,
-			Health,
-			Timer,
-			Text,
-			Button,
-			// Share
-			GridCell,
-			ZombieDetails,
-			ButtonDetails,
-			ZombieWave,
-			// Tag
-			PlayerTag,
-			ParticleTag,
-			SpawnZombieWaveDetails
-			>();
+		//mManager->RegisterComponents
+		//	<
+		//	// Data
+		//	Position,
+		//	Velocity,
+		//	Colour,
+		//	Scale,
+		//	Weapon,
+		//	Bullet,
+		//	Zombie,
+		//	Health,
+		//	Timer,
+		//	Text,
+		//	Button,
+		//	// Share
+		//	GridCell,
+		//	ZombieDetails,
+		//	ButtonDetails,
+		//	ZombieWave,
+		//	// Tag
+		//	PlayerTag,
+		//	ParticleTag,
+		//	SpawnZombieWaveDetails
+		//	>();
 	}
 
 	void RegisterSystems()
 	{
 		assert(mManager);
 
-		mManager->RegisterSystems
-			<
-			UpdateMovement,
-			UpdateParticles,
-			ClampMovement,
-			UpdateTimer,
-			PlayerLogic,
-			BulletLogic,
-			ZombieLogic,
-				ZombieSteeringLogic,
-				ZombieUpdateVelocity,
-			ZombieWaveLogic,
-			ZombieWaveSpawnTimerLogic,
-			Renderer,
-				// RenderGrid,
-				RenderPlayer,
-				RenderZombies,
-				RenderBullets,
-				RenderParticles,
-				RenderButtons,
-				RenderText
-			>();
+		//mManager->RegisterSystems
+		//	<
+		//	UpdateMovement,
+		//	UpdateParticles,
+		//	ClampMovement,
+		//	UpdateTimer,
+		//	PlayerLogic,
+		//	BulletLogic,
+		//	ButtonLogic,
+		//	ZombieLogic,
+		//		ZombieSteeringLogic,
+		//		ZombieUpdateVelocity,
+		//	ZombieWaveLogic,
+		//	ZombieWaveSpawnTimerLogic,
+		//	Renderer,
+		//		// RenderGrid,
+		//		RenderPlayer,
+		//		RenderZombies,
+		//		RenderBullets,
+		//		RenderParticles,
+		//		RenderButtons,
+		//		RenderText
+		//	>();
 
-		mManager->RegisterSystems
-			<
-				SpawnParticleOnZombieDeath,
-				SpawnParticleOnZombieHit,
-				StartTimerOnZombieWaveCleared,
-				SpawnZombieWaveOnTimerEnd,
-				PlayerInputOnKeyTriggered,
-				PlayerInputOnKeyDown,
-				PlayerInputOnKeyUp,
-				PlayerInputOnMouseLeftClicked,
-				PlayerInputOnMouseLeftHeld,
-				PlayerInputOnMouseLeftReleased,
-				PlayerDeactivateTextOnRemoveTimer,
-				DestroyBulletOnRemoveTimer,
-				DestroyParticleOnRemoveTimer,
-				ZombieRestoreColourOnRemoveTimer
-			>();
+		//mManager->RegisterSystems
+		//	<
+		//		SpawnParticleOnZombieDeath,
+		//		SpawnParticleOnZombieHit,
+		//		StartTimerOnZombieWaveCleared,
+		//		SpawnZombieWaveOnTimerEnd,
+		//		PlayerInputOnKeyTriggered,
+		//		PlayerInputOnKeyDown,
+		//		PlayerInputOnKeyUp,
+		//		PlayerInputOnMouseLeftClicked,
+		//		PlayerInputOnMouseLeftHeld,
+		//		PlayerInputOnMouseLeftReleased,
+		//		PlayerDeactivateTextOnRemoveTimer,
+		//		ButtonOnMouseMove,
+		//		DestroyBulletOnRemoveTimer,
+		//		DestroyParticleOnRemoveTimer,
+		//		ZombieRestoreColourOnRemoveTimer
+		//	>();
 	}
 
 private:
+	std::variant<MainMenuScene> mCurrentScene{};
+
 	std::unique_ptr<Manager> mManager{};
 	std::pair<int, int> mResolution{};
 	std::pair<int, int> mMousePos{};
@@ -351,6 +374,12 @@ int main(int argc, char** argv)
 		{
 			game.OnMouseClick(button, state, mouseX, mouseY);
 		});
+
+	glutPassiveMotionFunc([](int mouseX, int mouseY)
+		{
+			game.OnMousePassiveMotion(mouseX, mouseY);
+		});
+
 	glutMotionFunc([](int mouseX, int mouseY) noexcept
 		{
 			game.OnMouseMotion(mouseX, mouseY);

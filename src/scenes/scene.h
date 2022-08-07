@@ -5,6 +5,25 @@ struct Scene : CRTP<T>
 {
 	using Manager = xecs::game_mgr::instance;
 
+	Scene(Scene&& scene)
+		: mGame{ scene.mGame }
+		, mManager{ std::move(scene.mManager) }
+	{
+	}
+
+	Scene& operator = (Scene&& scene)
+	{
+		mGame = scene.mGame;
+		mManager = std::move(scene.mManager);
+
+		return *this;
+	}
+
+	~Scene()
+	{
+		std::cout << "End Scene" << std::endl;
+	}
+
 	void OnKeyboardDown(unsigned char key, int mouseX, int mouseY)
 	{
 		auto& pressed = mKeys[static_cast<std::uint8_t>(key)];
@@ -74,6 +93,11 @@ struct Scene : CRTP<T>
 
 	void Run()
 	{
+		if (mMouseButtonState[GLUT_LEFT_BUTTON] == GLUT_DOWN)
+		{
+			mManager->SendGlobalEvent<OnMouseLeftHeld>(mMousePos.first, mMousePos.second);
+		}
+
 		mManager->Run();
 	}
 
@@ -88,12 +112,13 @@ struct Scene : CRTP<T>
 		mManager->SendGlobalEvent<OnMouseMove>(mouseX, mouseY);
 	}
 
-	~Scene()
+protected:
+	Scene(Game& game)
+		: mGame { game }
 	{
-		std::cout << "End Scene" << std::endl;
 	}
 
-protected:
+	std::reference_wrapper<Game> mGame;
 	std::unique_ptr<Manager> mManager{};
 	std::pair<int, int> mMousePos{};
 	std::array<int, 3> mMouseButtonState{ GLUT_UP, GLUT_UP, GLUT_UP };

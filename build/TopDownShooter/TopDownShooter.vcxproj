@@ -212,6 +212,7 @@
     <ClInclude Include="..\..\src\events\on_mouse_right_click.h" />
     <ClInclude Include="..\..\src\global_settings.h" />
     <ClInclude Include="..\..\src\pch.h" />
+    <ClInclude Include="..\..\src\scenes\game_scene.h" />
     <ClInclude Include="..\..\src\scenes\main_menu_scene.h" />
     <ClInclude Include="..\..\src\scenes\scene.h" />
     <ClInclude Include="..\..\src\scenes\_scenes.h" />

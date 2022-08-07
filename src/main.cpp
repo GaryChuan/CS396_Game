@@ -91,18 +91,27 @@ public:
 
 	void Run() noexcept
 	{
-		std::visit(
-			[](auto& scene)
-			{
-				scene.Run();
-			}, mCurrentScene);
-
-		/*if (mMouseButtonState[GLUT_LEFT_BUTTON] == GLUT_DOWN)
+		switch (mGameState)
 		{
-			mManager->SendGlobalEvent<OnMouseLeftHeld>(mMousePos.first, mMousePos.second);
+		case GameState::LOAD:
+			std::visit([](auto& scene) { scene.Load();  }, mCurrentScene);
+			mGameState = GameState::RUN;
+			break;
+		case GameState::RUN:
+			if (mNextScene != static_cast<SceneState>(mCurrentScene.index()))
+			{
+				mGameState = GameState::UNLOAD;
+			}
+			else
+			{
+				std::visit([](auto& scene) { scene.Run(); }, mCurrentScene);
+			}
+			break;
+		case GameState::UNLOAD:
+			std::visit([](auto& scene) { scene.Unload(); }, mCurrentScene);
+			LoadNextScene(mNextScene);
+			break;
 		}
-
-		mManager->Run();*/
 	}
 
 	void SetResolution(int width, int height)
@@ -120,15 +129,11 @@ public:
 
 	void OnKeyboardDown(unsigned char key, int mouseX, int mouseY) noexcept
 	{
-		/*auto& pressed = mKeys[static_cast<std::uint8_t>(key)];
-
-		if (!pressed)
+		if (mGameState == GameState::LOAD 
+		 || mGameState == GameState::UNLOAD)
 		{
-			mManager->SendGlobalEvent<OnKeyTriggered>(mKeys);
-			pressed = true;
+			return;
 		}
-
-		mManager->SendGlobalEvent<OnKeyDown>(mKeys);*/
 
 		std::visit(
 			[&](auto& scene) { scene.OnKeyboardDown(key, mouseX, mouseY); },
@@ -137,8 +142,11 @@ public:
 
 	void OnKeyboardUp(unsigned char key, int mouseX, int mouseY) noexcept
 	{
-		/*mKeys[static_cast<std::uint8_t>(key)] = false;
-		mManager->SendGlobalEvent<OnKeyUp>(mKeys);*/
+		if (mGameState == GameState::LOAD
+			|| mGameState == GameState::UNLOAD)
+		{
+			return;
+		}
 
 		std::visit(
 			[&](auto& scene) { scene.OnKeyboardUp(key, mouseX, mouseY); },
@@ -147,49 +155,25 @@ public:
 
 	void OnMouseClick(int button, int state, int mouseX, int mouseY) noexcept
 	{
+		if (mGameState == GameState::LOAD
+			|| mGameState == GameState::UNLOAD)
+		{
+			return;
+		}
+
 		std::visit(
 			[&](auto& scene) { scene.OnMouseClick(button, state, mouseX, mouseY); },
 			mCurrentScene);
-		// Button is not registered, do not process
-		//if (button > mMouseButtonState.size())
-		//{
-		//	return;
-		//}
-
-		//bool clicked = state == GLUT_DOWN;
-
-		//if (!clicked)
-		//{
-		//	mMouseButtonState[button] = GLUT_UP;
-		//	mManager->SendGlobalEvent<OnMouseLeftReleased>(mouseX, mouseY);
-		//	return;
-		//}
-
-		//if (mMouseButtonState[button] == GLUT_UP)
-		//{
-		//	mMouseButtonState[button] = GLUT_DOWN;
-
-		//	switch (button)
-		//	{
-		//	case GLUT_LEFT_BUTTON:
-		//		mManager->SendGlobalEvent<OnMouseLeftClicked>(mouseX, mouseY);
-		//		break;
-
-		//	case GLUT_RIGHT_BUTTON:
-		//		break;
-
-		//	case GLUT_MIDDLE_BUTTON:
-		//		break;
-		//	default:
-		//		assert(false); // unknown button pressed
-		//	}
-		//}
 	}
 
 	void OnMouseMotion(int mouseX, int mouseY) noexcept
 	{
-		// mMousePos.first = mouseX;
-		// mMousePos.second = mouseY;
+		if (mGameState == GameState::LOAD
+			|| mGameState == GameState::UNLOAD)
+		{
+			return;
+		}
+
 		std::visit(
 			[&](auto& scene) { scene.OnMouseMotion(mouseX, mouseY); },
 			mCurrentScene);
@@ -197,128 +181,45 @@ public:
 
 	void OnMousePassiveMotion(int mouseX, int mouseY) noexcept
 	{
+		if (mGameState == GameState::LOAD
+			|| mGameState == GameState::UNLOAD)
+		{
+			return;
+		}
+
 		std::visit(
 			[&](auto& scene) { scene.OnMousePassiveMotion(mouseX, mouseY); }, 
 			mCurrentScene);
-		// mManager->SendGlobalEvent<OnMouseMove>(mouseX, mouseY);
 	}
 
 private:
+	using Scenes = std::variant<MainMenuScene, GameScene>;
+
 	void Initialize() noexcept
 	{
 		xcore::Init("ECS Example");
-
-		std::visit([](auto& scene) { scene.Load(); }, mCurrentScene);
-
-		// mManager = std::make_unique<Manager>();
-
-		// RegisterComponents();
-		// RegisterEvents();
-		// RegisterSystems();
 	}
 
-	void RegisterEvents()
+	void LoadNextScene(SceneState nextScene)
 	{
-		/*assert(mManager);
-
-		mManager->RegisterGlobalEvents
-			<
-			OnKeyTriggered,
-			OnKeyDown,
-			OnKeyUp,
-			OnMouseLeftClicked,
-			OnMouseLeftHeld,
-			OnMouseLeftReleased,
-			OnMouseMove
-			>();*/
+		switch (nextScene)
+		{
+		case SceneState::MAIN_MENU:
+			mCurrentScene = MainMenuScene{ *this };
+			break;
+		case SceneState::GAME:
+			mCurrentScene = GameScene{ *this };
+			break;
+		}
 	}
-
-	void RegisterComponents()
-	{
-		//assert(mManager);
-
-		//mManager->RegisterComponents
-		//	<
-		//	// Data
-		//	Position,
-		//	Velocity,
-		//	Colour,
-		//	Scale,
-		//	Weapon,
-		//	Bullet,
-		//	Zombie,
-		//	Health,
-		//	Timer,
-		//	Text,
-		//	Button,
-		//	// Share
-		//	GridCell,
-		//	ZombieDetails,
-		//	ButtonDetails,
-		//	ZombieWave,
-		//	// Tag
-		//	PlayerTag,
-		//	ParticleTag,
-		//	SpawnZombieWaveDetails
-		//	>();
-	}
-
-	void RegisterSystems()
-	{
-		// assert(mManager);
-
-		//mManager->RegisterSystems
-		//	<
-		//	UpdateMovement,
-		//	UpdateParticles,
-		//	ClampMovement,
-		//	UpdateTimer,
-		//	PlayerLogic,
-		//	BulletLogic,
-		//	ButtonLogic,
-		//	ZombieLogic,
-		//		ZombieSteeringLogic,
-		//		ZombieUpdateVelocity,
-		//	ZombieWaveLogic,
-		//	ZombieWaveSpawnTimerLogic,
-		//	Renderer,
-		//		// RenderGrid,
-		//		RenderPlayer,
-		//		RenderZombies,
-		//		RenderBullets,
-		//		RenderParticles,
-		//		RenderButtons,
-		//		RenderText
-		//	>();
-
-		//mManager->RegisterSystems
-		//	<
-		//		SpawnParticleOnZombieDeath,
-		//		SpawnParticleOnZombieHit,
-		//		StartTimerOnZombieWaveCleared,
-		//		SpawnZombieWaveOnTimerEnd,
-		//		PlayerInputOnKeyTriggered,
-		//		PlayerInputOnKeyDown,
-		//		PlayerInputOnKeyUp,
-		//		PlayerInputOnMouseLeftClicked,
-		//		PlayerInputOnMouseLeftHeld,
-		//		PlayerInputOnMouseLeftReleased,
-		//		PlayerDeactivateTextOnRemoveTimer,
-		//		ButtonOnMouseMove,
-		//		DestroyBulletOnRemoveTimer,
-		//		DestroyParticleOnRemoveTimer,
-		//		ZombieRestoreColourOnRemoveTimer
-		//	>();
-	}
+	
 
 private:
-	std::variant<MainMenuScene> mCurrentScene{};
+	Scenes mCurrentScene{std::in_place_index<0>, *this};
+	GameState mGameState{ GameState::LOAD };
+	SceneState mNextScene{ SceneState::MAIN_MENU };
+
 	std::pair<int, int> mResolution{};
-	/*std::unique_ptr<Manager> mManager{};
-	std::pair<int, int> mResolution{};
-	std::pair<int, int> mMousePos{};
-	std::array<int, 3> mMouseButtonState{ GLUT_UP, GLUT_UP, GLUT_UP };
-	Keys mKeys{};*/
 };
 
 //---------------------------------------------------------------------------------------

@@ -16,7 +16,6 @@ struct ButtonOnMouseMove : xecs::system::instance
 	__inline void OnGameStart() noexcept
 	{
 		mQueryButtons.m_Must.AddFromComponents<Button>();
-		mQueryButtons.m_NoneOf.AddFromComponents<PlayerTag, Zombie>();
 	}
 
 	void OnEvent(int mouseX, int mouseY)

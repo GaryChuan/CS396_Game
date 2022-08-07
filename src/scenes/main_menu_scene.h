@@ -2,6 +2,11 @@
 
 struct MainMenuScene : public Scene<MainMenuScene>
 {
+	MainMenuScene(Game& game)
+		: Scene{ game }
+	{
+	}
+
 	void Load() noexcept
 	{
 		mManager = std::make_unique<Scene::Manager>();
@@ -17,25 +22,13 @@ struct MainMenuScene : public Scene<MainMenuScene>
 			<
 			// Data
 			Position,
-			Velocity,
 			Colour,
 			Scale,
-			Weapon,
-			Bullet,
-			Zombie,
-			Health,
 			Timer,
 			Text,
 			Button,
 			// Share
-			GridCell,
-			ZombieDetails,
-			ButtonDetails,
-			ZombieWave,
-			// Tag
-			PlayerTag,
-			ParticleTag,
-			SpawnZombieWaveDetails
+			ButtonDetails
 			> ();
 	}
 
@@ -52,13 +45,7 @@ struct MainMenuScene : public Scene<MainMenuScene>
 
 		mManager->RegisterSystems
 			<
-			PlayerInputOnKeyTriggered,
-			PlayerInputOnKeyDown,
-			PlayerInputOnKeyUp,
-			PlayerInputOnMouseLeftClicked,
-			PlayerInputOnMouseLeftHeld,
-			PlayerInputOnMouseLeftReleased,
-			ButtonOnMouseMove
+				ButtonOnMouseMove
 			>();
 	}
 

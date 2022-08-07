@@ -10,8 +10,7 @@ struct ButtonLogic : xecs::system::instance
 
 	using query = std::tuple
 		<
-			xecs::query::must<Button>,
-			xecs::query::none_of<Zombie>
+			xecs::query::must<Button>
 		>;
 
 	__inline void operator()(Button& button, Colour& colour, ButtonDetails& buttonDetails) noexcept

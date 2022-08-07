@@ -278,7 +278,6 @@ int main(int argc, char** argv)
 		{
 			game.OnMousePassiveMotion(mouseX, mouseY);
 		});
-
 	glutMotionFunc([](int mouseX, int mouseY) noexcept
 		{
 			game.OnMouseMotion(mouseX, mouseY);

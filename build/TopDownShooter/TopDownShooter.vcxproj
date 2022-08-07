@@ -222,7 +222,9 @@
     <ClInclude Include="..\..\src\settings\xcore_user_settings.h" />
     <ClInclude Include="..\..\src\systems\bullet_logic.h" />
     <ClInclude Include="..\..\src\systems\button_logic.h" />
+    <ClInclude Include="..\..\src\systems\button_on_left_mouse_released.h" />
     <ClInclude Include="..\..\src\systems\button_on_mouse_move.h" />
+    <ClInclude Include="..\..\src\systems\button_on_left_mouse_clicked.h" />
     <ClInclude Include="..\..\src\systems\clamp_movement.h" />
     <ClInclude Include="..\..\src\systems\destroy_bullet_on_remove_timer.h" />
     <ClInclude Include="..\..\src\systems\player_deactivate_text_on_remove_timer.h" />

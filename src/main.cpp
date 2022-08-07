@@ -112,6 +112,8 @@ public:
 		case GameState::UNLOAD:
 			std::visit([](auto& scene) { scene.Unload(); }, mCurrentScene);
 			LoadNextScene(mGSM.GetNextScene());
+			mGSM.ChangeToNextScene();
+			mGameState = GameState::LOAD;
 			break;
 		}
 	}

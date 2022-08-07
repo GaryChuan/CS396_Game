@@ -78,7 +78,9 @@ private:
 
 		mManager->RegisterSystems
 			<
-				ButtonOnMouseMove
+				ButtonOnMouseMove,
+				ButtonOnLeftMouseClicked,
+				ButtonOnLeftMouseReleased
 			>();
 	}
 

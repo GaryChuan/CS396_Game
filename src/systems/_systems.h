@@ -37,6 +37,8 @@
 #include "player_input_on_mouse_left_held.h"
 #include "player_input_on_mouse_left_released.h"
 #include "button_on_mouse_move.h"
+#include "button_on_left_mouse_clicked.h"
+#include "button_on_left_mouse_released.h"
 
 // Renderer
 #include "renderer.h"

@@ -28,6 +28,11 @@ struct GameStateManager
 		return mNextScene;
 	}
 
+	void ChangeToNextScene() noexcept
+	{
+		mCurrentScene = mNextScene;
+	}
+
 private:
 	SceneState mCurrentScene{SceneState::MAIN_MENU};
 	SceneState mNextScene{SceneState::MAIN_MENU};

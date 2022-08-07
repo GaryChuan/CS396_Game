@@ -263,11 +263,11 @@ int main(int argc, char** argv)
 		});
 	glutKeyboardFunc([](unsigned char key, int mouseX, int mouseY) noexcept
 		{
-			game.OnKeyboardDown(key, mouseX, mouseY);
+			game.OnKeyboardDown(std::tolower(key), mouseX, mouseY);
 		});
 	glutKeyboardUpFunc([](unsigned char key, int mouseX, int mouseY) noexcept
 		{
-			game.OnKeyboardUp(key, mouseX, mouseY);
+			game.OnKeyboardUp(std::tolower(key), mouseX, mouseY);
 		});
 	glutMouseFunc([](int button, int state, int mouseX, int mouseY) noexcept
 		{

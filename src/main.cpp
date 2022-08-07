@@ -2,12 +2,14 @@
 #include "pch.h"
 #include "global_settings.h"
 
+#include "game_state_manager.h"
+
 #include "components/_components.h"
 #include "tools/tools.h"
 #include "events/events.h"
 #include "systems/_systems.h"
-
 #include "scenes/_scenes.h"
+
 
 class Game
 {
@@ -98,7 +100,7 @@ public:
 			mGameState = GameState::RUN;
 			break;
 		case GameState::RUN:
-			if (mNextScene != static_cast<SceneState>(mCurrentScene.index()))
+			if (mGSM.ChangeScene())
 			{
 				mGameState = GameState::UNLOAD;
 			}
@@ -109,7 +111,7 @@ public:
 			break;
 		case GameState::UNLOAD:
 			std::visit([](auto& scene) { scene.Unload(); }, mCurrentScene);
-			LoadNextScene(mNextScene);
+			LoadNextScene(mGSM.GetNextScene());
 			break;
 		}
 	}
@@ -205,17 +207,17 @@ private:
 		switch (nextScene)
 		{
 		case SceneState::MAIN_MENU:
-			mCurrentScene = MainMenuScene{ *this };
+			mCurrentScene = MainMenuScene{ mGSM };
 			break;
 		case SceneState::GAME:
-			mCurrentScene = GameScene{ *this };
+			mCurrentScene = GameScene{ mGSM };
 			break;
 		}
 	}
 	
-
 private:
-	Scenes mCurrentScene{std::in_place_index<0>, *this};
+	GameStateManager mGSM{};
+	Scenes mCurrentScene{std::in_place_index<0>, mGSM};
 	GameState mGameState{ GameState::LOAD };
 	SceneState mNextScene{ SceneState::MAIN_MENU };
 

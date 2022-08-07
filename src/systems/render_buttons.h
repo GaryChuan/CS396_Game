@@ -13,29 +13,6 @@ struct RenderButtons : xecs::system::instance
 			xecs::query::must<Button, ButtonDetails>
 		>;
 
-	__inline void OnGameStart() noexcept
-	{
-		auto& buttonArchetype = getOrCreateArchetype<ButtonArchetype>();
-
-		buttonArchetype.CreateEntity(
-			[&](Position& pos, Colour& colour, Scale& scale, Text& text, ButtonDetails& buttonDetails)
-			{
-				text.mActive = true;
-				text.mValue = "START";
-				
-				text.mOffset.mValue = xcore::vector2{ -20, 2.75f };
-
-				text.mFont = Text::Font::HELVETICA_12;
-				text.mColour.mValue = xcore::vector3{ 0, 0, 0 };
-				
-				pos.x = Grid::MAX_RESOLUTION_WIDTH / 2;
-				pos.y = Grid::MAX_RESOLUTION_HEIGHT / 2;
-				
-				colour.mValue = buttonDetails.mButtonColours[Button::State::DEFAULT];
-				scale.mValue = xcore::vector2{ 30, 10 };
-			});
-	}
-
 	void OnPreUpdate() noexcept
 	{
 		glBegin(GL_QUADS);

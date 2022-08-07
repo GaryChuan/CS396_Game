@@ -17,4 +17,5 @@ struct Button
 	};
 
 	State mState{ State::DEFAULT };
+	std::function<void()> mCallback{};
 };

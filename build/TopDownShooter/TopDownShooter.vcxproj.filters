@@ -554,6 +554,8 @@
     <ClInclude Include="..\..\src\scenes\game_scene.h">
       <Filter>Scenes</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\game.h" />
+    <ClInclude Include="..\..\src\game_state_manager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore.cpp">

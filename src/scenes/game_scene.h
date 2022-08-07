@@ -2,8 +2,8 @@
 
 struct GameScene : public Scene<GameScene>
 {
-	GameScene(Game& game)
-		: Scene{ game }
+	GameScene(GameStateManager& gsm)
+		: Scene{ gsm }
 	{
 	}
 

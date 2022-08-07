@@ -6,14 +6,14 @@ struct Scene : CRTP<T>
 	using Manager = xecs::game_mgr::instance;
 
 	Scene(Scene&& scene)
-		: mGame{ scene.mGame }
+		: mGSM{ scene.mGSM }
 		, mManager{ std::move(scene.mManager) }
 	{
 	}
 
 	Scene& operator = (Scene&& scene)
 	{
-		mGame = scene.mGame;
+		mGSM = scene.mGSM;
 		mManager = std::move(scene.mManager);
 
 		return *this;
@@ -113,12 +113,12 @@ struct Scene : CRTP<T>
 	}
 
 protected:
-	Scene(Game& game)
-		: mGame { game }
+	Scene(GameStateManager& gsm)
+		: mGSM { gsm }
 	{
 	}
 
-	std::reference_wrapper<Game> mGame;
+	std::reference_wrapper<GameStateManager> mGSM;
 	std::unique_ptr<Manager> mManager{};
 	std::pair<int, int> mMousePos{};
 	std::array<int, 3> mMouseButtonState{ GLUT_UP, GLUT_UP, GLUT_UP };

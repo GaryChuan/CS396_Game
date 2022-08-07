@@ -33,6 +33,11 @@ struct PlayerInputOnKeyTriggered : xecs::system::instance
 	{
 		Foreach(Search(mQueryPlayerOnly), [&](xecs::component::entity& entity, Weapon& weapon, Text& text)
 			{
+				if (entity.isZombie())
+				{
+					return;
+				}
+
 				if (weapon.mState == Weapon::State::RELOADING 
 				 || weapon.mState == Weapon::State::RELOAD)
 				{
@@ -58,7 +63,7 @@ struct PlayerInputOnKeyTriggered : xecs::system::instance
 					text.mValue = Weapon::names[weaponSelected];
 					text.mActive = true;
 
-					AddOrRemoveComponents<std::tuple<Timer>, std::tuple<Timer>>(
+					AddOrRemoveComponents<std::tuple<Timer>, std::tuple<>>(
 						entity, [](Timer& timer)
 						{
 							timer.mValue = 0.5f;

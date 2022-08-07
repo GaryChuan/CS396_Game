@@ -214,9 +214,15 @@ void InitializeAudio()
 	audioManager.SetMasterChannelVolume(MASTER_VOLUME);
 
 	audioManager.CreateSound(BGM, "../../resources/BGM.wav", true);
+	
 	audioManager.CreateSound(PISTOL_SHOT_SOUND, "../../resources/pistol_shot.wav");
 	audioManager.CreateSound(SMG_SHOT_SOUND, "../../resources/smg_shot.wav");
 	audioManager.CreateSound(SHOTGUN_SHOT_SOUND, "../../resources/shotgun_shot.wav");
+
+	audioManager.CreateSound(PISTOL_RELOAD_SOUND, "../../resources/pistol_reload.wav");
+	audioManager.CreateSound(SHOTGUN_RELOAD_SOUND, "../../resources/shotgun_reload.wav");
+	audioManager.CreateSound(SMG_RELOAD_SOUND, "../../resources/smg_reload.wav");
+
 	audioManager.CreateSound(ZOMBIE_DEAD_SOUND, "../../resources/zombie_dead.wav");
 	audioManager.CreateSound(ZOMBIE_GRUNT_SOUND, "../../resources/zombie_grunt.wav");
 }

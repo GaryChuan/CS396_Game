@@ -87,6 +87,27 @@ public:
 			weapon.mReloadTimer = 0.f;
 			weapon.mShootTimer = 0.f;
 			weapon.mCanShoot = true;
+
+			std::visit
+			(
+				overload
+				{
+					[&](const Pistol&) noexcept
+					{
+						SendGlobalEvent<PlaySound>(PISTOL_RELOAD_SOUND, PISTOL_RELOAD_SOUND_VOL);
+					},
+					[&](const Shotgun&) noexcept
+					{
+						SendGlobalEvent<PlaySound>(SHOTGUN_RELOAD_SOUND, SHOTGUN_RELOAD_SOUND_VOL);
+					},
+					[&](const SubmachineGun&) noexcept
+					{
+						SendGlobalEvent<PlaySound>(SMG_RELOAD_SOUND, SMG_RELOAD_SOUND_VOL);
+					}
+				}, weapon.mArsenal[static_cast<int>(weapon.mCurrentWeapon)]
+			);
+
+
 			text.mValue = "Reloading";
 			text.mActive = true;
 			[[fallthrough]];

@@ -209,22 +209,24 @@ void InitializeAudio()
 {
 	auto& audioManager = Service<AudioManager>::Get();
 	
+	std::cout << std::filesystem::current_path() << std::endl;
+
 	audioManager.Initialize();
 
 	audioManager.SetMasterChannelVolume(MASTER_VOLUME);
 
-	audioManager.CreateSound(BGM, "../../resources/BGM.wav", true);
+	audioManager.CreateSound(BGM, "resources/audio/BGM.wav", true);
 	
-	audioManager.CreateSound(PISTOL_SHOT_SOUND, "../../resources/pistol_shot.wav");
-	audioManager.CreateSound(SMG_SHOT_SOUND, "../../resources/smg_shot.wav");
-	audioManager.CreateSound(SHOTGUN_SHOT_SOUND, "../../resources/shotgun_shot.wav");
+	audioManager.CreateSound(PISTOL_SHOT_SOUND, "resources/audio/pistol_shot.wav");
+	audioManager.CreateSound(SMG_SHOT_SOUND, "resources/audio/smg_shot.wav");
+	audioManager.CreateSound(SHOTGUN_SHOT_SOUND, "resources/audio/shotgun_shot.wav");
 
-	audioManager.CreateSound(PISTOL_RELOAD_SOUND, "../../resources/pistol_reload.wav");
-	audioManager.CreateSound(SHOTGUN_RELOAD_SOUND, "../../resources/shotgun_reload.wav");
-	audioManager.CreateSound(SMG_RELOAD_SOUND, "../../resources/smg_reload.wav");
+	audioManager.CreateSound(PISTOL_RELOAD_SOUND, "resources/audio/pistol_reload.wav");
+	audioManager.CreateSound(SHOTGUN_RELOAD_SOUND, "resources/audio/shotgun_reload.wav");
+	audioManager.CreateSound(SMG_RELOAD_SOUND, "resources/audio/smg_reload.wav");
 
-	audioManager.CreateSound(ZOMBIE_DEAD_SOUND, "../../resources/zombie_dead.wav");
-	audioManager.CreateSound(ZOMBIE_GRUNT_SOUND, "../../resources/zombie_grunt.wav");
+	audioManager.CreateSound(ZOMBIE_DEAD_SOUND, "resources/audio/zombie_dead.wav");
+	audioManager.CreateSound(ZOMBIE_GRUNT_SOUND, "resources/audio/zombie_grunt.wav");
 }
 
 

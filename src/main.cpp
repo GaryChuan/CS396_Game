@@ -205,7 +205,7 @@ public:
 	}
 
 private:
-	using Scenes = std::variant<MainMenuScene, GameScene>;
+	using Scenes = std::variant<MainMenuScene, GameScene, RetryMenuScene>;
 
 	void Initialize() noexcept
 	{
@@ -221,6 +221,9 @@ private:
 			break;
 		case SceneState::GAME:
 			mCurrentScene = GameScene{ mGSM };
+			break;
+		case SceneState::RETRY_MENU:
+			mCurrentScene = RetryMenuScene{ mGSM };
 			break;
 		}
 	}

@@ -21,6 +21,8 @@ struct GameScene : public Scene<GameScene>
 		RegisterComponents();
 		RegisterEvents();
 		RegisterSystems();
+
+		PlayerLogic::mGSMPtr = &(mGSM.get());
 	}
 
 private:
@@ -72,7 +74,7 @@ private:
 
 	void RegisterSystems()
 	{
-		 assert(mManager);
+		assert(mManager);
 
 		mManager->RegisterSystems
 			<
@@ -86,6 +88,7 @@ private:
 			ZombieLogic,
 				ZombieSteeringLogic,
 				ZombieUpdateVelocity,
+				ZombieAttackLogic,
 			ZombieWaveLogic,
 			ZombieWaveSpawnTimerLogic,
 			Renderer,

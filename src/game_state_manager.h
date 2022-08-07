@@ -14,7 +14,8 @@ Description:
 enum struct SceneState
 {
 	MAIN_MENU,
-	GAME
+	GAME,
+	RETRY_MENU
 };
 
 struct GameStateManager

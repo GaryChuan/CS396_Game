@@ -18,6 +18,9 @@ public:
 			.m_pName = "PlayerLogic"
 		};
 
+	// Hacky way of doing next scene
+	__inline static GameStateManager* mGSMPtr = nullptr;
+
 	PlayerLogic(xecs::game_mgr::instance& gameMgr)
 		: xecs::system::instance { gameMgr }
 	{
@@ -52,7 +55,7 @@ public:
 				};
 				vel.mValue = xcore::vector2{ 0, 0 };
 
-				health.mValue = 100;
+				health.mValue = PLAYER_MAX_HEALTH;
 
 				colour.mValue = xcore::vector3{ 1, 1, 1 };
 				scale.mValue = xcore::vector2{ 3 , 3 };
@@ -69,7 +72,13 @@ public:
 
 	__inline void operator()(Weapon& weapon, Text& text, const Health& health)
 	{
-		constexpr float DELTA = 1 / 60.f;
+		assert(mGSMPtr);
+
+		if (health.mValue <= 0)
+		{
+			mGSMPtr->SetNextScene(SceneState::RETRY_MENU);
+			return;
+		}
 
 		switch(weapon.mState)
 		{
@@ -83,7 +92,7 @@ public:
 			[[fallthrough]];
 
 		case Weapon::State::RELOADING:
-			weapon.mReloadTimer += DELTA;
+			weapon.mReloadTimer += F_DT;
 
 			text.mValue = "Reloading";
 
@@ -105,7 +114,7 @@ public:
 
 			if (weapon.mCanShoot == false)
 			{
-				weapon.mShootTimer += DELTA;
+				weapon.mShootTimer += F_DT;
 
 				if (weapon.mShootTimer >= weapon.GetFireRate())
 				{
@@ -119,6 +128,11 @@ public:
 			weapon.mCanShoot = true;
 			break;
 		}
+	}
+
+	void OnGameEnd() noexcept
+	{
+		mGSMPtr = nullptr;
 	}
 
 private:

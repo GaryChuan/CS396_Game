@@ -558,6 +558,12 @@
     <ClInclude Include="..\..\src\systems\button_on_left_mouse_released.h">
       <Filter>Systems\Events</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\systems\zombie_attack_logic.h">
+      <Filter>Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\scenes\retry_menu_scene.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\dependencies\xecs\dependencies\xcore\src\xcore.cpp">

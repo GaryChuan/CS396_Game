@@ -33,7 +33,7 @@ struct RenderPlayer : xecs::system::instance
 		glEnd();
 	}
 
-	__inline void operator()(const Position& pos, const Weapon& weapon, Colour& colour, Scale& scale) const noexcept
+	__inline void operator()(const Position& pos, const Weapon& weapon, const Health& health, Colour& colour, Scale& scale) const noexcept
 	{
 		glColor3f(colour.r, colour.g, colour.b);
 
@@ -42,20 +42,38 @@ struct RenderPlayer : xecs::system::instance
 		glVertex2i(pos.x + scale.x, pos.y + scale.y);
 		glVertex2i(pos.x + scale.x, pos.y - scale.y);
 
-		constexpr float ammoOffset{ 7.5f };
-		constexpr xcore::vector2 ammoSize{ 1.f, 1.f };
+		constexpr float barScale = 20.f;
+		constexpr float xOffset = barScale / 2.f;
+		constexpr float yOffset = 10.5f;
+		constexpr float ammoYOffset{ 15.f };
+		const auto xPivot = pos.x - xOffset;
 
 		// Render ammo count
-		for (auto i = 0u; i < weapon.GetAmmoCount(); ++i)
+		const auto ammoCount = static_cast<float>(weapon.GetAmmoCount());
+
+		if (ammoCount > 0)
 		{
+			const auto currentWeaponScale = ammoCount / weapon.GetMaxAmmoCount() * barScale;
+
 			glColor3f(0, 1, 1);
 
-			const auto xOffset = -10.f + i * 2.5f;
+			glVertex2i(xPivot, pos.y + ammoYOffset - 1.f);
+			glVertex2i(xPivot, pos.y + ammoYOffset + 1.f);
+			glVertex2i(xPivot + currentWeaponScale, pos.y + ammoYOffset + 1.f);
+			glVertex2i(xPivot + currentWeaponScale, pos.y + ammoYOffset - 1.f);
+		}
 
-			glVertex2i(pos.x + xOffset - ammoSize.m_X, pos.y + ammoOffset - ammoSize.m_Y);
-			glVertex2i(pos.x + xOffset - ammoSize.m_X, pos.y + ammoOffset + ammoSize.m_Y);
-			glVertex2i(pos.x + xOffset + ammoSize.m_X, pos.y + ammoOffset + ammoSize.m_Y);
-			glVertex2i(pos.x + xOffset + ammoSize.m_X, pos.y + ammoOffset - ammoSize.m_Y);
+		if (health.mValue > 0)
+		{
+			// Render health
+			const auto currentHealthScale = health.mValue / PLAYER_MAX_HEALTH * barScale;
+
+			glColor3f(1, 0, 0);
+
+			glVertex2i(xPivot, pos.y + yOffset - 1.f);
+			glVertex2i(xPivot, pos.y + yOffset + 1.f);
+			glVertex2i(xPivot + currentHealthScale, pos.y + yOffset + 1.f);
+			glVertex2i(xPivot + currentHealthScale, pos.y + yOffset - 1.f);
 		}
 	}
 };

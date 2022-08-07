@@ -214,6 +214,7 @@
     <ClInclude Include="..\..\src\pch.h" />
     <ClInclude Include="..\..\src\scenes\game_scene.h" />
     <ClInclude Include="..\..\src\scenes\main_menu_scene.h" />
+    <ClInclude Include="..\..\src\scenes\retry_menu_scene.h" />
     <ClInclude Include="..\..\src\scenes\scene.h" />
     <ClInclude Include="..\..\src\scenes\_scenes.h" />
     <ClInclude Include="..\..\src\settings\PropertyConfig.h" />
@@ -239,6 +240,7 @@
     <ClInclude Include="..\..\src\systems\spawn_zombie_wave_on_timer_end.h" />
     <ClInclude Include="..\..\src\systems\update_particles.h" />
     <ClInclude Include="..\..\src\systems\update_timer.h" />
+    <ClInclude Include="..\..\src\systems\zombie_attack_logic.h" />
     <ClInclude Include="..\..\src\systems\zombie_restore_colour_on_remove_timer.h" />
     <ClInclude Include="..\..\src\systems\zombie_wave_logic.h" />
     <ClInclude Include="..\..\src\systems\zombie_wave_spawn_timer_logic.h" />

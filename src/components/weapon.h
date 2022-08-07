@@ -91,6 +91,17 @@ struct Weapon
 		);
 	}
 
+	unsigned GetMaxAmmoCount() const
+	{
+		return std::visit
+		(
+			[](const auto& weaponType)
+			{
+				return weaponType.mMaxAmmoCount;
+			}, mArsenal[static_cast<int>(mCurrentWeapon)]
+		);
+	}
+
 	void Shoot()
 	{
 		assert(mState != Weapon::State::RELOAD);

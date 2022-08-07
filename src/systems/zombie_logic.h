@@ -33,7 +33,6 @@ public:
 		mQueryZombies.m_NoneOf.AddFromComponents<PlayerTag, Bullet>();
 	}
 
-
 	void OnUpdate() noexcept
 	{
 		Foreach(
@@ -51,5 +50,4 @@ public:
 
 private:
 	xecs::query::instance mQueryZombies{};
-
 };

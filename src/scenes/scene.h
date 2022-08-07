@@ -27,11 +27,6 @@ struct Scene : CRTP<T>
 		return *this;
 	}
 
-	~Scene()
-	{
-		std::cout << "End Scene" << std::endl;
-	}
-
 	void OnKeyboardDown(unsigned char key, int mouseX, int mouseY)
 	{
 		auto& pressed = mKeys[static_cast<std::uint8_t>(key)];
@@ -118,6 +113,11 @@ struct Scene : CRTP<T>
 	void OnMousePassiveMotion(int mouseX, int mouseY) noexcept
 	{
 		mManager->SendGlobalEvent<OnMouseMove>(mouseX, mouseY);
+	}
+
+	void SetNextScene(SceneState nextScene) noexcept
+	{
+		mGSM.get().SetNextScene(nextScene);
 	}
 
 protected:

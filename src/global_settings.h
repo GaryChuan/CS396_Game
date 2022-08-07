@@ -21,3 +21,6 @@ constexpr static xcore::vector3 BUTTON_DEFAULT_COLOUR{ 1, 1, 1 };
 constexpr static xcore::vector3 BUTTON_HOVER_COLOUR{ 0.3f, 0.5f, 0.3f };
 constexpr static xcore::vector3 BUTTON_PRESSED_COLOUR{ 0.1f, 0.5f, 0.1f };
 constexpr static xcore::vector3 BUTTON_RELEASED_COLOUR{ 0.2f, 0.5f, 0.2f };
+
+// Player
+constexpr static float PLAYER_MAX_HEALTH = 15.f;

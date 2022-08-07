@@ -5,7 +5,6 @@ Project: CS396 Final Project
 Description:
   This file is where the Game class is defined and where the main loop runs.
 ******************************************************************************/
-
 #include <iostream>
 #include "pch.h"
 #include "global_settings.h"

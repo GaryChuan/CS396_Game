@@ -120,7 +120,7 @@ public:
 
 	void OnKeyboardDown(unsigned char key, int mouseX, int mouseY) noexcept
 	{
-		auto& pressed = mKeys[static_cast<std::uint8_t>(key)];
+		/*auto& pressed = mKeys[static_cast<std::uint8_t>(key)];
 
 		if (!pressed)
 		{
@@ -128,57 +128,71 @@ public:
 			pressed = true;
 		}
 
-		mManager->SendGlobalEvent<OnKeyDown>(mKeys);
+		mManager->SendGlobalEvent<OnKeyDown>(mKeys);*/
+
+		std::visit(
+			[&](auto& scene) { scene.OnKeyboardDown(key, mouseX, mouseY); },
+			mCurrentScene);
 	}
 
 	void OnKeyboardUp(unsigned char key, int mouseX, int mouseY) noexcept
 	{
-		mKeys[static_cast<std::uint8_t>(key)] = false;
-		mManager->SendGlobalEvent<OnKeyUp>(mKeys);
+		/*mKeys[static_cast<std::uint8_t>(key)] = false;
+		mManager->SendGlobalEvent<OnKeyUp>(mKeys);*/
+
+		std::visit(
+			[&](auto& scene) { scene.OnKeyboardUp(key, mouseX, mouseY); },
+			mCurrentScene);
 	}
 
 	void OnMouseClick(int button, int state, int mouseX, int mouseY) noexcept
 	{
+		std::visit(
+			[&](auto& scene) { scene.OnMouseClick(button, state, mouseX, mouseY); },
+			mCurrentScene);
 		// Button is not registered, do not process
-		if (button > mMouseButtonState.size())
-		{
-			return;
-		}
+		//if (button > mMouseButtonState.size())
+		//{
+		//	return;
+		//}
 
-		bool clicked = state == GLUT_DOWN;
+		//bool clicked = state == GLUT_DOWN;
 
-		if (!clicked)
-		{
-			mMouseButtonState[button] = GLUT_UP;
-			mManager->SendGlobalEvent<OnMouseLeftReleased>(mouseX, mouseY);
-			return;
-		}
+		//if (!clicked)
+		//{
+		//	mMouseButtonState[button] = GLUT_UP;
+		//	mManager->SendGlobalEvent<OnMouseLeftReleased>(mouseX, mouseY);
+		//	return;
+		//}
 
-		if (mMouseButtonState[button] == GLUT_UP)
-		{
-			mMouseButtonState[button] = GLUT_DOWN;
+		//if (mMouseButtonState[button] == GLUT_UP)
+		//{
+		//	mMouseButtonState[button] = GLUT_DOWN;
 
-			switch (button)
-			{
-			case GLUT_LEFT_BUTTON:
-				mManager->SendGlobalEvent<OnMouseLeftClicked>(mouseX, mouseY);
-				break;
+		//	switch (button)
+		//	{
+		//	case GLUT_LEFT_BUTTON:
+		//		mManager->SendGlobalEvent<OnMouseLeftClicked>(mouseX, mouseY);
+		//		break;
 
-			case GLUT_RIGHT_BUTTON:
-				break;
+		//	case GLUT_RIGHT_BUTTON:
+		//		break;
 
-			case GLUT_MIDDLE_BUTTON:
-				break;
-			default:
-				assert(false); // unknown button pressed
-			}
-		}
+		//	case GLUT_MIDDLE_BUTTON:
+		//		break;
+		//	default:
+		//		assert(false); // unknown button pressed
+		//	}
+		//}
 	}
 
 	void OnMouseMotion(int mouseX, int mouseY) noexcept
 	{
-		mMousePos.first = mouseX;
-		mMousePos.second = mouseY;
+		// mMousePos.first = mouseX;
+		// mMousePos.second = mouseY;
+		std::visit(
+			[&](auto& scene) { scene.OnMouseMotion(mouseX, mouseY); },
+			mCurrentScene);
 	}
 
 	void OnMousePassiveMotion(int mouseX, int mouseY) noexcept
@@ -251,7 +265,7 @@ private:
 
 	void RegisterSystems()
 	{
-		assert(mManager);
+		// assert(mManager);
 
 		//mManager->RegisterSystems
 		//	<
@@ -299,12 +313,12 @@ private:
 
 private:
 	std::variant<MainMenuScene> mCurrentScene{};
-
-	std::unique_ptr<Manager> mManager{};
+	std::pair<int, int> mResolution{};
+	/*std::unique_ptr<Manager> mManager{};
 	std::pair<int, int> mResolution{};
 	std::pair<int, int> mMousePos{};
 	std::array<int, 3> mMouseButtonState{ GLUT_UP, GLUT_UP, GLUT_UP };
-	Keys mKeys{};
+	Keys mKeys{};*/
 };
 
 //---------------------------------------------------------------------------------------

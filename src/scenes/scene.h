@@ -62,6 +62,11 @@ struct Scene : CRTP<T>
 		}
 	}
 
+	void OnMouseMotion(int mouseX, int mouseY) noexcept
+	{
+		mMousePos = std::make_pair(mouseX, mouseY);
+	}
+
 	void Load() noexcept
 	{
 		this->underlying().Load();
@@ -76,12 +81,6 @@ struct Scene : CRTP<T>
 	{
 		mManager.reset();
 		xecs::component::mgr::resetRegistrations();
-	}
-
-	void OnMouseMotion(int mouseX, int mouseY) noexcept
-	{
-		mMousePos.first = mouseX;
-		mMousePos.second = mouseY;
 	}
 
 	void OnMousePassiveMotion(int mouseX, int mouseY) noexcept

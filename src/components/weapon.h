@@ -1,3 +1,13 @@
+/******************************************************************************
+filename: weapon.h
+author: Gary Chuan gary.chuan@digipen.edu
+Project: CS396 Final Project
+Description:
+  This file contains the definition of Weapon component. It also
+  includes the definition of the weapon interface which utilises CRTP
+  and is used for defining different weapon types such as shotgun, pistol and
+  smg.
+******************************************************************************/
 #pragma once
 
 struct Weapon;

@@ -1,3 +1,10 @@
+/******************************************************************************
+filename: button.h
+author: Gary Chuan gary.chuan@digipen.edu
+Project: CS396 Final Project
+Description:
+  This file contains the definition of Button component.
+******************************************************************************/
 #pragma once
 
 struct Button

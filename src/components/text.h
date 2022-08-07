@@ -1,3 +1,10 @@
+/******************************************************************************
+filename: text.h
+author: Gary Chuan gary.chuan@digipen.edu
+Project: CS396 Final Project
+Description:
+  This file contains the definition of Text component.
+******************************************************************************/
 #pragma once
 
 struct Text

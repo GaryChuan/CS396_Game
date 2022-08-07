@@ -1,3 +1,10 @@
+/******************************************************************************
+filename: velocity.h
+author: Gary Chuan gary.chuan@digipen.edu
+Project: CS396 Final Project
+Description:
+  This file contains the definition of Velocity component.
+******************************************************************************/
 #pragma once
 
 struct Velocity

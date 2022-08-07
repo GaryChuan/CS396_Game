@@ -1,3 +1,11 @@
+/******************************************************************************
+filename: _components_archetypes.h
+author: Gary Chuan gary.chuan@digipen.edu
+Project: CS396 Final Project
+Description:
+  This file contains the declaration of all relevant
+  component archetypes.
+******************************************************************************/
 #pragma once
 
 using BulletArchetype = std::tuple<Position, Velocity, Bullet, Timer, GridCell>;

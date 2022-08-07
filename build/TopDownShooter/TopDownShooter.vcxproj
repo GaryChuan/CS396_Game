@@ -185,7 +185,6 @@
     <ClInclude Include="..\..\src\components\button_details.h" />
     <ClInclude Include="..\..\src\components\colour.h" />
     <ClInclude Include="..\..\src\components\particle_tag.h" />
-    <ClInclude Include="..\..\src\components\render_details.h" />
     <ClInclude Include="..\..\src\components\scale.h" />
     <ClInclude Include="..\..\src\components\spawn_zombie_wave_details.h" />
     <ClInclude Include="..\..\src\components\zombie_details.h" />
@@ -201,7 +200,7 @@
     <ClInclude Include="..\..\src\components\weapon.h" />
     <ClInclude Include="..\..\src\components\zombie.h" />
     <ClInclude Include="..\..\src\components\zombie_wave.h" />
-    <ClInclude Include="..\..\src\events\events.h" />
+    <ClInclude Include="..\..\src\events\_events.h" />
     <ClInclude Include="..\..\src\events\on_mouse_left_released.h" />
     <ClInclude Include="..\..\src\events\on_key_down.h" />
     <ClInclude Include="..\..\src\events\on_key_triggered.h" />

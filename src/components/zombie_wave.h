@@ -1,3 +1,10 @@
+/******************************************************************************
+filename: zombie_wave.h
+author: Gary Chuan gary.chuan@digipen.edu
+Project: CS396 Final Project
+Description:
+  This file contains the definition of the ZombieWave share component.
+******************************************************************************/
 #pragma once
 
 struct ZombieWave

@@ -1,3 +1,10 @@
+/******************************************************************************
+filename: _components.h
+author: Gary Chuan gary.chuan@digipen.edu
+Project: CS396 Final Project
+Description:
+  This file contains the includes of all relevant component header files.
+******************************************************************************/
 #pragma once
 
 // Data

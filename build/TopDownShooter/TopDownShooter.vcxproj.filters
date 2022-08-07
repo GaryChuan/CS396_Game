@@ -370,7 +370,7 @@
     <ClInclude Include="..\..\src\events\on_key_down.h">
       <Filter>Events</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\events\events.h">
+    <ClInclude Include="..\..\src\events\_events.h">
       <Filter>Events</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\events\on_key_up.h">
@@ -473,9 +473,6 @@
       <Filter>Systems\Events</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\components\grid_cell.h">
-      <Filter>Components\Shared</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\components\render_details.h">
       <Filter>Components\Shared</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\components\zombie_wave.h">

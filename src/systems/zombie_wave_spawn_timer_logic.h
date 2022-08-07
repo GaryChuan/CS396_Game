@@ -40,11 +40,11 @@ public:
 		{
 			text.mOffset.mValue = xcore::vector2{ -30, 0 };
 			text.mValue = "Wave ";
-			text.mValue += '0' + (waveDetails.mID + 1);
+			text.mValue += std::to_string(waveDetails.mID + 1);
 		}
 		else
 		{
-			text.mValue = '0' + timerValue;
+			text.mValue = std::to_string(timerValue);
 		}
 	}
 };

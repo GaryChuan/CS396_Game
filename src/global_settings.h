@@ -41,6 +41,9 @@ constexpr static const char* SMG_RELOAD_SOUND		= "SmgReload";
 constexpr static const char* ZOMBIE_DEAD_SOUND	= "ZombieDead";
 constexpr static const char* ZOMBIE_GRUNT_SOUND = "ZombieGrunt";
 
+// Button Audio
+constexpr static const char* BUTTON_PRESS_SOUND = "ButtonPress";
+
 
 // Volume
 constexpr static float MASTER_VOLUME = 0.3f;
@@ -52,3 +55,4 @@ constexpr static float SMG_SHOT_SOUND_VOL = 0.3f;
 constexpr static float PISTOL_RELOAD_SOUND_VOL = 0.4f;
 constexpr static float SMG_RELOAD_SOUND_VOL = 0.7f;
 constexpr static float SHOTGUN_RELOAD_SOUND_VOL = 0.5f;
+constexpr static float BUTTON_PRESS_SOUND_VOL = 0.5f;

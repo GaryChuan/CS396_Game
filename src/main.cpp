@@ -208,8 +208,6 @@ void toggleGlutWindowMaximizeBox(LPCWSTR szWindowTitle)
 void InitializeAudio()
 {
 	auto& audioManager = Service<AudioManager>::Get();
-	
-	std::cout << std::filesystem::current_path() << std::endl;
 
 	audioManager.Initialize();
 
@@ -227,6 +225,8 @@ void InitializeAudio()
 
 	audioManager.CreateSound(ZOMBIE_DEAD_SOUND, "resources/audio/zombie_dead.wav");
 	audioManager.CreateSound(ZOMBIE_GRUNT_SOUND, "resources/audio/zombie_grunt.wav");
+
+	audioManager.CreateSound(BUTTON_PRESS_SOUND, "resources/audio/button_press.wav");
 }
 
 

@@ -52,7 +52,11 @@ private:
 
 				pos.mValue = center;
 
-				button.mCallback = std::bind(&Scene::SetNextScene, this, SceneState::GAME);
+				button.mCallback = [&]()
+				{
+					SetNextScene(SceneState::GAME);
+					mManager->SendGlobalEvent<PlaySound>(BUTTON_PRESS_SOUND, BUTTON_PRESS_SOUND_VOL);
+				};
 
 				colour.mValue = buttonDetails.mButtonColours[Button::State::DEFAULT];
 				scale.mValue = xcore::vector2{ 30, 10 };
@@ -72,7 +76,11 @@ private:
 				pos.mValue = center;
 				pos.y += 50.f;
 
-				button.mCallback = std::bind(&Scene::SetNextScene, this, SceneState::MAIN_MENU);
+				button.mCallback = [&]()
+				{
+					SetNextScene(SceneState::MAIN_MENU);
+					mManager->SendGlobalEvent<PlaySound>(BUTTON_PRESS_SOUND, BUTTON_PRESS_SOUND_VOL);
+				};
 
 				colour.mValue = buttonDetails.mButtonColours[Button::State::DEFAULT];
 				scale.mValue = xcore::vector2{ 30, 10 };
@@ -102,12 +110,13 @@ private:
 			UpdateTimer,
 			ButtonLogic,
 			Renderer,
-			RenderButtons,
-			RenderText
+				RenderButtons,
+				RenderText
 			>();
 
 		mManager->RegisterSystems
 			<
+			OnPlaySound,
 			ButtonOnMouseMove,
 			ButtonOnLeftMouseClicked,
 			ButtonOnLeftMouseReleased
@@ -124,7 +133,8 @@ private:
 			OnMouseLeftClicked,
 			OnMouseLeftHeld,
 			OnMouseLeftReleased,
-			OnMouseMove
+			OnMouseMove,
+			PlaySound
 			>();
 	}
 };

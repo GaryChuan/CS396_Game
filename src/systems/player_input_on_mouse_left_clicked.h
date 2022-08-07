@@ -28,13 +28,17 @@ struct PlayerInputOnMouseLeftClicked : xecs::system::instance
 		mQueryPlayerOnly.m_Must.AddFromComponents<Position, Velocity, PlayerTag>();
 		mQueryPlayerOnly.m_NoneOf.AddFromComponents<Bullet>();
 
+		mBulletPrefabGUID = CreatePrefab<Position, Velocity, Bullet, Timer, GridCell>(
+			[&](Position& bulletPos, Timer& timer, Velocity& bulletVel, Bullet& bullet) noexcept
+			{
+				timer.mValue = 1.f;
+			});
+
 		mBulletArchetypePtr = &getOrCreateArchetype<BulletArchetype>();
 	}
 
 	void OnEvent(int mouseX, int mouseY)
 	{
-		assert(mBulletArchetypePtr);
-
 		Foreach(Search(mQueryPlayerOnly), [&](const Position& position, Weapon& weapon)
 			{
 				if (weapon.mState == Weapon::State::RELOAD 
@@ -66,7 +70,8 @@ private:
 			{
 				[&](const Pistol& pistol) noexcept 
 				{
-					mBulletArchetypePtr->CreateEntity([&](Bullet& bullet, Position& bulletPos, Timer& timer, Velocity& bulletVel)
+					CreatePrefabInstance(1, mBulletPrefabGUID,
+						[&](Position& bulletPos, Timer& timer, Velocity& bulletVel, Bullet& bullet)
 						{
 							bulletPos = playerPos;
 							bulletVel.mValue = aimDirection * 5.f;
@@ -81,7 +86,8 @@ private:
 				{
 					int i = -2;
 
-					mBulletArchetypePtr->CreateEntities(5, [&](Bullet& bullet, Position& bulletPos, Timer& timer, Velocity& bulletVel)
+					mBulletArchetypePtr->CreateEntities(
+						5, [&](Position& bulletPos, Timer& timer, Velocity& bulletVel, Bullet& bullet)
 						{
 							auto shotDirection = aimDirection;
 							auto randomAngle = xcore::math::DegToRad(Math::UniformRand(3.f, 5.f));
@@ -102,7 +108,8 @@ private:
 				},
 				[&](const SubmachineGun& smg) noexcept
 				{
-					mBulletArchetypePtr->CreateEntity([&](Bullet& bullet, Position& bulletPos, Timer& timer, Velocity& bulletVel)
+					CreatePrefabInstance(1, mBulletPrefabGUID,
+						[&](Position& bulletPos, Timer& timer, Velocity& bulletVel, Bullet& bullet)
 						{
 							bulletPos = playerPos;
 
@@ -111,8 +118,6 @@ private:
 
 							newDirection.Rotate(xcore::math::radian(static_cast<long double>(randomAngle)));
 							newDirection.NormalizeSafe();
-
-							timer.mValue = 1.f;
 
 							bullet.mDamage = smg.GetDamage();
 							bullet.mPushback = smg.GetPushback();
@@ -129,5 +134,7 @@ private:
 private:
 	xecs::archetype::instance* mBulletArchetypePtr{};
 	xecs::query::instance mQueryPlayerOnly{};
+
+	xecs::prefab::guid mBulletPrefabGUID{};
 
 };

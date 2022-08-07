@@ -28,13 +28,15 @@ struct PlayerInputOnMouseLeftHeld : xecs::system::instance
 		mQueryPlayerOnly.m_Must.AddFromComponents<Position, Velocity, PlayerTag>();
 		mQueryPlayerOnly.m_NoneOf.AddFromComponents<Bullet>();
 
-		mBulletArchetypePtr = &getOrCreateArchetype<BulletArchetype>();
+		mBulletPrefabGUID = CreatePrefab<Position, Velocity, Bullet, Timer, GridCell>(
+			[&](Position& bulletPos, Timer& timer, Velocity& bulletVel, Bullet& bullet) noexcept
+			{
+				timer.mValue = 1.f;
+			});
 	}
 
 	void OnEvent(int mouseX, int mouseY)
 	{
-		assert(mBulletArchetypePtr);
-
 		Foreach(Search(mQueryPlayerOnly), [&](const Position& position, Weapon& weapon)
 			{
 				if (weapon.mState == Weapon::State::RELOAD
@@ -67,7 +69,8 @@ private:
 			{
 				[&](const SubmachineGun& smg) noexcept
 				{
-					mBulletArchetypePtr->CreateEntity([&](Position& bulletPos, Timer& timer, Velocity& bulletVel, Bullet& bullet)
+					CreatePrefabInstance(1, mBulletPrefabGUID, 
+						[&](Position& bulletPos, Timer& timer, Velocity& bulletVel, Bullet& bullet)
 						{
 							bulletPos = playerPos;
 
@@ -76,8 +79,6 @@ private:
 
 							newDirection.Rotate(xcore::math::radian(static_cast<long double>(randomAngle)));
 							newDirection.NormalizeSafe();
-
-							timer.mValue = 1.f;
 
 							bullet.mDamage = smg.GetDamage();
 							bullet.mPushback = smg.GetPushback();
@@ -96,6 +97,7 @@ private:
 	}
 
 private:
-	xecs::archetype::instance* mBulletArchetypePtr{};
 	xecs::query::instance mQueryPlayerOnly{};
+
+	xecs::prefab::guid mBulletPrefabGUID{};
 };

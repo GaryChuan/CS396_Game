@@ -206,8 +206,6 @@ int main(int argc, char** argv)
 
 	const auto& [width, height] = game.GetResolution();
 
-	game.CreateDefaultScene();
-
 	//
 	// Create the graphics and main loop
 	//
